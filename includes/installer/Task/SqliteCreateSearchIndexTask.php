@@ -11,8 +11,14 @@ use Wikimedia\Rdbms\DatabaseSqlite;
  * @internal For use by the installer
  */
 class SqliteCreateSearchIndexTask extends Task {
+	/** @inheritDoc */
 	public function getName() {
 		return 'search';
+	}
+
+	/** @inheritDoc */
+	public function getDependencies() {
+		return [ 'tables' ];
 	}
 
 	public function execute(): Status {
@@ -28,9 +34,9 @@ class SqliteCreateSearchIndexTask extends Task {
 
 		if ( $fts3tTable && !$module ) {
 			$status->warning( 'config-sqlite-fts3-downgrade' );
-			$this->applySourceFile( $db, 'searchindex-no-fts.sql' );
+			$status->merge( $this->applySourceFile( $db, 'searchindex-no-fts.sql' ) );
 		} elseif ( !$fts3tTable && $module == 'FTS3' ) {
-			$this->applySourceFile( $db, 'searchindex-fts3.sql' );
+			$status->merge( $this->applySourceFile( $db, 'searchindex-fts3.sql' ) );
 		}
 
 		return $status;

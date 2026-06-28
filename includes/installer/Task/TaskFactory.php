@@ -27,8 +27,8 @@ class TaskFactory {
 		[ 'class' => PostgresPlTask::class, 'db' => 'postgres' ],
 		[ 'class' => PostgresCreateSchemaTask::class, 'db' => 'postgres' ],
 		[ 'class' => SqliteCreateDatabaseTask::class, 'db' => 'sqlite' ],
-		[ 'class' => SqliteCreateSearchIndexTask::class, 'db' => 'sqlite' ],
 		[ 'class' => CreateTablesTask::class ],
+		[ 'class' => SqliteCreateSearchIndexTask::class, 'db' => 'sqlite' ],
 		[ 'class' => PopulateSiteStatsTask::class ],
 		[ 'class' => PopulateInterwikiTask::class ],
 		[ 'class' => InsertUpdateKeysTask::class ],
@@ -131,10 +131,10 @@ class TaskFactory {
 		} else {
 			$allowedParamNames = [ 'factory', 'class', 'args' ];
 			$factorySpec = array_intersect_key( $spec, array_fill_keys( $allowedParamNames, true ) );
-			$task = $this->objectFactory->createObject( $factorySpec );
-			if ( !( $task instanceof Task ) ) {
-				throw new \RuntimeException( 'Invalid task type' );
-			}
+			$task = $this->objectFactory->createObject(
+				$factorySpec,
+				[ 'assertClass' => Task::class ]
+			);
 		}
 
 		$schemaBasePath = $spec['schemaBasePath'] ?? $this->getCoreSchemaBasePath();

@@ -71,7 +71,7 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 					throw new InvalidArgumentException( "Invalid GTID '$gtid'." );
 				}
 
-				[ $domain, $eventNumber ] = $components;
+				[ $domain, $eventNumber, , $this->style ] = $components;
 				if ( isset( $this->gtids[$domain] ) ) {
 					// For MySQL, handle the case where some past issue caused a gap in the
 					// executed GTID set, e.g. [last_purged+1,N-1] and [N+1,N+2+K]. Ignore the
@@ -83,12 +83,6 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 				} else {
 					$this->gtids[$domain] = $gtid;
 				}
-
-				if ( is_string( $domain ) ) {
-					$this->style = self::GTID_MARIA; // gtid_domain_id
-				} else {
-					$this->style = self::GTID_MYSQL; // server_uuid
-				}
 			}
 			if ( !$this->gtids ) {
 				throw new InvalidArgumentException( "GTID set cannot be empty." );
@@ -98,10 +92,12 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 		$this->asOfTime = $asOfTime;
 	}
 
+	/** @inheritDoc */
 	public function asOfTime() {
 		return $this->asOfTime;
 	}
 
+	/** @inheritDoc */
 	public function hasReached( DBPrimaryPos $pos ) {
 		if ( !( $pos instanceof self ) ) {
 			throw new InvalidArgumentException( "Position not an instance of " . __CLASS__ );
@@ -260,8 +256,8 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 
 	/**
 	 * @param string $id GTID
-	 * @return string[]|null (domain ID, event number, source server ID) for MariaDB,
-	 * (source server UUID, event number, source server UUID) for MySQL, or null
+	 * @return string[]|null (domain ID, event number, source server ID, style) for MariaDB,
+	 * (source server UUID, event number, source server UUID, style) for MySQL, or null
 	 */
 	protected static function parseGTID( $id ) {
 		$m = [];
@@ -270,6 +266,7 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 			$channelId = $m[1];
 			$originServerId = $m[2];
 			$eventNumber = $m[3];
+			$style = self::GTID_MARIA;
 		} elseif ( preg_match( '!^(\w{8}-\w{4}-\w{4}-\w{4}-\w{12}):(?:\d+-|)(\d+)$!', $id, $m ) ) {
 			// MySQL style: "<server UUID>:<64 bit event number>[-<64 bit event number>]".
 			// Normally, the first number should reflect the point (gtid_purged) where older
@@ -278,11 +275,12 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 			$channelId = $m[1];
 			$originServerId = $m[1];
 			$eventNumber = $m[2];
+			$style = self::GTID_MYSQL;
 		} else {
 			return null;
 		}
 
-		return [ $channelId, $eventNumber, $originServerId ];
+		return [ $channelId, $eventNumber, $originServerId, $style ];
 	}
 
 	/**
@@ -296,6 +294,7 @@ class MySQLPrimaryPos implements Stringable, DBPrimaryPos {
 			: false;
 	}
 
+	/** @inheritDoc */
 	public static function newFromArray( array $data ) {
 		$pos = new self( $data['position'], $data['asOfTime'] );
 

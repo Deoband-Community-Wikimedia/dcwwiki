@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"ZulfiqorF",
+			"Farorud"
+		]
+	},
+	"urlshortener-toolbox": "Гирифтани URL-и кӯтоҳшуда",
+	"urlshortener-toolbox-qrcode": "Боргирии QR-код",
+	"urlshortener-qrcode-downloaded": "QR-рамз дар шакли SVG-файл боргирӣ шуд"
+}

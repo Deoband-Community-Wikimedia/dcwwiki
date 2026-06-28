@@ -2,14 +2,18 @@
 
 namespace MediaWiki\Tests\Unit\Edit;
 
-use MediaWiki\Content\TextContentHandler;
+use MediaWiki\Content\ContentJsonCodec;
+use MediaWiki\Content\IContentHandlerFactory;
 use MediaWiki\Content\WikitextContent;
+use MediaWiki\Content\WikitextContentHandler;
 use MediaWiki\Edit\ParsoidRenderID;
 use MediaWiki\Edit\SelserContext;
 use MediaWiki\Edit\SimpleParsoidOutputStash;
+use MediaWiki\Json\JsonCodec;
 use MediaWiki\Tests\Unit\DummyServicesTrait;
+use Psr\Container\ContainerInterface;
 use Wikimedia\ObjectCache\HashBagOStuff;
-use Wikimedia\Parsoid\Core\PageBundle;
+use Wikimedia\Parsoid\Core\HtmlPageBundle;
 
 /**
  * @covers \MediaWiki\Edit\SimpleParsoidOutputStash
@@ -19,11 +23,11 @@ class SimpleParsoidOutputStashTest extends \MediaWikiUnitTestCase {
 	use DummyServicesTrait;
 
 	public function testSetAndGetWithNoContent() {
-		$chFactory = $this->getDummyContentHandlerFactory();
-		$stash = new SimpleParsoidOutputStash( $chFactory, new HashBagOStuff(), 12 );
+		$codec = $this->getJsonCodec( $this->getDummyContentHandlerFactory() );
+		$stash = new SimpleParsoidOutputStash( $codec, new HashBagOStuff(), 12 );
 
 		$key = new ParsoidRenderID( 7, 'acme' );
-		$pageBundle = new PageBundle( '<p>Hello World</p>' );
+		$pageBundle = new HtmlPageBundle( '<p>Hello World</p>' );
 		$selserContext = new SelserContext( $pageBundle, 7 );
 
 		$stash->set( $key, $selserContext );
@@ -31,23 +35,41 @@ class SimpleParsoidOutputStashTest extends \MediaWikiUnitTestCase {
 	}
 
 	public function testSetAndGetWithContent() {
-		$contentHandler = $this->createNoOpMock( TextContentHandler::class, [ 'unserializeContent' ] );
-		$contentHandler->method( 'unserializeContent' )->willReturnCallback( static function ( $data ) {
-			return new WikitextContent( $data );
+		$contentHandler = $this->createNoOpMock(
+			WikitextContentHandler::class, [
+				'serializeContentToJsonArray',
+				'deserializeContentFromJsonArray',
+			] );
+		$contentHandler->method( 'serializeContentToJsonArray' )->willReturnCallback( static function ( $content ) {
+			return [
+				'format' => CONTENT_FORMAT_WIKITEXT,
+				'blob' => 'Hello World',
+			];
+		} );
+		$contentHandler->method( 'deserializeContentFromJsonArray' )->willReturnCallback( static function ( $data ) {
+			return new WikitextContent( $data['blob'] );
 		} );
 
 		$chFactory = $this->getDummyContentHandlerFactory(
 			[ CONTENT_MODEL_WIKITEXT => $contentHandler ]
 		);
+		$codec = $this->getJsonCodec( $chFactory );
 
-		$stash = new SimpleParsoidOutputStash( $chFactory, new HashBagOStuff(), 12 );
+		$stash = new SimpleParsoidOutputStash( $codec, new HashBagOStuff(), 12 );
 
 		$key = new ParsoidRenderID( 7, 'acme' );
-		$pageBundle = new PageBundle( '<p>Hello World</p>' );
+		$pageBundle = new HtmlPageBundle( '<p>Hello World</p>' );
 
-		$content = $this->createNoOpMock( WikitextContent::class, [ 'getModel', 'serialize' ] );
-		$content->method( 'getModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
-		$content->method( 'serialize' )->willReturn( 'Hello World' );
+		// Create a WikitextContent that uses the above ContentHandlerFactory
+		$content = new class( 'Hello World', $chFactory ) extends WikitextContent {
+			public function __construct( $text, private $chFactory ) {
+				parent::__construct( $text );
+			}
+
+			protected function getContentHandlerFactory(): IContentHandlerFactory {
+				return $this->chFactory;
+			}
+		};
 
 		$selserContext = new SelserContext( $pageBundle, 7, $content );
 
@@ -59,4 +81,29 @@ class SimpleParsoidOutputStashTest extends \MediaWikiUnitTestCase {
 		$this->assertEquals( 7, $actual->getRevisionID() );
 	}
 
+	private function getJsonCodec( $contentHandlerFactory ) {
+		return new JsonCodec( $this->getMockServices( [
+			'ContentHandlerFactory' => $contentHandlerFactory,
+			'ContentJsonCodec' => new ContentJsonCodec( $contentHandlerFactory ),
+		] ) );
+	}
+
+	private function getMockServices( array $services ) {
+		return new class( $services ) implements ContainerInterface {
+			public function __construct( private array $services ) {
+			}
+
+			public function get( $id ) {
+				return $this->services[$id] ?? null;
+			}
+
+			public function has( $id ): bool {
+				return isset( $this->services[$id] );
+			}
+
+			public function set( $id, $value ) {
+				$this->services[$id] = $value;
+			}
+		};
+	}
 }

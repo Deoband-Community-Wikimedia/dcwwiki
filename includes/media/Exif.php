@@ -2,21 +2,7 @@
 /**
  * Extraction and validation of image metadata.
  *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- *
+ * @license GPL-2.0-or-later
  * @ingroup Media
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason, 2009 Brent Garber
@@ -108,6 +94,13 @@ class Exif {
 	 *   Possibly should treat 0/0 = 0. need to read exif spec on that.
 	 */
 	public function __construct( $file, $byteOrder = '' ) {
+		if ( !function_exists( 'exif_read_data' ) ) {
+			throw new ConfigException(
+				"Internal error: exif_read_data not present. " .
+				"\$wgShowEXIF may be incorrectly set or not checked by an extension."
+			);
+		}
+
 		/**
 		 * Page numbers here refer to pages in the Exif 2.2 standard
 		 *
@@ -411,14 +404,11 @@ class Exif {
 		}
 
 		$this->debugFile( __FUNCTION__, true );
-		if ( function_exists( 'exif_read_data' ) ) {
-			AtEase::suppressWarnings();
-			$data = exif_read_data( $this->file, '', true );
-			AtEase::restoreWarnings();
-		} else {
-			throw new ConfigException( "Internal error: exif_read_data not present. " .
-				"\$wgShowEXIF may be incorrectly set or not checked by an extension." );
-		}
+
+		AtEase::suppressWarnings();
+		$data = exif_read_data( $this->file, '', true );
+		AtEase::restoreWarnings();
+
 		/**
 		 * exif_read_data() will return false on invalid input, such as
 		 * when somebody uploads a file called something.jpeg
@@ -647,15 +637,21 @@ class Exif {
 		$dir = $this->mFilteredExifData[$prop . 'Ref'] ?? null;
 		$res = false;
 
-		if ( $loc !== null && ( $dir === 'N' || $dir === 'S' || $dir === 'E' || $dir === 'W' ) ) {
-			[ $num, $denom ] = explode( '/', $loc[0], 2 );
-			$res = (int)$num / (int)$denom;
-			[ $num, $denom ] = explode( '/', $loc[1], 2 );
-			$res += ( (int)$num / (int)$denom ) * ( 1 / 60 );
-			[ $num, $denom ] = explode( '/', $loc[2], 2 );
-			$res += ( (int)$num / (int)$denom ) * ( 1 / 3600 );
+		if ( $loc !== null && in_array( $dir, [ 'N', 'S', 'E', 'W' ] ) ) {
+			if ( is_array( $loc ) && count( $loc ) === 3 ) {
+				[ $num, $denom ] = explode( '/', $loc[0], 2 );
+				$res = (int)$num / (int)$denom;
+				[ $num, $denom ] = explode( '/', $loc[1], 2 );
+				$res += ( (int)$num / (int)$denom ) * ( 1 / 60 );
+				[ $num, $denom ] = explode( '/', $loc[2], 2 );
+				$res += ( (int)$num / (int)$denom ) * ( 1 / 3600 );
+			} elseif ( is_string( $loc ) ) {
+				// This is non-standard, but occurs in the wild (T386208)
+				[ $num, $denom ] = explode( '/', $loc, 2 );
+				$res = (int)$num / (int)$denom;
+			}
 
-			if ( $dir === 'S' || $dir === 'W' ) {
+			if ( $res && ( $dir === 'S' || $dir === 'W' ) ) {
 				// make negative
 				$res *= -1;
 			}

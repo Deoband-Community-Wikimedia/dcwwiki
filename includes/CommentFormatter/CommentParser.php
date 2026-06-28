@@ -242,10 +242,6 @@ class CommentParser {
 						']]'
 					], '', $section );
 
-					// We don't want any links in the auto text to be linked, but we still
-					// want to show any [[ ]]
-					$sectionText = str_replace( '[[', '&#91;[', $auto );
-
 					$section = substr( Parser::guessSectionNameFromStrippedText( $section ), 1 );
 					if ( $section !== '' ) {
 						if ( $samePage ) {
@@ -256,7 +252,7 @@ class CommentParser {
 						$auto = $this->makeSectionLink(
 							$sectionTitle,
 							$this->userLang->getArrow() .
-								Html::rawElement( 'bdi', [ 'dir' => $this->userLang->getDir() ], $sectionText ),
+								Html::rawElement( 'bdi', [ 'dir' => $this->userLang->getDir() ], $auto ),
 							$wikiId,
 							$selfLinkTarget
 						);
@@ -273,7 +269,10 @@ class CommentParser {
 				if ( $auto ) {
 					$auto = Html::rawElement( 'span', [ 'class' => 'autocomment' ], $auto );
 				}
-				return $pre . $auto;
+
+				// Make sure any brackets (which the user could have input in the edit summary)
+				// in the generated autocomment HTML don't trigger additional link processing (T406664).
+				return str_replace( [ '[', ']' ], [ '&#91;', '&#93;' ], $pre . $auto );
 			},
 			$comment
 		);
@@ -358,7 +357,7 @@ class CommentParser {
 				$comment = $match[0];
 
 				// Fix up urlencoded title texts (copied from Parser::replaceInternalLinks)
-				if ( strpos( $match[1], '%' ) !== false ) {
+				if ( str_contains( $match[1], '%' ) ) {
 					$match[1] = strtr(
 						rawurldecode( $match[1] ),
 						[ '<' => '&lt;', '>' => '&gt;' ]
@@ -386,7 +385,6 @@ class CommentParser {
 					if ( isset( $match[1][0] ) && $match[1][0] == ':' ) {
 						$match[1] = substr( $match[1], 1 );
 					}
-					// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset False positive
 					if ( $match[1] !== false && $match[1] !== null && $match[1] !== '' ) {
 						if ( preg_match(
 							$this->contLang->linkTrail(),
@@ -424,7 +422,7 @@ class CommentParser {
 								$selfLinkTarget ?? $wgTitle ?? SpecialPage::getTitleFor( 'Badtitle' )
 							);
 							$linkMarker .= $trail;
-						} catch ( MalformedTitleException $e ) {
+						} catch ( MalformedTitleException ) {
 							// Fall through
 						}
 					}

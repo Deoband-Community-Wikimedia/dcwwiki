@@ -1,0 +1,173 @@
+#!/usr/bin/env php
+MediaWiki 1.43.0 Updater
+
+wikimedia/at-ease: 2.1.0 installed, 3.0.0 required.
+wikimedia/parsoid: 0.19.0 installed, 0.19.1 required.
+wikimedia/php-session-serializer: 2.0.1 installed, 3.0.0 required.
+wikimedia/xmp-reader: 0.9.1 installed, 0.9.2 required.
+Error: your composer.lock file is not up to date. Run "composer update --no-dev" to install newer dependenciesGoing to run database updates for u572932744_5wzGQ-emr2_
+Depending on the size of your database this may take a while!
+...collations up-to-date.
+...have rev_actor field in revision table.
+...watchlist_expiry table already exists.
+...page_restrictions field does not exist in page table, skipping modify field patch.
+...index ipb_address_unique already set on ipblocks table.
+...archive table does not contain ar_text_id field.
+...lc_lang is up-to-date.
+...ll_lang is up-to-date.
+...site_language is up-to-date.
+...index ipb_address_unique on table ipblocks has no field ipb_anon_only; added.
+...ipb_address_unique index up-to-date.
+...actor_name in table actor already modified by patch patch-actor-actor_name-varbinary.sql.
+...site_global_key in table sites already modified by patch patch-sites-site_global_key.sql.
+...iwl_prefix in table iwlinks already modified by patch patch-extend-iwlinks-iwl_prefix.sql.
+...rd_title in table redirect already modified by patch patch-redirect-rd_title-varbinary.sql.
+...pl_title in table pagelinks already modified by patch patch-pagelinks-pl_title-varbinary.sql.
+...tl_title field does not exist in templatelinks table, skipping modify field patch.
+...il_to in table imagelinks already modified by patch patch-imagelinks-il_to-varbinary.sql.
+...ll_title in table langlinks already modified by patch patch-langlinks-ll_title-varbinary.sql.
+...iwl_title in table iwlinks already modified by patch patch-iwlinks-iwl_title-varbinary.sql.
+...cat_title in table category already modified by patch patch-category-cat_title-varbinary.sql.
+...qc_title in table querycache already modified by patch patch-querycache-qc_title-varbinary.sql.
+...qcc_title in table querycachetwo already modified by patch patch-querycachetwo-qcc_title-varbinary.sql.
+...wl_title in table watchlist already modified by patch patch-watchlist-wl_title-varbinary.sql.
+...user_last_timestamp in table user_newtalk already modified by patch patch-user_newtalk-user_last_timestamp-binary.sql.
+...pt_title in table protected_titles already modified by patch patch-protected_titles-pt_title-varbinary.sql.
+...ir_type in table ipblocks_restrictions already modified by patch patch-ipblocks_restrictions-ir_type.sql.
+...index wl_namespace_title already set on watchlist table.
+...job_title in table job already modified by patch patch-job-job_title-varbinary.sql.
+...job_timestamp in table job already modified by patch patch-job_job_timestamp.sql.
+...job_token_timestamp in table job already modified by patch patch-job_job_token_timestamp.sql.
+...wl_notificationtimestamp in table watchlist already modified by patch patch-watchlist-wl_notificationtimestamp.sql.
+...role_id in table slot_roles already modified by patch patch-slot_roles-role_id.sql.
+...model_id in table content_models already modified by patch patch-content_models-model_id.sql.
+...cl_to in table categorylinks already modified by patch patch-categorylinks-cl_to-varbinary.sql.
+...log_title in table logging already modified by patch patch-logging-log_title-varbinary.sql.
+...us_timestamp in table uploadstash already modified by patch patch-uploadstash-us_timestamp.sql.
+...index up_property already set on user_properties table.
+...index site_global_key already set on sites table.
+...index log_type_time already set on logging table.
+...fa_name in table filearchive already modified by patch patch-filearchive-fa_name.sql.
+...oi_name in table oldimage already modified by patch patch-oldimage-oi_name-varbinary.sql.
+...exptime in table objectcache already modified by patch patch-objectcache-exptime-notnull.sql.
+...index ar_name_title_timestamp already set on archive table.
+...img_name in table image already modified by patch patch-image-img_name-varbinary.sql.
+...img_timestamp in table image already modified by patch patch-image-img_timestamp.sql.
+...index si_key already set on site_identifiers table.
+...rc_title in table recentchanges already modified by patch patch-recentchanges-rc_title-varbinary.sql.
+...rc_timestamp in table recentchanges already modified by patch patch-recentchanges-rc_timestamp.sql.
+...rc_id in table recentchanges already modified by patch patch-recentchanges-rc_id.sql.
+...index rc_new_name_timestamp already set on recentchanges table.
+...ar_title in table archive already modified by patch patch-archive-ar_title-varbinary.sql.
+...page_title in table page already modified by patch patch-page-page_title-varbinary.sql.
+...user_name in table user already modified by patch patch-user_table-updates.sql.
+...index rev_page_timestamp already set on revision table.
+...have modtoken field in objectcache table.
+...index oi_timestamp already set on oldimage table.
+...index page_name_title already set on page table.
+...index ct_rc_tag_id already set on change_tag table.
+...page_restrictions table does not contain pr_user field.
+...fa_id in table filearchive already modified by patch patch-filearchive-fa_id.sql.
+...img_major_mime in table image already modified by patch patch-image-img_major_mime-default.sql.
+...linktarget table already exists.
+...rev_page_id key doesn't exist.
+...pr_page in table page_restrictions already modified by patch patch-page_restrictions-pr_page.sql.
+...pp_page in table page_props already modified by patch patch-page_props-pp_page.sql.
+...ir_value in table ipblocks_restrictions already modified by patch patch-ipblocks_restrictions-ir_value.sql.
+...have tl_target_id field in templatelinks table.
+...user_autocreate_serial table already exists.
+...ir_ipb_id in table ipblocks_restrictions already modified by patch patch-ipblocks_restrictions-ir_ipb_id.sql.
+...ipb_id in table ipblocks already modified by patch patch-ipblocks-ipb_id.sql.
+...user_editcount in table user already modified by patch patch-user-user_editcount.sql.
+Running maintenance/migrateRevisionActorTemp.php...
+...Update 'MigrateRevisionActorTemp' already logged as completed. Use --force to run it again.
+done.
+...revision_actor_temp doesn't exist.
+Running maintenance/updateRestrictions.php...
+Migration is not needed.
+done.
+...page table does not contain page_restrictions field.
+...templatelinks table has already been migrated.
+...tl_namespace field does not exist in templatelinks table, skipping modify field patch.
+...templatelinks table does not contain tl_title field.
+...have el_to_path field in externallinks table.
+...have user_is_temp field in user table.
+Running maintenance/migrateRevisionCommentTemp.php...
+...Update 'MigrateRevisionCommentTemp' already logged as completed. Use --force to run it again.
+done.
+...revision_comment_temp doesn't exist.
+Running maintenance/migrateExternallinks.php...
+...Update 'MigrateExternallinks' already logged as completed. Use --force to run it again.
+done.
+...el_to field does not exist in externallinks table, skipping modify field patch.
+...have pl_target_id field in pagelinks table.
+...externallinks table does not contain el_to field.
+Running maintenance/fixInconsistentRedirects.php...
+...Update 'FixInconsistentRedirects' already logged as completed. Use --force to run it again.
+done.
+...img_size in table image already modified by patch patch-image-img_size_to_bigint.sql.
+...fa_size in table filearchive already modified by patch patch-filearchive-fa_size_to_bigint.sql.
+...oi_size in table oldimage already modified by patch patch-oldimage-oi_size_to_bigint.sql.
+...us_size in table uploadstash already modified by patch patch-uploadstash-us_size_to_bigint.sql.
+...have uas_year field in user_autocreate_serial table.
+...block_target table already exists.
+...cl_collation_ext key doesn't exist.
+Running maintenance/populateUserIsTemp.php...
+...Update 'PopulateUserIsTemp' already logged as completed. Use --force to run it again.
+done.
+...site_type key doesn't exist.
+...iwl_prefix_from_title key doesn't exist.
+...account_requests table already exists.
+...have acr_filename field in account_requests table.
+...account_credentials table already exists.
+...have acr_areas field in account_requests table.
+...acr_email in table account_requests already modified by patch /home/u572932744/domains/dcwwiki.org/public_html/extensions/ConfirmAccount/includes/backend/schema/mysql/patch-acr_email-varchar.sql.
+...index acr_email already set on account_requests table.
+...have acr_agent field in account_requests table.
+...acr_deleted_reg key doesn't exist.
+...cargo_tables table already exists.
+...cargo_pages table already exists.
+...cargo_backlinks table already exists.
+...have field_helper_tables field in cargo_tables table.
+...cargo_tables_template_id key doesn't exist.
+...uw_campaigns table already exists.
+...uw_campaigns_enabled field does not exist in uw_campaigns table, skipping modify field patch.
+...echo_event table already exists.
+...echo_push_provider table already exists.
+...echo_push_subscription table already exists.
+...echo_push_topic table already exists.
+...index eps_user already set on echo_push_subscription table.
+...echo_push_subscription_token key doesn't exist.
+...index eps_token already set on echo_push_subscription table.
+...have eps_topic field in echo_push_subscription table.
+...echo_unread_wikis table already exists.
+...titlekey table already exists.
+...securepoll_entity table already exists.
+...el_end_date in table securepoll_elections already modified by patch /home/u572932744/domains/dcwwiki.org/public_html/extensions/SecurePoll/sql/mysql/patch-securepoll_elections-timestamps.sql.
+...vote_timestamp in table securepoll_votes already modified by patch /home/u572932744/domains/dcwwiki.org/public_html/extensions/SecurePoll/sql/mysql/patch-securepoll_votes-timestamp.sql.
+...st_timestamp in table securepoll_strike already modified by patch /home/u572932744/domains/dcwwiki.org/public_html/extensions/SecurePoll/sql/mysql/patch-securepoll_strike-timestamp.sql.
+...cm_timestamp in table securepoll_cookie_match already modified by patch /home/u572932744/domains/dcwwiki.org/public_html/extensions/SecurePoll/sql/mysql/patch-securepoll_cookie_match-timestamp.sql.
+...spmsg_entity key doesn't exist.
+...sppr_entity key doesn't exist.
+...shorturls table already exists.
+Creating babel table...done.
+Modifying babel_lang field of table babel...done.
+Modifying babel_level field of table babel...done.
+...urlshortcodes table already exists.
+...have usc_deleted field in urlshortcodes table.
+...site_stats is populated...done.
+...Update 'populate rev_len and ar_len' already logged as completed. Use --force to run it again.
+...Update 'populate rev_sha1' already logged as completed. Use --force to run it again.
+...img_sha1 column of image table already populated.
+...fa_sha1 column of filearchive table already populated.
+...*_from_namespace column of backlink tables already populated.
+...Update 'FixDefaultJsonContentPages' already logged as completed. Use --force to run it again.
+...Update 'cleanup empty categories' already logged as completed. Use --force to run it again.
+...RFC and PMID already added to interwiki database table.
+...Update 'populate pp_sortkey' already logged as completed. Use --force to run it again.
+...Update 'populate ip_changes' already logged as completed. Use --force to run it again.
+...Update 'UpdateNotBlockedKey' already logged as completed. Use --force to run it again.
+Set the local repo temp zone container to be private.
+Purging caches...done.
+
+Done in 0.1 s.

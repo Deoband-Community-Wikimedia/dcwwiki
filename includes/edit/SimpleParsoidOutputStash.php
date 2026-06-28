@@ -2,9 +2,8 @@
 
 namespace MediaWiki\Edit;
 
-use MediaWiki\Content\IContentHandlerFactory;
+use MediaWiki\Json\JsonCodec;
 use Wikimedia\ObjectCache\BagOStuff;
-use Wikimedia\Parsoid\Core\PageBundle;
 
 /**
  * @internal
@@ -12,24 +11,13 @@ use Wikimedia\Parsoid\Core\PageBundle;
  */
 class SimpleParsoidOutputStash implements ParsoidOutputStash {
 
-	/** @var BagOStuff */
-	private $bagOfStuff;
-
-	/** @var int */
-	private $duration;
-
-	/** @var IContentHandlerFactory */
-	private $contentHandlerFactory;
-
-	/**
-	 * @param IContentHandlerFactory $contentHandlerFactory
-	 * @param BagOStuff $bagOfStuff storage backend
-	 * @param int $duration cache duration in seconds
-	 */
-	public function __construct( IContentHandlerFactory $contentHandlerFactory, BagOStuff $bagOfStuff, int $duration ) {
-		$this->bagOfStuff = $bagOfStuff;
-		$this->duration = $duration;
-		$this->contentHandlerFactory = $contentHandlerFactory;
+	public function __construct(
+		private JsonCodec $jsonCodec,
+		/** Storage backend */
+		private BagOStuff $bagOfStuff,
+		/** Cache duration in seconds */
+		private int $duration,
+	) {
 	}
 
 	private function makeCacheKey( ParsoidRenderID $renderId ): string {
@@ -46,8 +34,9 @@ class SimpleParsoidOutputStash implements ParsoidOutputStash {
 	 * @return bool
 	 */
 	public function set( ParsoidRenderID $renderId, SelserContext $selserContext ): bool {
-		$jsonic = $this->selserContextToJsonArray( $selserContext );
-
+		$jsonic = $this->jsonCodec->toJsonArray(
+			$selserContext, SelserContext::class
+		);
 		$key = $this->makeCacheKey( $renderId );
 		return $this->bagOfStuff->set( $key, $jsonic, $this->duration );
 	}
@@ -66,52 +55,17 @@ class SimpleParsoidOutputStash implements ParsoidOutputStash {
 		$jsonic = $this->bagOfStuff->get( $key ) ?? [];
 
 		if ( !is_array( $jsonic ) ) {
-			// Defend against old stashed data.
-			// Only needed for a couple of days after this code has been deployed.
+			// Defend against old stashed data: MW 1.39 stored a string.
+			// We're supposed to maintain upgrade compatibility with the
+			// last two LTS releases, so we can remove this in MW 1.48.
 			return null;
 		}
-
-		$selserContext = $this->newSelserContextFromJson( $jsonic );
-		return $selserContext ?: null;
-	}
-
-	private function newSelserContextFromJson( array $json ): ?SelserContext {
-		if ( !isset( $json['pb'] ) ) {
+		if ( !isset( $jsonic['pb'] ) ) {
 			return null;
 		}
-
-		// TODO: should use proper JsonCodec for this
-		$pb = PageBundle::newFromJsonArray( $json['pb'] );
-
-		$revId = (int)$json['revId'];
-
-		if ( isset( $json['content'] ) ) {
-			$contentHandler = $this->contentHandlerFactory->getContentHandler( $json['content']['model'] );
-			$content = $contentHandler->unserializeContent( $json['content']['data'] );
-		} else {
-			$content = null;
-		}
-
-		return new SelserContext( $pb, $revId, $content );
-	}
-
-	private function selserContextToJsonArray( SelserContext $selserContext ): array {
-		$json = [
-			'revId' => $selserContext->getRevisionID(),
-		];
-
-		// TODO: should use proper JsonCodec for this
-		$json['pb'] = $selserContext->getPageBundle()->toJsonArray();
-
-		$content = $selserContext->getContent();
-		if ( $content ) {
-			$json['content'] = [
-				'model' => $content->getModel(),
-				'data' => $content->serialize()
-			];
-		}
-
-		return $json;
+		return $this->jsonCodec->newFromJsonArray(
+			$jsonic, SelserContext::class
+		);
 	}
 
 }

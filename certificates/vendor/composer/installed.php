@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'dcw/certificate-system',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '71485cded13a7b3758f4f7444098d97654a482c8',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'dcw/certificate-system' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '71485cded13a7b3758f4f7444098d97654a482c8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'setasign/fpdi' => array(
+            'pretty_version' => 'v2.6.7',
+            'version' => '2.6.7.0',
+            'reference' => '388c51e69982a3fc16698710b763e8107a49f510',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../setasign/fpdi',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'tecnickcom/tcpdf' => array(
+            'pretty_version' => '6.11.3',
+            'version' => '6.11.3.0',
+            'reference' => 'b18f6119161019916c5bb07cb8da5205ae5c1b63',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tecnickcom/tcpdf',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

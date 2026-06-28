@@ -96,7 +96,7 @@ ApiSandboxLayout.prototype.makeWidgetFieldLayouts = function ( ppi, name ) {
 				).parse(),
 				mw.message( 'apisandbox-param-limit' ).parse()
 			];
-			helpLabel.addInfo( Util.parseHTML( tmp.join( mw.msg( 'word-separator' ) ) ) );
+			helpLabel.addInfo( Util.parseHTML( tmp.join( mw.message( 'word-separator' ).escaped() ) ) );
 			break;
 
 		case 'integer':
@@ -141,7 +141,7 @@ ApiSandboxLayout.prototype.makeWidgetFieldLayouts = function ( ppi, name ) {
 			);
 		}
 		if ( tmp.length ) {
-			helpLabel.addInfo( Util.parseHTML( tmp.join( mw.msg( 'word-separator' ) ) ) );
+			helpLabel.addInfo( Util.parseHTML( tmp.join( mw.message( 'word-separator' ).escaped() ) ) );
 		}
 	}
 	if ( 'maxbytes' in ppi ) {
@@ -435,7 +435,7 @@ ApiSandboxLayout.prototype.loadParamInfo = function () {
 			const items = [],
 				deprecatedItems = [],
 				buttons = [],
-				filterFmModules = ( v ) => v.slice( -2 ) !== 'fm' ||
+				filterFmModules = ( v ) => !v.endsWith( 'fm' ) ||
 					!Object.prototype.hasOwnProperty.call( ApiSandbox.availableFormats, v.slice( 0, -2 ) );
 
 			// This is something of a hack. We always want the 'format' and

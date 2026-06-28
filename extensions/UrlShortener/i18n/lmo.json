@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Salvemm el lombard"
+		]
+	},
+	"urlshortener": "Scurtador de URL",
+	"urlshortener-toolbox": "Oten l'URL scurtad",
+	"urlshortener-toolbox-qrcode": "Descarega el codes QR",
+	"urlshortener-url-input-submit": "Scurta"
+}

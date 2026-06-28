@@ -1,4 +1,7 @@
 <?php
+declare( strict_types = 1 );
+
+namespace MediaWiki\Tests\Content;
 
 use MediaWiki\Content\Content;
 use MediaWiki\Content\JavaScriptContent;
@@ -8,6 +11,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use MediaWikiLangTestCase;
 
 /**
  * Needs database to do link updates.
@@ -146,8 +150,6 @@ class TextContentTest extends MediaWikiLangTestCase {
 		$this->assertEquals( $expected, $content->getTextForSummary( $maxlength ) );
 	}
 
-	/**
-	 */
 	public function testCopy() {
 		$content = $this->newContent( 'hello world.' );
 		$copy = $content->copy();
@@ -290,3 +292,4 @@ class TextContentTest extends MediaWikiLangTestCase {
 	}
 
 }
+class_alias( TextContentTest::class, 'TextContentTest' );

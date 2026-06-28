@@ -1,20 +1,6 @@
 <?php
 /**
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- *
+ * @license GPL-2.0-or-later
  * @file
  */
 
@@ -495,8 +481,10 @@ class ForeignAPIRepo extends FileRepo implements IForeignRepoWithMWApi {
 	 * @return string
 	 */
 	public static function getUserAgent() {
-		return MediaWikiServices::getInstance()->getHttpRequestFactory()->getUserAgent() .
-			" ForeignAPIRepo/" . self::VERSION;
+		$mediaWikiVersion = MediaWikiServices::getInstance()->getHttpRequestFactory()->getUserAgent();
+		$classVersion = self::VERSION;
+		$contactUrl = MediaWikiServices::getInstance()->getUrlUtils()->getCanonicalServer();
+		return "$mediaWikiVersion ($contactUrl) ForeignAPIRepo/$classVersion";
 	}
 
 	/**
@@ -542,9 +530,11 @@ class ForeignAPIRepo extends FileRepo implements IForeignRepoWithMWApi {
 	public static function httpGet(
 		$url, $timeout = 'default', $options = [], &$mtime = false
 	) {
+		$urlUtils = MediaWikiServices::getInstance()->getUrlUtils();
+		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
+
 		$options['timeout'] = $timeout;
-		$url = MediaWikiServices::getInstance()->getUrlUtils()
-			->expand( $url, PROTO_HTTP );
+		$url = $urlUtils->expand( $url, PROTO_HTTP );
 		wfDebug( "ForeignAPIRepo: HTTP GET: $url" );
 		if ( !$url ) {
 			return false;
@@ -557,8 +547,8 @@ class ForeignAPIRepo extends FileRepo implements IForeignRepoWithMWApi {
 
 		$options['userAgent'] = self::getUserAgent();
 
-		$req = MediaWikiServices::getInstance()->getHttpRequestFactory()
-			->create( $url, $options, __METHOD__ );
+		$req = $requestFactory->create( $url, $options, __METHOD__ );
+		$req->setHeader( 'Referer', $urlUtils->getCanonicalServer() );
 		$status = $req->execute();
 
 		if ( $status->isOK() ) {
@@ -626,14 +616,11 @@ class ForeignAPIRepo extends FileRepo implements IForeignRepoWithMWApi {
 	 * @param callable $callback
 	 * @return never
 	 */
-	public function enumFiles( $callback ) {
+	public function enumFiles( $callback ): never {
 		throw new RuntimeException( 'enumFiles is not supported by ' . static::class );
 	}
 
-	/**
-	 * @return never
-	 */
-	protected function assertWritableRepo() {
+	protected function assertWritableRepo(): never {
 		throw new LogicException( static::class . ': write operations are not supported.' );
 	}
 }

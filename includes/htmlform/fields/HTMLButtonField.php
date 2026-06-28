@@ -73,6 +73,7 @@ class HTMLButtonField extends HTMLFormField {
 		}
 	}
 
+	/** @inheritDoc */
 	public function getInputHTML( $value ) {
 		$flags = '';
 		$prefix = 'mw-htmlform-';
@@ -119,6 +120,7 @@ class HTMLButtonField extends HTMLFormField {
 		) );
 	}
 
+	/** @inheritDoc */
 	public function getInputCodex( $value, $hasErrors ) {
 		$flags = $this->mFlags;
 		$buttonLabel = $this->buttonLabel ?: htmlspecialchars( $this->getDefault() );
@@ -143,7 +145,8 @@ class HTMLButtonField extends HTMLFormField {
 	 * Build the markup of the Codex component
 	 *
 	 * @param array $flags The button's flag classes.
-	 * @param string $buttonLabel The button's label attribute.
+	 * @param string $buttonLabel The button's label (raw HTML)
+	 * @param-taint $buttonLabel exec_html
 	 * @param array $attribs The button's list of attributes.
 	 * @return string Raw HTML.
 	 */

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Augustus A C",
+			"Gazimagomedov",
+			"Omarov M.",
+			"Аль-Гимравий"
+		]
+	},
+	"pt-movepage-new": "ЦӀияб цӀар:",
+	"pt-deletepage-action-perform": "Гилдизаби тӀубазе",
+	"pp-prepare-button-label": "ХӀадур гьабизе",
+	"pp-save-button-label": "Публикати",
+	"pp-diff-old-header": "Иццалъулаб текст",
+	"pp-diff-new-header": "КъачӀараб текст"
+}

@@ -1,0 +1,81 @@
+# <!=Copyright (C) 2023 Rara Theme
+# This file is distributed under the GNU General Public License v3 or later.=!>
+msgid ""
+msgstr ""
+"Project-Id-Version: Meetup Conference 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/meetup-conference\n"
+"POT-Creation-Date: 2023-03-20 09:35:20+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: functions.php:102
+msgid "Meetup Conference | Developed by "
+msgstr ""
+
+#: functions.php:103
+msgid "Rara Themes"
+msgstr ""
+
+#: functions.php:104
+msgid "%1$s Powered by %2$s%3$s"
+msgstr ""
+
+#: functions.php:104
+msgid "https://wordpress.org/"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Meetup Conference"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://rarathemes.com/wordpress-themes/meetup-conference/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Meetup Conference is a free WordPress theme for events and conference "
+"management websites. You can showcase upcoming events, event stats, and "
+"speakers. The theme features multiple Call to Action buttons to ensure "
+"visitors buy the event or conference tickets. It has many other attractive "
+"features, such as Banner Section with CTA, Stat Counter Section, a Recent "
+"Conferences/Events Section, a Speaker section, Testimonial Section and CTA "
+"Section. Though it is made for conference and event websites, it is a "
+"multiple-purpose theme. You can use it to create various websites such as "
+"business, corporate, consulting, accounting, law firms, digital agencies, "
+"marketing agencies, portfolios, etc. Meetup Conference theme is responsive, "
+"Schema.org compatible, SEO friendly, RTL compatible, speed optimized, and "
+"translation ready."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Rara Theme"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://rarathemes.com/"
+msgstr ""
+
+#: functions.php:63
+#. Translators: If there are characters in your language that are not supported
+#. by respective fonts, translate this to 'off'. Do not translate into your own
+#. language.
+msgctxt "Poppins: on or off"
+msgid "on"
+msgstr ""

@@ -6,7 +6,6 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Logging\LogEntryBase;
 use MediaWiki\Logging\LogPage;
 use MediaWiki\Logging\ManualLogEntry;
-use MediaWiki\RecentChanges\RecentChange;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\ScopedCallback;
 
@@ -73,7 +72,9 @@ class ManualLogEntryTest extends MediaWikiIntegrationTestCase {
 		);
 
 		// Assert that the entry was sent to RecentChanges
-		$actualRecentChangeObject = RecentChange::newFromConds( [ 'rc_logid' => $logId ] );
+		$actualRecentChangeObject = $this->getServiceContainer()
+			->getRecentChangeLookup()
+			->getRecentChangeByConds( [ 'rc_logid' => $logId ] );
 		$actualRecentChangeTitle = $actualRecentChangeObject->getPage();
 		$this->assertNotNull( $actualRecentChangeTitle );
 		$this->assertTrue( $target->isSamePageAs( $actualRecentChangeTitle ) );
@@ -87,6 +88,7 @@ class ManualLogEntryTest extends MediaWikiIntegrationTestCase {
 				// The RecentChanges object stores the timestamp as TS_MW, even if DB stores it in a different
 				// format.
 				'rc_timestamp' => '20300405060708',
+				'rc_deleted' => (string)LogPage::DELETED_ACTION,
 			],
 			$actualRecentChangeObject->getAttributes()
 		);

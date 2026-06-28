@@ -2,21 +2,7 @@
 /**
  * HTTP service client
  *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- *
+ * @license GPL-2.0-or-later
  * @file
  */
 
@@ -158,7 +144,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 	 *   - reqTimeout      : post-connection timeout per request (seconds)
 	 *   - usePipelining   : whether to use HTTP pipelining if possible (for all hosts)
 	 *   - maxConnsPerHost : maximum number of concurrent connections (per host)
-	 *   - httpVersion     : One of 'v1.0', 'v1.1', 'v2' or 'v2.0'. Leave empty to use
+	 *   - httpVersion     : One of 'v1.0', 'v1.1', 'v2', 'v2.0', 'v3' or 'v3.0'. Leave empty to use
 	 *                       PHP/curl's default
 	 * @param string $caller The method making this request, for attribution in logs
 	 * @return array Response array for request
@@ -193,7 +179,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 	 *   - reqTimeout      : post-connection timeout per request (seconds)
 	 *   - usePipelining   : whether to use HTTP pipelining if possible (for all hosts)
 	 *   - maxConnsPerHost : maximum number of concurrent connections (per host)
-	 *   - httpVersion     : One of 'v1.0', 'v1.1', 'v2' or 'v2.0'. Leave empty to use
+	 *   - httpVersion     : One of 'v1.0', 'v1.1', 'v2', 'v2.0', 'v3' or 'v3.0'. Leave empty to use
 	 *                       PHP/curl's default
 	 * @param string $caller The method making these requests, for attribution in logs
 	 * @return array[] $reqs With response array populated for each
@@ -221,6 +207,10 @@ class MultiHttpClient implements LoggerAwareInterface {
 				case 'v2':
 				case 'v2.0':
 					$opts['httpVersion'] = CURL_HTTP_VERSION_2_0;
+					break;
+				case 'v3':
+				case 'v3.0':
+					$opts['httpVersion'] = CURL_HTTP_VERSION_3;
 					break;
 				default:
 					$opts['httpVersion'] = CURL_HTTP_VERSION_NONE;
@@ -403,7 +393,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 		$url = $req['url'];
 		$query = http_build_query( $req['query'], '', '&', PHP_QUERY_RFC3986 );
 		if ( $query != '' ) {
-			$url .= strpos( $req['url'], '?' ) === false ? "?$query" : "&$query";
+			$url .= !str_contains( $req['url'], '?' ) ? "?$query" : "&$query";
 		}
 		curl_setopt( $ch, CURLOPT_URL, $url );
 		curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, $req['method'] );
@@ -456,7 +446,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 
 		$headers = [];
 		foreach ( $req['headers'] as $name => $value ) {
-			if ( strpos( $name, ':' ) !== false ) {
+			if ( str_contains( $name, ':' ) ) {
 				throw new InvalidArgumentException( "Header name must not contain colon-space." );
 			}
 			$headers[] = $name . ': ' . trim( $value );
@@ -470,7 +460,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 				}
 				$length = strlen( $header );
 				$matches = [];
-				if ( preg_match( "/^(HTTP\/(?:1\.[01]|2)) (\d{3}) (.*)/", $header, $matches ) ) {
+				if ( preg_match( "/^(HTTP\/(?:1\.[01]|2|3)) (\d{3}) (.*)/", $header, $matches ) ) {
 					$req['response']['code'] = (int)$matches[2];
 					$req['response']['reason'] = trim( $matches[3] );
 					// After a redirect we will receive this again, but we already stored headers
@@ -478,7 +468,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 					$req['response']['headers'] = [];
 					return $length;
 				}
-				if ( strpos( $header, ":" ) === false ) {
+				if ( !str_contains( $header, ":" ) ) {
 					return $length;
 				}
 				[ $name, $value ] = explode( ":", $header, 2 );
@@ -606,7 +596,7 @@ class MultiHttpClient implements LoggerAwareInterface {
 			$url = $req['url'];
 			$query = http_build_query( $req['query'], '', '&', PHP_QUERY_RFC3986 );
 			if ( $query != '' ) {
-				$url .= strpos( $req['url'], '?' ) === false ? "?$query" : "&$query";
+				$url .= !str_contains( $req['url'], '?' ) ? "?$query" : "&$query";
 			}
 
 			$httpRequest = MediaWikiServices::getInstance()->getHttpRequestFactory()->create(

@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Conquistador",
 			"OC Ripper",
 			"Seb35",
 			"Vlad5250",
-			"Winston Sung",
-			"Aca"
+			"Winston Sung"
 		]
 	},
 	"config-desc": "Instalacioni program za Medijaviki",
@@ -62,7 +62,7 @@
 	"config-apc": "[https://www.php.net/apc APC] je instaliran",
 	"config-apcu": "[https://www.php.net/apcu APCu] je instaliran",
 	"config-no-cache-apcu": "<strong>Upozorenje:</strong> Nisam mogao naći [https://www.php.net/apcu APCu] ili [https://www.iis.net/downloads/microsoft/wincache-extension WinCache].\nKeširanje objekata nije omogućeno.",
-	"config-mod-security": "'''Upozorenje''': na vašem serveru je omogućen [https://modsecurity.org/ mod_security]. Ako nije postavljeno kako treba, to može uzrokovati probleme s programom MediaWikija i drugim programima koji korisnicima omogućuju objavljivanje proizvoljne sadržine.\nPogledajte [https://modsecurity.org/documentation/ mod_security dokumentaciju] ili kontaktirajte domaćin ako naiđete na slučajne greške.",
+	"config-mod-security": "'''Upozorenje''': na vašem serveru je omogućen [https://modsecurity.org/ mod_security]. Ako nije postavljeno kako treba, to može uzrokovati probleme s programom MediaWikija i drugim programima koji korisnicima omogućuju objavljivanje proizvoljnog sadržaja.\nPogledajte [https://modsecurity.org/documentation/ mod_security dokumentaciju] ili kontaktirajte domaćin ako naiđete na slučajne greške.",
 	"config-diff3-bad": "Nisam pronašao usporednik za tekst GNU razl3 (GNU diff3). Za sada ovo možete zanemariti, ali kontradikcije u uređivanju mogu postati češće.",
 	"config-git": "Pronašao sam Git program za kontrolu verzija: <code>$1</code>.",
 	"config-git-bad": "Nisam pronašao Git-program za kontrolu verzija. Za sada ovo možete zanemariti. Imajte na umu da Posebna:Verzije ne prikazuju krpe u primjenama.",
@@ -103,9 +103,9 @@
 	"config-sqlite-dir-help": "SQLite pohranjuje sve podatke u jednu datoteku.\n\nDirektorijum što navedete mora biti zapisljiv iz mrežnog servera tijekom uspostave.\n\nTaj je '''ne''' mora biti dostupno putem svemrežja, tako da ne stavljamo gdje su vaše PHP datoteke.\n\nUspostavljač će također stvoriti datoteku <code>.htaccess</code>, ali ako ta ne radi kako treba, tada netko može unijeti vašu neobrađenu (sirovu) bazu podataka.\nTo uključuje neobrađene korisničke podatke (adrese e-pošte, hash lozinke) kao i izbrisane revizije i druge podatke za wiki koji ima ograničen pristup.\n\nPreporučuje se da cijelu bazu smjestite negdje, primjerice <code>/var/lib/mediawiki/yourwiki</code>.",
 	"config-type-mysql": "MariaDB, MySQL ili kompatibilan",
 	"config-support-info": "MediaWiki podržava sljedeće sustave baza podataka:\n\n$1\n\nAko sustav koji želite koristiti nije naveden u nastavku, slijedite vezu gore navedenih uputa kako biste omogućili podršku za taj sustav.",
-	"config-dbsupport-mysql": "* [{{int:version-db-mariadb-url}} MariaDB] je glavna meta MediaWikija i najbolje je podržan. MediaWiki također radi sa [{{int:version-db-mysql-url}} MySQL-om] i [{{int:version-db-percona-url}} Percona], koji su skladni sa MariaDB-om. ([https://www.php.net/manual/en/mysqli.installation.php Kako kompajlirati PHP sa podrškom MySQL-a])",
-	"config-dbsupport-postgres": "* [{{int:version-db-postgres-url}} PostgreSQL] je popularan sistem baza podataka otvorenog koda koji predstavlja alternativu MySQL-u. ([https://www.php.net/manual/en/pgsql.installation.php Kako kompajlirati PHP sa podrškom PostgreSQL-a])",
-	"config-dbsupport-sqlite": "* [{{int:version-db-sqlite-url}} SQLite] je lagan sistem baze podataka koji je veoma dobro podržan. ([https://www.php.net/manual/en/pdo.installation.php Kako kompajlirati PHP sa podrškom SQLite-a], koristi PDO)",
+	"config-dbsupport-mysql": "* [{{int:version-db-mariadb-url}} MariaDB] je glavna meta MediaWikija i najbolje je podržan. MediaWiki također radi sa [{{int:version-db-mysql-url}} MySQL-om] i [{{int:version-db-percona-url}} Percona], koji su skladni sa MariaDB-om. ([https://www.php.net/mysqli.installation Kako kompajlirati PHP sa podrškom MySQL-a])",
+	"config-dbsupport-postgres": "* [{{int:version-db-postgres-url}} PostgreSQL] je popularan sistem baza podataka otvorenog koda koji predstavlja alternativu MySQL-u. ([https://www.php.net/pgsql.installation Kako kompajlirati PHP sa podrškom PostgreSQL-a])",
+	"config-dbsupport-sqlite": "* [{{int:version-db-sqlite-url}} SQLite] je lagan sistem baze podataka koji je veoma dobro podržan. ([https://www.php.net/pdo.installation Kako kompajlirati PHP sa podrškom SQLite-a], koristi PDO)",
 	"config-header-mysql": "Podešavanja MariaDB/MySQL-a",
 	"config-header-postgres": "Podešavanja PostgreSQL-a",
 	"config-header-sqlite": "Podešavanja SQLite-a",
@@ -142,7 +142,7 @@
 	"config-mysql-innodb": "InnoDB (preporučeno)",
 	"config-site-name": "Ime wikija:",
 	"config-site-name-help": "Ovo će se pojaviti u naslovnoj traci pregledača i na raznim drugim mestima.",
-	"config-site-name-blank": "Upišite ime sajta.",
+	"config-site-name-blank": "Unesite ime sajta.",
 	"config-project-namespace": "Projektni imenski prostor:",
 	"config-ns-generic": "Projekat",
 	"config-ns-site-name": "Isto ime kao wikija: $1",
@@ -152,8 +152,8 @@
 	"config-admin-name": "Vaše korisničko ime:",
 	"config-admin-password": "Lozinka:",
 	"config-admin-password-confirm": "Ponovite lozinku:",
-	"config-admin-name-blank": "Upišite administratorsko korisničko ime.",
-	"config-admin-password-blank": "Upišite lozinku za administratorski račun",
+	"config-admin-name-blank": "Unesite administratorsko korisničko ime.",
+	"config-admin-password-blank": "Unesite lozinku za administratorski račun.",
 	"config-admin-password-mismatch": "Lozinke što ste upisali se ne poklapaju.",
 	"config-admin-email": "E-mail adresa:",
 	"config-admin-error-bademail": "Upisali ste neispravnu adresu e-pošte",

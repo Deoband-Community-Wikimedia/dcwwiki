@@ -1,0 +1,1968 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Team 2.2.5\n"
+"POT-Creation-Date: 2022-05-13 10:25+0600\n"
+"PO-Revision-Date: 2022-05-13 10:25+0600\n"
+"Last-Translator: \n"
+"Language-Team: ShapedPlugin <support@shapedplugin.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html__;esc_html_e;esc_html_x;esc_attr__;"
+"esc_attr_e;esc_attr_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: src/Admin/Admin.php:117 src/Admin/Configs/Settings/SPTP_Rename.php:46
+msgid "Member"
+msgstr ""
+
+#: src/Admin/Admin.php:118 src/Admin/Configs/Settings/SPTP_Rename.php:52
+msgid "Members"
+msgstr ""
+
+#: src/Admin/Admin.php:119
+msgid "Group"
+msgstr ""
+
+#: src/Admin/Admin.php:120
+msgid "Groups"
+msgstr ""
+
+#: src/Admin/Admin.php:121 src/Admin/Admin.php:305
+#: src/Admin/Configs/Settings/SPTP_Rename.php:58
+msgid "Team"
+msgstr ""
+
+#: src/Admin/Admin.php:221 src/Admin/Admin.php:233
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: src/Admin/Admin.php:223
+#, php-format
+msgid "%1$1s %2$2s"
+msgstr ""
+
+#: src/Admin/Admin.php:225
+msgid "Add New"
+msgstr ""
+
+#: src/Admin/Admin.php:227
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: src/Admin/Admin.php:229
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: src/Admin/Admin.php:231
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: src/Admin/Admin.php:235
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: src/Admin/Admin.php:237
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: src/Admin/Admin.php:239
+#, php-format
+msgid "No %1$1s %2$2s Found"
+msgstr ""
+
+#: src/Admin/Admin.php:241
+#, php-format
+msgid "No %1$1s %2$2s Found in Trash"
+msgstr ""
+
+#: src/Admin/Admin.php:243 src/Admin/ElementBlock/Shortcode_Widget.php:33
+#: src/Admin/GutenbergBlock/src/index.js:17
+#: src/Admin/GutenbergBlock/src/index.js:79
+#: src/Admin/GutenbergBlock/src/index.js:111
+msgid "WP Team"
+msgstr ""
+
+#: src/Admin/Admin.php:245
+#, php-format
+msgid "%s Image"
+msgstr ""
+
+#: src/Admin/Admin.php:247
+#, php-format
+msgid "Set %s image"
+msgstr ""
+
+#: src/Admin/Admin.php:249
+#, php-format
+msgid "Remove %s image"
+msgstr ""
+
+#: src/Admin/Admin.php:304
+msgid "All Teams"
+msgstr ""
+
+#: src/Admin/Admin.php:306 src/Admin/Admin.php:307
+msgid "Add New Team"
+msgstr ""
+
+#: src/Admin/Admin.php:308
+msgid "Edit Team"
+msgstr ""
+
+#: src/Admin/Admin.php:309
+msgid "New Generator"
+msgstr ""
+
+#: src/Admin/Admin.php:311 src/Admin/Admin.php:318
+#, php-format
+msgid "%s Generator"
+msgstr ""
+
+#: src/Admin/Admin.php:312
+msgid "View Generator"
+msgstr ""
+
+#: src/Admin/Admin.php:313
+msgid "Search Generator"
+msgstr ""
+
+#: src/Admin/Admin.php:314
+msgid "No Generator Found"
+msgstr ""
+
+#: src/Admin/Admin.php:315
+msgid "No Generator Found in Trash"
+msgstr ""
+
+#: src/Admin/Admin.php:354 src/Admin/Admin.php:407
+#: src/Admin/Configs/Generator/SPTP_General.php:120
+msgid "Name"
+msgstr ""
+
+#: src/Admin/Admin.php:355 src/Admin/Configs/Generator/SPTP_Display.php:273
+msgid "Position"
+msgstr ""
+
+#: src/Admin/Admin.php:356
+msgid "Image"
+msgstr ""
+
+#: src/Admin/Admin.php:408
+msgid "Shortcode"
+msgstr ""
+
+#: src/Admin/Admin.php:409
+msgid "Layout"
+msgstr ""
+
+#: src/Admin/Admin.php:410 src/Admin/Configs/Generator/SPTP_General.php:122
+#: src/Admin/Configs/Member/Member_Meta.php:195
+msgid "Date"
+msgstr ""
+
+#: src/Admin/Admin.php:488
+msgid "Team Updated"
+msgstr ""
+
+#: src/Admin/Admin.php:489
+msgid "Team Published"
+msgstr ""
+
+#: src/Admin/Admin.php:491
+#, php-format
+msgid "Member Updated. <a href=\"%s\">View Member</a>"
+msgstr ""
+
+#: src/Admin/Admin.php:493
+#, php-format
+msgid "Member Published. <a href=\"%s\">View Member</a>"
+msgstr ""
+
+#: src/Admin/Configs/Generator.php:45
+msgid "Live Preview"
+msgstr ""
+
+#: src/Admin/Configs/Generator.php:74
+msgid "Team Generator Layout "
+msgstr ""
+
+#: src/Admin/Configs/Generator.php:92
+msgid "Team Generator Settings"
+msgstr ""
+
+#: src/Admin/Configs/Generator.php:119
+msgid "Team Generator Shortcode"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:38
+msgid "Carousel Controls"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:44
+msgid "Carousel Mode"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:46
+msgid "Standard"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:48
+msgid "Ticker"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:53
+msgid "Set carousel mode. Carousel controls are disabled in the ticker mode."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:58
+msgid "AutoPlay"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:59
+msgid "Enable/Disable auto play."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:61
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:96
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:108
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:118
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:240
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:251
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:262
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:273
+#: src/Admin/Configs/Generator/SPTP_Display.php:330
+#: src/Admin/Configs/Generator/SPTP_General.php:146
+#: src/Admin/Configs/Generator/SPTP_General.php:158
+#: src/Admin/Configs/Generator/SPTP_General.php:174
+#: src/Admin/Configs/Generator/SPTP_Image.php:99
+#: src/Admin/Configs/Generator/SPTP_Modal.php:48
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:51
+msgid "Enabled"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:62
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:97
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:109
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:119
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:241
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:252
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:263
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:274
+#: src/Admin/Configs/Generator/SPTP_Display.php:331
+#: src/Admin/Configs/Generator/SPTP_General.php:147
+#: src/Admin/Configs/Generator/SPTP_General.php:159
+#: src/Admin/Configs/Generator/SPTP_General.php:175
+#: src/Admin/Configs/Generator/SPTP_Image.php:100
+#: src/Admin/Configs/Generator/SPTP_Modal.php:49
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:52
+msgid "Disabled"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:70
+msgid "AutoPlay Speed"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:71
+msgid "Set autoplay speed in milliseconds."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:83
+msgid "Carousel Speed"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:84
+msgid "Set carousel speed in milliseconds."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:94
+msgid "Stop on Hover"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:95
+msgid "Enable/Disable carousel pause on hover."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:105
+msgid "Loop"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:106
+msgid "Enable/Disable infinite loop mode."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:116
+msgid "Auto Height"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:117
+msgid "Enable/Disable auto height for the carousel."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:128
+msgid "Row"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:129
+msgid "Set number of rows in different devices for responsive view."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:139
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:144
+msgid "Navigation"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:145
+msgid "Show/Hide carousel navigation."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:147
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:196
+#: src/Admin/Configs/Generator/SPTP_Display.php:170
+#: src/Admin/Configs/Generator/SPTP_Display.php:178
+#: src/Admin/Configs/Generator/SPTP_Display.php:186
+#: src/Admin/Configs/Generator/SPTP_Display.php:195
+#: src/Admin/Configs/Generator/SPTP_Display.php:204
+#: src/Admin/Configs/Generator/SPTP_Display.php:213
+#: src/Admin/Configs/Generator/SPTP_Display.php:222
+#: src/Admin/Configs/Generator/SPTP_Display.php:231
+#: src/Admin/Configs/Generator/SPTP_Display.php:240
+#: src/Admin/Configs/Generator/SPTP_Display.php:249
+#: src/Admin/Configs/Generator/SPTP_Display.php:257
+#: src/Admin/Configs/Generator/SPTP_General.php:47
+#: src/Admin/Configs/Generator/SPTP_Image.php:46
+msgid "Show"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:148
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:197
+#: src/Admin/Configs/Generator/SPTP_Display.php:171
+#: src/Admin/Configs/Generator/SPTP_Display.php:179
+#: src/Admin/Configs/Generator/SPTP_Display.php:187
+#: src/Admin/Configs/Generator/SPTP_Display.php:196
+#: src/Admin/Configs/Generator/SPTP_Display.php:205
+#: src/Admin/Configs/Generator/SPTP_Display.php:214
+#: src/Admin/Configs/Generator/SPTP_Display.php:223
+#: src/Admin/Configs/Generator/SPTP_Display.php:232
+#: src/Admin/Configs/Generator/SPTP_Display.php:241
+#: src/Admin/Configs/Generator/SPTP_Display.php:250
+#: src/Admin/Configs/Generator/SPTP_Display.php:258
+#: src/Admin/Configs/Generator/SPTP_General.php:48
+#: src/Admin/Configs/Generator/SPTP_Image.php:47
+msgid "Hide"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:155
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:158
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:204
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:207
+#: src/Admin/Configs/Generator/SPTP_Display.php:377
+msgid "Color"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:156
+msgid "Set color for the carousel navigation."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:159
+#: src/Admin/Configs/Generator/SPTP_Display.php:378
+msgid "Hover Color"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:160
+#: src/Admin/Configs/Generator/SPTP_Display.php:379
+#: src/Admin/Configs/Generator/SPTP_Image.php:143
+msgid "Background"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:161
+#: src/Admin/Configs/Generator/SPTP_Display.php:380
+msgid "Hover Background"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:174
+#: src/Admin/Configs/Generator/SPTP_Display.php:121
+#: src/Admin/Configs/Generator/SPTP_Display.php:381
+#: src/Admin/Configs/Generator/SPTP_Image.php:133
+msgid "Border"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:175
+msgid "Set border for the carousel navigation."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:188
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:193
+#: src/Admin/Configs/Generator/SPTP_Display.php:328
+msgid "Pagination"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:194
+msgid "Show/hide pagination dots."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:205
+msgid "Set color for the pagination dots."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:208
+msgid "Active Color"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:219
+msgid "Member(s) Per Slide"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:220
+msgid "Set members per slide or scroll at a time."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:232
+msgid "Miscellaneous"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:238
+msgid "Touch Swipe"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:239
+msgid "Enable/Disable touch swipe mode."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:249
+msgid "Mouse Draggable"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:250
+msgid "Enable/Disable mouse draggable mode."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:260
+msgid "Free Mode"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:261
+msgid "Enable/Disable free mode."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:271
+msgid "Mousewheel Control"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Carousel.php:272
+msgid "Enable/Disable mousewheel control."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:37
+msgid "Display Options"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:45
+msgid "Margin Between Members"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:46
+msgid "Set space or margin between members. Default value is 24px."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:58
+#: src/Admin/Configs/Generator/SPTP_Display.php:95
+msgid "Member Content Position"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:59
+msgid ""
+"To unlock the more amazing Member Content Positions and Settings, <a href="
+"\"https://getwpteam.com/?ref=1\" target=\"_blank"
+"\"><b>Upgrade To Pro!</b></a>"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:64
+msgid "Below Content"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:69
+msgid "Above Content"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:74
+#: src/Admin/Configs/Generator/SPTP_Display.php:100
+msgid "Right Content"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:79
+#: src/Admin/Configs/Generator/SPTP_Display.php:105
+msgid "Left Content"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:84
+msgid "Overlay content"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:89
+#: src/Admin/Configs/Generator/SPTP_Display.php:110
+msgid "Select a position or layout for member content and image."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:122
+msgid "Set border for the member."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:136
+msgid "Border Radius"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:137
+msgid "Set border radius for the member."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:145
+msgid "Background Color"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:146
+msgid "Set background color for the member."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:155
+msgid "Member Meta Fields"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:156
+msgid "Show/Hide member meta fields."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:157
+msgid ""
+"To unlock the additional information fields and drag & drop sorting options</"
+"b>, <a href=\"//shapedplugin.com/plugin/wp-team-pro/\" target=\"_blank"
+"\"><b>Upgrade To Pro!</b></a>"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:169
+#: src/Admin/Configs/Generator/SPTP_Image.php:44
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:49
+msgid "Photo/Image"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:177
+#: src/Admin/Configs/Generator/SPTP_Typography.php:90
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:50
+msgid "Member Name"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:185
+#: src/Admin/Configs/Generator/SPTP_Typography.php:123
+#: src/Admin/Configs/Member/Member_Meta.php:58
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:51
+msgid "Position/Job Title"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:194
+#: src/Admin/Configs/Generator/SPTP_Typography.php:155
+#: src/Admin/Configs/Member/Member_Meta.php:63
+msgid "Short Bio"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:203
+#: src/Admin/Configs/Member/Member_Meta.php:193
+msgid "Email"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:212
+#: src/Admin/Configs/Member/Member_Meta.php:130
+msgid "Mobile (personal)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:221
+msgid "Phone (business)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:230
+#: src/Admin/Configs/Member/Member_Meta.php:144
+msgid "Location"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:239
+#: src/Admin/Configs/Member/Member_Meta.php:151
+msgid "Website"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:248
+msgid "Skill Bars"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:256
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:53
+msgid "Social Profiles"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:267
+msgid "Social Settings"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:284
+msgid "Margin"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:291
+msgid "Social Icon Shape"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:309
+msgid "Custom Color (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:316
+msgid ""
+"To unlock the following pagination settings</b>, <a href=\"//shapedplugin."
+"com/plugin/wp-team-pro/\" target=\"_blank\"><b>Upgrade To Pro!</b></a>"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:329
+msgid "Enabled/Disabled pagination"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:339
+msgid "Pagination Type"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:340
+msgid "Choose a pagination type."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:342
+msgid "Ajax Number Pagination"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:343
+msgid "Load More Button (Ajax)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:344
+msgid "Load More on Scroll (Ajax)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:345
+msgid "No Ajax (Normal Pagination)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:352
+msgid "Member(s) To Show Per Page"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:353
+msgid "Set number of member(s) to show in per page."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:359
+msgid "Load more button label"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:360
+msgid "Load More"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:366
+msgid "Scroll Load more button label"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:367
+msgid "Scroll to Load More"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:374
+msgid "Pagination Color"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:375
+msgid "Set pagination color."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Display.php:382
+msgid "Hover Border"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:38
+msgid "General Settings"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:45
+#: src/Admin/Configs/Generator/SPTP_Typography.php:57
+msgid "Team Section Title"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:46
+msgid "Show/Hide team section title."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:55
+msgid "Section Title Margin Bottom"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:56
+msgid "Set margin bottom for team section title. Default value is 25px."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:74
+#: src/Admin/Configs/Generator/SPTP_General.php:92
+msgid "Column(s)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:75
+#: src/Admin/Configs/Generator/SPTP_General.php:93
+msgid "Set number of column(s) in different devices for responsive view."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:110
+msgid "Limit"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:112
+msgid "Number of total members to display.  For all leave it empty."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:118
+msgid "Order By"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:121
+msgid "ID"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:123
+msgid "Random"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:124
+msgid "Modified"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:127
+msgid "Select an order by option."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:132
+msgid "Order"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:134
+msgid "Ascending"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:135
+msgid "Descending"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:138
+msgid "Select an order option."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:144
+msgid "Ajax Live Filter"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:145
+msgid "Enable/Disable ajax live filtering for member groups."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:156
+msgid "Ajax Member Search"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:157
+msgid "Enable/Disable ajax search for member."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:168
+msgid "Preloader"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_General.php:170
+msgid ""
+"Team members will be hidden until page load completed.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:38
+msgid "Image Settings"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:45
+msgid "Show/Hide member photo or image."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:55
+msgid "Image Sizes"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:56
+msgid "Set member image size."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:65
+msgid "Custom Size"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:71
+msgid "Width*"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:79
+msgid "Height*"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:87
+msgid "Hard Crop"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:97
+msgid "Load 2x Resolution Image in Retina Display"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:98
+msgid "You should upload 2x sized images to show in retina display."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:109
+msgid "Image Shape"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:110
+msgid "Choose an image shape for member."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:114
+msgid "Square"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:118
+msgid "Rounded"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:123
+msgid "Circle"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:134
+msgid "Set border."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:144
+msgid "Set background for member image."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:151
+msgid "Zoom"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:152
+msgid "Select a zoom effect for image."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:154
+#: src/Admin/Framework/fields/border/border.php:90
+#: src/Admin/Framework/fields/typography/typography.php:260
+#: src/Admin/Framework/fields/typography/typography.php:279
+msgid "None"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:155
+msgid "Zoom In"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:156
+msgid "Zoom Out"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:165
+msgid "Image Mode"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:166
+msgid "Select a mode for the image."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:168
+#: src/Admin/Framework/fields/typography/typography.php:242
+msgid "Normal"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:169
+msgid "Grayscale and normal on hover (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:170
+msgid "Grayscale on Hover (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Image.php:171
+msgid "Always grayscale (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:50
+msgid "Layout Preset"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:54
+msgid "Carousel"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:59
+msgid "Grid"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:64
+msgid "List"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:69
+msgid "Isotope"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:74
+msgid "Mosaic"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:79
+msgid "Inline"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:84
+msgid "Table"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:89
+msgid "Thumbnails Pager"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:99
+msgid "Filter Members"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:102
+msgid "Newest"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:103
+msgid "Groups (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:104
+msgid "Specific (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Layout.php:105
+msgid "Exclude (Pro)"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:39
+msgid "Member Detail Settings"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:46
+msgid "Link To Detail Page"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:47
+msgid "Enable/Disable for linking member detail page."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:62
+msgid "Detail Page Link Type"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:63
+msgid "Choose member detail page type."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:65
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:39
+msgid "Single Page"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:66
+msgid "Modal"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:67
+msgid "Drawer"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:75
+msgid "Link Target"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:77
+msgid "New Tab"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:78
+msgid "Current  Tab"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:86
+msgid "Add rel=\"nofollow\" to Link"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:92
+msgid ""
+"To unlock the following modal settings, <a href=\"https://shapedplugin.com/"
+"plugin/wp-team-pro/?ref=1\" target=\"_blank\"><b>Upgrade to Pro!</b></a>"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:97
+msgid "Modal Type"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:99
+msgid "Choose modal type."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:102
+msgid "Single Member"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:103
+msgid "Multiple Member with Navigation"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:112
+msgid "Modal Layout"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:113
+msgid "Choose a modal layout."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:117
+msgid "Classic Modal"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:122
+msgid "Slide-Ins Left"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:127
+msgid "Slide-Ins Center"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:132
+msgid "Slide-Ins Right"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:142
+msgid "Modal Background"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:143
+msgid "Set modal background."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:148
+msgid "Member Detail Fields"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Modal.php:155
+msgid "<a href=\""
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:38
+msgid "Typography"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:49
+msgid "Load Team Section Title Font"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:50
+msgid "On/Off google font for team section title."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:77
+msgid "Our Team Members"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:82
+msgid "Load Member Name Font"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:83
+msgid "On/Off google font for member name."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:110
+msgid "John Doe"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:115
+msgid "Load Member Position/Job Title Font"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:116
+msgid "On/Off google font for member position."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:142
+msgid "Manager"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:147
+msgid "Load Member Description Font"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:148
+msgid "On/Off google font for the member description."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:175
+msgid ""
+"Hi, This is John Doe from New York city. He loves creating web applications "
+"based on WordPress."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:180
+msgid "Load Member Additional Infomation Font"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:181
+msgid "On/Off google font for the member additionl infomaion."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:188
+msgid "Member Additional Information"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:207
+msgid "john@shapedplugin.com"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:212
+msgid "Load Member Skills Font"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:213
+msgid "On/Off google font for the member skills."
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:220
+msgid "Member Skills"
+msgstr ""
+
+#: src/Admin/Configs/Generator/SPTP_Typography.php:241
+msgid "WordPress"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:39
+msgid "Member Details"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:53
+#, php-format
+msgid "%s DETAILS"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:64
+msgid ""
+"Member short bio is fine in 100 characters or less. Short & detail bio text "
+"fields are HTML supported."
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:111
+msgid ""
+"To unlock the Member Information, Additional Custom Fields, Skills, and "
+"Photo Gallery, <a href=\"https://getwpteam.com/?"
+"ref=1\"><b>Upgrade To Pro!</b></a>"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:116
+msgid "MEMBER INFORMATION (PRO)"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:123
+msgid "Email Address"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:137
+msgid "Telephone (office)"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:157
+msgid "User/Author Profile"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:158
+msgid ""
+"If this member is associated with a account, select it here. Might be used "
+"to fetch latest published posts in the single member page."
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:165
+msgid "ADDITIONAL CUSTOM FIELDS (PRO)"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:173
+msgid "Add Field"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:183
+msgid "Add Icon"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:191
+msgid "Text"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:192
+msgid "Number"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:194
+msgid "Link"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:221
+msgid "Skill Label"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:231
+msgid "e.g. Python"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:256
+msgid "Gallery Images"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:257
+msgid "Add Image(s)"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:258
+msgid "Edit Images"
+msgstr ""
+
+#: src/Admin/Configs/Member/Member_Meta.php:259
+msgid "Remove Images"
+msgstr ""
+
+#: src/Admin/Configs/Settings.php:42 src/Admin/Configs/Settings.php:46
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:39
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:50
+msgid "Accessibility"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:45
+msgid "Carousel Accessibility"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:58
+msgid "Previous Slide Message"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:64
+msgid "Next Slide Message"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:70
+msgid "First Slide Message"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:76
+msgid "Last Slide Message"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:82
+msgid "Pagination Bullet Message"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:88
+msgid "Previous slide"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:89
+msgid "Next slide"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:90
+msgid "This is the first slide"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:91
+msgid "This is the last slide"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Accessibility.php:92
+msgid "Go to slide {{index}}"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:39
+msgid "Advanced Settings"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:45
+msgid "Clean-up Data on Deletion"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:46
+msgid ""
+"Check this box if you would like WP Team to completely clean-up all of its "
+"data when the plugin is deleted."
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:52
+msgid "Cache"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:53
+msgid ""
+"Enable/Disable plugin cache. To make WP Team faster, keep enable cache. The "
+"cache is enabled by default."
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:55
+msgid "Enable"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:56
+msgid "Disable"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:66
+msgid "Clean Cache"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:71
+msgid "Enqueue or Dequeue JS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:76
+msgid "Swiper JS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:78
+#: src/Admin/Configs/Settings/SPTP_Advance.php:91
+#: src/Admin/Configs/Settings/SPTP_Advance.php:100
+msgid "Enqueue"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:79
+#: src/Admin/Configs/Settings/SPTP_Advance.php:92
+#: src/Admin/Configs/Settings/SPTP_Advance.php:101
+msgid "Dequeue"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:84
+msgid "Enqueue or Dequeue CSS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:89
+msgid "Font Awesome"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Advance.php:98
+msgid "Swiper CSS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Rename.php:39
+msgid "Rename Menus"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Rename.php:45
+msgid "Member singular name"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Rename.php:51
+msgid "Member plural name"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_Rename.php:57
+msgid "Plural name"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_SettingsStyle.php:39
+msgid "Custom CSS & JS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_SettingsStyle.php:45
+msgid "Custom CSS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_SettingsStyle.php:55
+msgid "Custom JS"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:45
+msgid "Member Detail Fields Selection"
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:46
+msgid "Check the field(s) to show on detail page."
+msgstr ""
+
+#: src/Admin/Configs/Settings/SPTP_SinglePage.php:52
+msgid "Description"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:38 src/Admin/Configs/Tools.php:52
+msgid "Tools"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:59
+msgid "Export"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:65
+msgid "Choose What To Export"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:68
+msgid "All Members"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:69
+msgid "All Team (Shortcodes)"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:70
+msgid "Selected Team (Shortcodes)"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:83
+msgid "Choose shortcode(s)"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:105
+msgid "Import"
+msgstr ""
+
+#: src/Admin/Configs/Tools.php:110
+msgid "Import JSON File To Upload"
+msgstr ""
+
+#: src/Admin/ElementBlock/Shortcode_Widget.php:92
+msgid "Content"
+msgstr ""
+
+#: src/Admin/ElementBlock/Shortcode_Widget.php:100
+msgid "WP Team Shortcode(s)"
+msgstr ""
+
+#: src/Admin/Framework/Classes/SPF_TEAM.php:497
+msgid "Are you sure?"
+msgstr ""
+
+#: src/Admin/Framework/Classes/SPF_TEAM.php:499
+#, php-format
+msgid "Please enter %s or more characters"
+msgstr ""
+
+#: src/Admin/Framework/Classes/SPF_TEAM.php:500
+msgid "Searching..."
+msgstr ""
+
+#: src/Admin/Framework/Classes/SPF_TEAM.php:501
+msgid "No results found."
+msgstr ""
+
+#: src/Admin/Framework/Classes/SPF_TEAM.php:624
+msgid "Oops! Not allowed."
+msgstr ""
+
+#: src/Admin/Framework/Classes/SPF_TEAM.php:698
+#: src/Admin/Framework/Classes/SPF_TEAM.php:701
+msgid "Field not found!"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:328
+msgid "Error while saving the changes."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:407
+msgid "Settings successfully imported."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:419
+#: src/Admin/Framework/Classes/admin-options.class.php:434
+msgid "Default settings restored."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:500
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:706
+msgid "show all settings"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:708
+msgid "Search..."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:711
+msgid "Save Settings"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:711
+#: src/Admin/Framework/Classes/admin-options.class.php:832
+msgid "Saving..."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:712
+msgid "Reset Tab"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:712
+msgid "Are you sure to reset all the settings of this tab?"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:713
+#: src/Admin/Framework/Classes/admin-options.class.php:834
+msgid "Reset All"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:713
+#: src/Admin/Framework/Classes/admin-options.class.php:834
+#: src/Admin/Framework/Classes/metabox-options.class.php:378
+msgid "Reset"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:713
+#: src/Admin/Framework/Classes/admin-options.class.php:834
+msgid "Are you sure you want to reset all settings to default values?"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:809
+#: src/Admin/Framework/Classes/metabox-options.class.php:357
+#: src/Admin/Framework/fields/button_clean/button_clean.php:84
+#: src/Admin/Framework/fields/button_set/button_set.php:90
+#: src/Admin/Framework/fields/checkbox/checkbox.php:104
+#: src/Admin/Framework/fields/radio/radio.php:103
+#: src/Admin/Framework/fields/select/select.php:141
+msgid "No data available."
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:832
+msgid "Save"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:833
+msgid "Reset Section"
+msgstr ""
+
+#: src/Admin/Framework/Classes/admin-options.class.php:833
+msgid "Are you sure to reset this section options?"
+msgstr ""
+
+#: src/Admin/Framework/Classes/fields.class.php:361
+msgid "Original uploaded image"
+msgstr ""
+
+#: src/Admin/Framework/Classes/fields.class.php:362
+msgid "Set custom size"
+msgstr ""
+
+#: src/Admin/Framework/Classes/metabox-options.class.php:379
+msgid "update post"
+msgstr ""
+
+#: src/Admin/Framework/Classes/metabox-options.class.php:379
+msgid "Cancel"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:53
+#: src/Admin/Framework/fields/spacing/spacing.php:53
+msgid "top"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:54
+#: src/Admin/Framework/fields/spacing/spacing.php:54
+msgid "right"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:55
+#: src/Admin/Framework/fields/spacing/spacing.php:55
+msgid "bottom"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:56
+#: src/Admin/Framework/fields/spacing/spacing.php:56
+msgid "left"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:57
+#: src/Admin/Framework/fields/column/column.php:57
+#: src/Admin/Framework/fields/spacing/spacing.php:57
+msgid "all"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:82
+#: src/Admin/Framework/fields/typography/typography.php:280
+msgid "Solid"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:83
+#: src/Admin/Framework/fields/typography/typography.php:283
+msgid "Dashed"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:84
+#: src/Admin/Framework/fields/typography/typography.php:282
+msgid "Dotted"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:85
+#: src/Admin/Framework/fields/typography/typography.php:281
+msgid "Double"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:86
+msgid "Inset"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:87
+msgid "Outset"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:88
+msgid "Groove"
+msgstr ""
+
+#: src/Admin/Framework/fields/border/border.php:89
+msgid "ridge"
+msgstr ""
+
+#: src/Admin/Framework/fields/button_clean/button_clean.php:74
+msgid "Are you sure to clean cache?"
+msgstr ""
+
+#: src/Admin/Framework/fields/column/column.php:53
+msgid "Desktop"
+msgstr ""
+
+#: src/Admin/Framework/fields/column/column.php:54
+msgid "Small Desktop"
+msgstr ""
+
+#: src/Admin/Framework/fields/column/column.php:55
+msgid "Tablet"
+msgstr ""
+
+#: src/Admin/Framework/fields/column/column.php:56
+msgid "Mobile"
+msgstr ""
+
+#: src/Admin/Framework/fields/gallery/gallery.php:48
+msgid "Add Gallery"
+msgstr ""
+
+#: src/Admin/Framework/fields/gallery/gallery.php:49
+msgid "Edit Gallery"
+msgstr ""
+
+#: src/Admin/Framework/fields/gallery/gallery.php:50
+msgid "Clear"
+msgstr ""
+
+#: src/Admin/Framework/fields/repeater/repeater.php:57
+msgid "Error: Field ID conflict."
+msgstr ""
+
+#: src/Admin/Framework/fields/repeater/repeater.php:78
+#: src/Admin/Framework/fields/repeater/repeater.php:106
+msgid "Are you sure to delete this item?"
+msgstr ""
+
+#: src/Admin/Framework/fields/repeater/repeater.php:118
+msgid "You cannot add more."
+msgstr ""
+
+#: src/Admin/Framework/fields/repeater/repeater.php:119
+msgid "You cannot remove more."
+msgstr ""
+
+#: src/Admin/Framework/fields/shortcode/shortcode.php:57
+msgid "Shortcode Copied to Clipboard!"
+msgstr ""
+
+#: src/Admin/Framework/fields/switcher/switcher.php:46
+msgid "On"
+msgstr ""
+
+#: src/Admin/Framework/fields/switcher/switcher.php:47
+msgid "Off"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:136
+msgid "Font Family"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:137
+msgid "Select a font"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:145
+msgid "Backup Font Family"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:165
+#: src/Admin/Framework/fields/typography/typography.php:179
+#: src/Admin/Framework/fields/typography/typography.php:192
+#: src/Admin/Framework/fields/typography/typography.php:209
+#: src/Admin/Framework/fields/typography/typography.php:229
+#: src/Admin/Framework/fields/typography/typography.php:247
+#: src/Admin/Framework/fields/typography/typography.php:266
+#: src/Admin/Framework/fields/typography/typography.php:289
+msgid "Default"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:177
+msgid "Font Style"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:191
+#: src/Admin/Framework/fields/typography/typography.php:192
+msgid "Load Extra Styles"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:206
+msgid "Subset"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:217
+msgid "Text Align"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:221
+msgid "Inherit"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:222
+msgid "Left"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:223
+msgid "Center"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:224
+msgid "Right"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:225
+msgid "Justify"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:226
+msgid "Initial"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:238
+msgid "Font Variant"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:243
+msgid "Small Caps"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:244
+msgid "All Small Caps"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:256
+msgid "Text Transform"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:261
+msgid "Capitalize"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:262
+msgid "Uppercase"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:263
+msgid "Lowercase"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:275
+msgid "Text Decoration"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:284
+msgid "Wavy"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:285
+msgid "Overline"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:286
+msgid "Line-through"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:302
+msgid "Font Size"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:314
+msgid "Line Height"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:326
+msgid "Letter Spacing"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:338
+msgid "Word Spacing"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:353
+msgid "Font Color"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:364
+msgid "Custom Style"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:445
+msgid "Custom Web Fonts"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:451
+msgid "Safe Web Fonts"
+msgstr ""
+
+#: src/Admin/Framework/fields/typography/typography.php:474
+msgid "Google Web Fonts"
+msgstr ""
+
+#: src/Admin/Framework/functions/actions.php:23
+#: src/Admin/Framework/functions/actions.php:56
+msgid "Error: Invalid nonce verification."
+msgstr ""
+
+#: src/Admin/Framework/functions/actions.php:60
+msgid "Error: Invalid term ID."
+msgstr ""
+
+#: src/Admin/Framework/functions/actions.php:66
+msgid "Error: You do not have permission to do that."
+msgstr ""
+
+#: src/Admin/Framework/functions/validate.php:24
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: src/Admin/Framework/functions/validate.php:40
+msgid "Please enter a valid number."
+msgstr ""
+
+#: src/Admin/Framework/functions/validate.php:58
+msgid "This field is required."
+msgstr ""
+
+#: src/Admin/Framework/functions/validate.php:76
+msgid "Please enter a valid URL."
+msgstr ""
+
+#: src/Admin/GutenbergBlock/WP_Team_Gutenberg_Block_Init.php:168
+msgid "<i></i>"
+msgstr ""
+
+#: src/Admin/GutenbergBlock/src/index.js:18
+msgid "Use WP Team to insert a team in your page"
+msgstr ""
+
+#: src/Admin/GutenbergBlock/src/index.js:82
+msgid "No team found. "
+msgstr ""
+
+#: src/Admin/GutenbergBlock/src/index.js:84
+msgid "Create a team now!"
+msgstr ""
+
+#: src/Admin/GutenbergBlock/src/index.js:113
+msgid "Select a Team"
+msgstr ""
+
+#: src/Admin/GutenbergBlock/src/shortcode/dynamicShortcode.js:13
+msgid "-- Select a Team --"
+msgstr ""
+
+#: src/Admin/Helper/Team_Premium.php:23
+msgid "WP Team Premium"
+msgstr ""
+
+#: src/Admin/Helper/Team_Premium.php:23
+msgid "Premium"
+msgstr ""
+
+#: src/Admin/Helper/Team_Premium.php:52
+msgid "No data found!"
+msgstr ""
+
+#: src/Admin/Helper/Team_Premium.php:76
+msgid "Upgrade To WP Team Pro"
+msgstr ""
+
+#: src/Admin/Helper/Team_Premium.php:79
+msgid ""
+"Create easily a great looking Team Page or Section on your WordPress site in "
+"a few minutes with excellent design and multiple options."
+msgstr ""
+
+#: src/Admin/Helper/Team_Premium.php:80
+msgid ""
+"The plugin comes with the easiest Shortcode Generator settings panel that "
+"can help you build awesome and unique team page or section with responsive "
+"layouts and customized styles."
+msgstr ""
+
+#: src/Admin/Team_Import_Export.php:255
+msgid "Nothing to import."
+msgstr ""
+
+#: src/Admin/WP_Team_Widget.php:24
+msgid "Create and display team"
+msgstr ""
+
+#: src/Admin/WP_Team_Widget.php:71
+msgid "Title:"
+msgstr ""
+
+#: src/Admin/WP_Team_Widget.php:75
+msgid "Team:"
+msgstr ""
+
+#: src/Deprecated/inc/shortcodes.php:207
+msgid "Not found any member"
+msgstr ""
+
+#: src/Frontend/Frontend.php:211
+msgid " No result found "
+msgstr ""
+
+#: src/Includes/Help_Page.php:27 src/Includes/Help_Page.php:28
+msgid "Help"
+msgstr ""
+
+#: src/Includes/Team.php:96
+msgid "Create Team"
+msgstr ""
+
+#: src/Includes/Team.php:98
+msgid "Go Premium!"
+msgstr ""
