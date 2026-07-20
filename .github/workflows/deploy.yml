@@ -1,4 +1,4 @@
-name: Deploy to Hostinger Production
+name: Deploy to DCW Production
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ./
           # DANGEROUS: If a file isn't explicitly excluded below, the deployer might overwrite or delete it!
-          # We explicitly protect these server directories to ensure Hostinger assets aren't ruined by Git syncs.
+          # We explicitly protect these server directories to ensure Production assets aren't ruined by Git syncs.
           exclude: |
             **/.git*
             **/.git*/**
