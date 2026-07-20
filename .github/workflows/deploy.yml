@@ -31,3 +31,7 @@ jobs:
             **/tests/**
             **/.env
             **/audit_data.log
+            **/extensions/**
+            **/languages/**
+            **/skins/**
+            **/vendor/**
