@@ -1,0 +1,334 @@
+{
+	"name": "CommunityConfiguration",
+	"author": [
+		"Martin Urbanec",
+		"Sergio Gimeno",
+		"Michael Große",
+		"Cyndy Simiyu"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:CommunityConfiguration",
+	"descriptionmsg": "communityconfiguration-desc",
+	"license-name": "GPL-3.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.45"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\CommunityConfiguration\\": "src/",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Maintenance\\": "maintenance/"
+	},
+	"TestAutoloadClasses": {
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\CommunityConfigurationTestHelpers": "tests/phpunit/CommunityConfigurationTestHelpers.php",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\JsonSchemaForTesting": "tests/phpunit/JsonSchemaForTesting.php",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\JsonConfigSchemaForTesting": "tests/phpunit/JsonConfigSchemaForTesting.php",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\JsonSchemaForTestingNewerVersion": "tests/phpunit/JsonSchemaForTestingNewerVersion.php",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\NoopValidatorWithSchemaForTesting": "tests/phpunit/NoopValidatorWithSchemaForTesting.php",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\ProviderWithExtraServiceForTesting": "tests/phpunit/ProviderWithExtraServiceForTesting.php",
+		"MediaWiki\\Extension\\CommunityConfiguration\\Tests\\SchemaProviderTestCase": "tests/phpunit/integration/SchemaProviderTestCase.php"
+	},
+	"config": {
+		"CommunityConfigurationCommonsApiURL": {
+			"description": "The Commons API base URL to configure the CommonsFileControl for searching files.",
+			"value": null
+		},
+		"CommunityConfigurationFeedbackURL": {
+			"description": "The URL to use for links targetting the feedback page for the extension.",
+			"value": null
+		},
+		"CommunityConfigurationProviders": {
+			"description": "The list of provider specifications the extension will use. Specified as a mapping of provider name to provider specification. Additional provider types can be defined in CommunityConfigurationProviderClasses. Extensions can register their own providers through extension.json attribute \"CommunityConfiguration/Providers\"",
+			"value": {}
+		},
+		"CommunityConfigurationStores": {
+			"description": "The list of store specifications the extension will use. Specified as a mapping of store name to ObjectFactory spec",
+			"value": {
+				"static": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\Store\\StaticStore",
+					"services": []
+				},
+				"wikipage": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\Store\\WikiPageStore",
+					"services": [
+						"MainWANObjectCache",
+						"TitleFactory",
+						"RevisionLookup",
+						"CommunityConfiguration.WikiPageStore.Writer"
+					]
+				}
+			}
+		},
+		"CommunityConfigurationValidators": {
+			"description": "The list of validator specifications the extension will use. Specified as a mapping of store name to ObjectFactory spec",
+			"value": {
+				"noop": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\Validation\\NoopValidator",
+					"services": []
+				},
+				"jsonschema": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\Validation\\JsonSchemaValidator",
+					"services": [
+						"StatsdDataFactory",
+						"StatsFactory"
+					]
+				}
+			}
+		},
+		"CommunityConfigurationProviderClasses": {
+			"description": "The list of provider class specifications the extension will use. Specified as a mapping of store name to ObjectFactory spec. Extensions can register their own provider types through extension.json attribute \"CommunityConfiguration/ProviderClasses\"",
+			"value": {
+				"data": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\Provider\\DataProvider",
+					"services": [],
+					"args": []
+				},
+				"mw-config": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\Provider\\MediaWikiConfigProvider",
+					"services": [],
+					"args": []
+				}
+			}
+		},
+		"CommunityConfigurationEditorCapabilities": {
+			"value": {
+				"dashboard": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\EditorCapabilities\\DashboardEditorCapability",
+					"services": [
+						"CommunityConfiguration.ProviderFactory"
+					]
+				},
+				"generic-editor": {
+					"class": "MediaWiki\\Extension\\CommunityConfiguration\\EditorCapabilities\\GenericFormEditorCapability",
+					"services": [
+						"LinkRenderer",
+						"FormatterFactory",
+						"CommunityConfiguration.HookRunner",
+						"CommunityConfiguration.MessagesProcessor",
+						"MainConfig"
+					]
+				}
+			}
+		}
+	},
+	"ExtensionMessagesFiles": {
+		"CommunityConfigurationAlias": "CommunityConfiguration.alias.php"
+	},
+	"HookHandlers": {
+		"validation": {
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Hooks\\ValidationHooks",
+			"services": [
+				"CommunityConfiguration.ProviderFactory"
+			]
+		},
+		"navigation": {
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Hooks\\NavigationHooks",
+			"services": [
+				"SpecialPageFactory",
+				"CommunityConfiguration.ProviderFactory"
+			]
+		},
+		"change-tags": {
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Hooks\\ChangeTagHooks"
+		}
+	},
+	"Hooks": {
+		"JsonValidateSave": "validation",
+		"SkinTemplateNavigation::Universal": "navigation",
+		"ChangeTagsListActive": "change-tags",
+		"ListDefinedTags": "change-tags"
+	},
+	"DomainEventIngresses": [
+		{
+			"events": [
+				"PageRevisionUpdated",
+				"PageDeleted"
+			],
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Hooks\\WikiPageStoreEventIngress",
+			"services": [
+				"CommunityConfiguration.ProviderFactory"
+			]
+		}
+	],
+	"MessagesDirs": {
+		"CommunityConfiguration": [
+			"i18n",
+			"i18n/api"
+		]
+	},
+	"ResourceModules": {
+		"ext.communityConfiguration.Dashboard": {
+			"styles": [
+				"ext.communityConfiguration.Dashboard/variables.less",
+				"ext.communityConfiguration.Dashboard/Guidelines.less",
+				"ext.communityConfiguration.Dashboard/Features.less"
+			]
+		},
+		"ext.communityConfiguration.Editor.styles": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"styles": [
+				"ext.communityConfiguration.Editor/styles/bootstrap.less"
+			],
+			"codexStyleOnly": "true",
+			"codexComponents": [
+				"CdxProgressBar"
+			]
+		},
+		"ext.communityConfiguration.Editor.common": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxDialog",
+				"CdxField",
+				"CdxMessage",
+				"CdxTextArea",
+				"useModelWrapper"
+			],
+			"packageFiles": [
+				"ext.communityConfiguration.Editor.common/index.js",
+				"ext.communityConfiguration.Editor.common/components/EditSummaryDialog.vue",
+				"ext.communityConfiguration.Editor.common/components/EditorMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/SuccessMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/ValidationErrorMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/PermissionsErrorMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/MissingPermissionsNoticeMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/GenericSubmitErrorMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/NetworkErrorMessage.vue",
+				"ext.communityConfiguration.Editor.common/components/ClientErrorMessage.vue"
+			],
+			"messages": [
+				"communityconfiguration-edit-summary-reminder",
+				"communityconfiguration-edit-summary-dialog-title",
+				"communityconfiguration-edit-summary-dialog-placeholder",
+				"communityconfiguration-edit-summary-dialog-save-button",
+				"communityconfiguration-edit-summary-dialog-cancel-button",
+				"communityconfiguration-edit-summary-dialog-label"
+			]
+		},
+		"ext.communityConfiguration.Editor": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexComponents": [
+				"CdxButton",
+				"CdxCheckbox",
+				"CdxChipInput",
+				"CdxField",
+				"CdxIcon",
+				"CdxLookup",
+				"CdxMenu",
+				"CdxMessage",
+				"CdxTextInput",
+				"CdxRadio",
+				"useFloatingMenu",
+				"useGeneratedId"
+			],
+			"packageFiles": [
+				"ext.communityConfiguration.Editor/app/init.js",
+				"ext.communityConfiguration.Editor/app/App.vue",
+				"ext.communityConfiguration.Editor/app/MwApiCommunityConfigurationWritingRepository.js",
+				"ext.communityConfiguration.Editor/lib/json-form/core/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/core/uischema.js",
+				"ext.communityConfiguration.Editor/lib/json-form/core/i18n.js",
+				"ext.communityConfiguration.Editor/lib/json-form/core/testers.js",
+				"ext.communityConfiguration.Editor/lib/json-form/form/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/form/composables/useValidationErrors.js",
+				"ext.communityConfiguration.Editor/lib/json-form/form/composables/useJsonForm.js",
+				"ext.communityConfiguration.Editor/lib/json-form/form/composables/props.js",
+				"ext.communityConfiguration.Editor/lib/json-form/form/components/JsonForm.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/form/components/FormLayout.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/form/components/DispatchRenderer.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/config/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/utils.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/complex/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/complex/ArrayControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/complex/EnumControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/complex/MultiselectEnumControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/complex/ChipStringsControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/complex/ObjectControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/api.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/constants.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/PageTitleControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/PageTitlesControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/NamespacesControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/mediawiki/CommonsFileControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/controls/index.js",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/controls/ControlWrapper.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/controls/BooleanControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/controls/NumberControl.vue",
+				"ext.communityConfiguration.Editor/lib/json-form/controls-codex/src/controls/StringControl.vue",
+				{
+					"name": "ext.communityConfiguration.Editor/lib/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconAdd",
+						"cdxIconTrash"
+					]
+				},
+				{
+					"name": "ext.communityConfiguration.Editor/app/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconLinkExternal",
+						"cdxIconInfoFilled"
+					]
+				}
+			],
+			"styles": [],
+			"messages": [
+				"communityconfiguration-editor-client-generic-error",
+				"communityconfiguration-editor-client-generic-error-description",
+				"communityconfiguration-editor-client-post-feedback",
+				"communityconfiguration-editor-client-validation-errors",
+				"communityconfiguration-editor-form-submit-button-text",
+				"communityconfiguration-editor-form-submit-button-loading-text",
+				"communityconfiguration-editor-array-remove-element-label-screen-reader",
+				"communityconfiguration-editor-client-success-message",
+				"communityconfiguration-editor-client-data-submission-error",
+				"communityconfiguration-editor-message-dismiss-button-label",
+				"communityconfiguration-editor-validation-error-label-chain-joiner",
+				"communityconfiguration-editor-client-notice-message",
+				"communityconfiguration-editor-client-notice-footer-message"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.ForeignApi",
+				"vue",
+				"mediawiki.jqueryMsg",
+				"ext.communityConfiguration.Editor.common"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "CommunityConfiguration/resources"
+	},
+	"ServiceWiringFiles": [
+		"src/ServiceWiring.php"
+	],
+	"APIModules": {
+		"communityconfigurationedit": {
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Api\\ApiEdit",
+			"services": [
+				"CommunityConfiguration.Logger",
+				"CommunityConfiguration.ProviderFactory"
+			]
+		}
+	},
+	"APIMetaModules": {
+		"communityconfiguration": {
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Api\\ApiQueryRead",
+			"services": [
+				"CommunityConfiguration.Logger",
+				"CommunityConfiguration.ProviderFactory"
+			]
+		}
+	},
+	"SpecialPages": {
+		"CommunityConfiguration": {
+			"class": "MediaWiki\\Extension\\CommunityConfiguration\\Specials\\SpecialCommunityConfiguration",
+			"services": [
+				"CommunityConfiguration.EditorCapabilityFactory",
+				"CommunityConfiguration.ProviderFactory"
+			]
+		}
+	},
+	"manifest_version": 2
+}

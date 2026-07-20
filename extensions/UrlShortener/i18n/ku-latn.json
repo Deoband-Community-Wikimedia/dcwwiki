@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Balyozxane",
+			"Guherto"
+		]
+	},
+	"urlshortener-copy-success": "URL hat kopîkirin.",
+	"urlshortener-shortened-url-alt": "Herwiha dikarî vê URLya alternatîv bi kar bînî:",
+	"urlshortener-shortened-url-label": "URLya kurt",
+	"urlshortener-toolbox": "URLya kurt çêke",
+	"urlshortener-toolbox-qrcode": "Koda QRyê daxîne",
+	"urlshortener-url-input-submitting": "Tê kurtkirin...",
+	"urlshortener-qrcode-downloaded": "Koda QRyê wek dosyaya SVGyê hat daxistin"
+}

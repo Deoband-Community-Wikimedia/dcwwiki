@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"IJzeren Jan"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Dobyti lokalizaciju universalnogo jezyčnogo selektora (ULS) na danom jezyku.",
+	"apihelp-ulslocalization-param-language": "Kod jezyka.",
+	"apihelp-ulslocalization-example-1": "Dobyti tamilsku lokalizaciju",
+	"apihelp-ulslocalization-example-2": "Dobyti hindijsku lokalizaciju",
+	"apihelp-ulssetlang-summary": "Obnoviti prědpočitajemy jezyk interfejsa koristnika.",
+	"apihelp-ulssetlang-param-languagecode": "Kod prědpočitajemogo jezyka.",
+	"apierror-ulssetlang-anon-notallowed": "Anonimnym koristnikam ne dozvaljaje se izměnu jezyka interfejsa."
+}

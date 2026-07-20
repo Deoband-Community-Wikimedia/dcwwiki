@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Vlad5250"
+		]
+	},
+	"campaignevents-rest-delete-already-deleted": "Регистрация на это мероприятие уже удалена.",
+	"campaignevents-rest-get-registration-deleted": "Регистрация на это мероприятие была удалена."
+}

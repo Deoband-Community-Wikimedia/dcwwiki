@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mehran",
+			"Reza1615"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "کد زبان.",
+	"apihelp-ulslocalization-example-1": "تنظیم بومی‌سازی تامیلی",
+	"apihelp-ulslocalization-example-2": "تنظیم بومی‌سازی هندی"
+}

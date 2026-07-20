@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amaia",
+			"Subi",
+			"Theklan"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Hizkuntza-kodea.",
+	"apierror-ulssetlang-anon-notallowed": "Erabiltzaile anonimoek ezin dute interfazearen hizkuntza aldatu."
+}

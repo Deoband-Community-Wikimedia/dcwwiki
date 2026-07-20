@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK",
+			"Hedda",
+			"Sayginer"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Verilen dilde ULS yerelleştirmeyi alın.",
+	"apihelp-ulslocalization-param-language": "Dil kodu.",
+	"apihelp-ulslocalization-example-1": "Tamil yerelleştirmesi alın",
+	"apihelp-ulslocalization-example-2": "Hintçe yerelleştirmesi alın",
+	"apihelp-ulssetlang-summary": "Kullanıcının tercih ettiği arayüz dilini güncelleyin.",
+	"apihelp-ulssetlang-param-languagecode": "Tercih edilen dil kodu.",
+	"apierror-ulssetlang-anon-notallowed": "Anonim kullanıcıların arayüz dilini değiştirmesine izin verilmez."
+}

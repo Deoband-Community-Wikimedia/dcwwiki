@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Iegūt ULS lokalizāciju norādītajā valodā.",
+	"apihelp-ulslocalization-param-language": "Valodas kods.",
+	"apihelp-ulslocalization-example-1": "Iegūt tamilu lokalizāciju",
+	"apihelp-ulslocalization-example-2": "Iegūt hindi lokalizāciju",
+	"apihelp-ulssetlang-summary": "Mainīt dalībnieka vēlamo saskarnes valodu.",
+	"apihelp-ulssetlang-param-languagecode": "Vēlamās valodas kods.",
+	"apierror-ulssetlang-anon-notallowed": "Anonīmiem dalībniekiem nav atļauts mainīt saskarnes valodu."
+}

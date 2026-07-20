@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Pridobi lokalizacijo ULS v predloženem jeziku.",
+	"apihelp-ulslocalization-param-language": "Oznaka jezika.",
+	"apihelp-ulslocalization-example-1": "Pridobi tamilsko lokalizacijo",
+	"apihelp-ulslocalization-example-2": "Pridobi hindijsko lokalizacijo",
+	"apihelp-ulssetlang-summary": "Posodobite želeni jezik uporabniškega vmesnika.",
+	"apihelp-ulssetlang-param-languagecode": "Oznaka prednostnega jezika.",
+	"apierror-ulssetlang-anon-notallowed": "Anonimnim uporabnikom ni dovoljeno spreminjati jezika vmesnika."
+}

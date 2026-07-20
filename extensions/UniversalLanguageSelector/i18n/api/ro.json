@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54",
+			"Paloi Sciurala"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Obțineți localizare extensiei ULS în limba dată.",
+	"apihelp-ulslocalization-param-language": "Codul limbii.",
+	"apihelp-ulslocalization-example-1": "Obțineți localizarea în tamilă",
+	"apihelp-ulslocalization-example-2": "Obțineți localizarea în hindi",
+	"apihelp-ulssetlang-summary": "Actualizează limba preferată a interfeței a utilizatorului.",
+	"apihelp-ulssetlang-param-languagecode": "Codul limbii preferate.",
+	"apierror-ulssetlang-anon-notallowed": "Utilizatorii anonimi nu au voie să schimbe limba interfeței."
+}

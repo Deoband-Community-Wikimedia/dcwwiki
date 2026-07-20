@@ -1,0 +1,1115 @@
+[
+	{
+		"name": "campaign_events",
+		"comment": "Stores all the event information",
+		"columns": [
+			{
+				"name": "event_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "event_name",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 255
+				}
+			},
+			{
+				"name": "event_page_namespace",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "event_page_title",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 255
+				}
+			},
+			{
+				"name": "event_page_wiki",
+				"comment": "The Wiki ID the page is stored.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			},
+			{
+				"name": "event_page_prefixedtext",
+				"comment": "The full prefixedtext of the event page. This is needed for the crosswikiness, see T307358.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 512
+				}
+			},
+			{
+				"name": "event_chat_url",
+				"comment": "The link of the chat tool the organizers use to communicate.",
+				"type": "blob",
+				"options": {
+					"notnull": true,
+					"length": 65530
+				}
+			},
+			{
+				"name": "event_status",
+				"comment": "Status of the event. 1: Open. 2: Closed. 3: Draft. 4: Canceled.",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "event_timezone",
+				"comment": "Timezone of the event, used with event_start_local and event_end_local.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			},
+			{
+				"name": "event_start_local",
+				"comment": "Start time of the event, in the local timezone (stored in event_timezone), in the TS_MW format. This does not use mwtimestamp because that is only intended for UTC time.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 14,
+					"fixed": true
+				}
+			},
+			{
+				"name": "event_start_utc",
+				"comment": "Start time of the event, in UTC. This value is derived from event_start_local, and is used for sorting.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "event_end_local",
+				"comment": "End time of the event, in the local timezone (stored in event_timezone), in the TS_MW format. This does not use mwtimestamp because that is only intended for UTC time.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 14,
+					"fixed": true
+				}
+			},
+			{
+				"name": "event_end_utc",
+				"comment": "End time of the event, in UTC. This value is derived from event_end_local, and is used for sorting.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "event_types",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"default": 0
+				}
+			},
+			{
+				"name": "event_track_contributions",
+				"comment": "Whether contribution tracking is enabled for this event.",
+				"type": "mwtinyint",
+				"options": {
+					"length": 1,
+					"default": 0
+				}
+			},
+			{
+				"name": "event_meeting_type",
+				"comment": "Participation options for the event. This was previously called \"meeting type\", which explains the column name. Possible values: 1 = in person, 2 = online, 3 = both.",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "event_meeting_url",
+				"type": "blob",
+				"options": {
+					"notnull": true,
+					"length": 65530
+				}
+			},
+			{
+				"name": "event_created_at",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "event_last_edit",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "event_deleted_at",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			},
+			{
+				"name": "event_is_test_event",
+				"type": "mwtinyint",
+				"options": {
+					"length": 1,
+					"default": 0
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "event_page",
+				"columns": [ "event_page_wiki", "event_page_namespace", "event_page_title" ],
+				"unique": true,
+				"comment": "Used when querying events by pages. The index is currently unique, but this may change in the future."
+			},
+			{
+				"name": "event_id_deleted",
+				"unique": false,
+				"columns": [ "event_id", "event_deleted_at" ]
+			},
+			{
+				"name": "event_timezone_id",
+				"unique": false,
+				"columns": [ "event_timezone", "event_id" ],
+				"comment": "Used when updating UTC timestamps, filtering by timezone and batching by primary key."
+			}
+		],
+		"pk": [ "event_id" ]
+	},
+	{
+		"name": "ce_participants",
+		"comment": "Stores the participants of an event.",
+		"columns": [
+			{
+				"name": "cep_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cep_event_id",
+				"comment": "Gets the event id from campaign_events table.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cep_user_id",
+				"comment": "The Central ID.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cep_private",
+				"comment": "Whether the user registered privately for the event.",
+				"type": "boolean",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cep_registered_at",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cep_unregistered_at",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			},
+			{
+				"name": "cep_first_answer_timestamp",
+				"comment": "Timestamp of when the participant answered a question for the first time.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			},
+			{
+				"name": "cep_aggregation_timestamp",
+				"comment": "Timestamp of when this participant's answers were aggregated.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "cep_event_participant",
+				"columns": [ "cep_event_id", "cep_user_id" ],
+				"unique": true,
+				"comment": "Uniqueness constraint, used in queries where we need the event first."
+			},
+			{
+				"name": "cep_event_unregistered",
+				"columns": [ "cep_event_id", "cep_unregistered_at" ],
+				"unique": false,
+				"comment": "For COUNT measurements."
+			},
+			{
+				"name": "cep_user_unregistered_event",
+				"columns": [ "cep_user_id", "cep_unregistered_at", "cep_event_id" ],
+				"unique": false,
+				"comment": "For JOINs."
+			}
+		],
+		"pk": [ "cep_id" ]
+	},
+	{
+		"name": "ce_organizers",
+		"comment": "Stores the organizers of an event.",
+		"columns": [
+			{
+				"name": "ceo_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceo_event_id",
+				"comment": "Gets the event id from campaign_events table.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceo_user_id",
+				"comment": "The Central ID.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceo_roles",
+				"comment": "Bit set of the roles that the organizer has for a specific event.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceo_created_at",
+				"comment": "Timestamp of when the user first became an organizer.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "ceo_deleted_at",
+				"comment": "Timestamp of when the user stopped being an organizer.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			},
+			{
+				"name": "ceo_agreement_timestamp",
+				"comment": "Timestamp of when the organizer agreed to the PII agreement.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ceo_event_user",
+				"columns": [ "ceo_event_id", "ceo_user_id" ],
+				"unique": true,
+				"comment": "Uniqueness constraint, used when retrieving the organizers of an event."
+			},
+			{
+				"name": "ceo_user_event",
+				"columns": [ "ceo_user_id", "ceo_event_id" ],
+				"unique": false,
+				"comment": "Used for JOINs."
+			}
+		],
+		"pk": [ "ceo_id" ]
+	},
+	{
+		"name": "ce_address",
+		"comment": "Stores known event addresses.",
+		"columns": [
+			{
+				"name": "cea_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cea_full_address",
+				"comment": "Full address of the event.",
+				"type": "blob",
+				"options": {
+					"notnull": true,
+					"length": 65530
+				}
+			},
+			{
+				"name": "cea_country",
+				"comment": "Event country.",
+				"type": "binary",
+				"options": {
+					"notnull": false,
+					"length": 255
+				}
+			},
+			{
+				"name": "cea_country_code",
+				"comment": "Country code (CLDR) for the event.",
+				"type": "binary",
+				"options": {
+					"notnull": false,
+					"length": 2,
+					"default": null,
+					"fixed": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "cea_country_code",
+				"columns": [ "cea_country_code" ],
+				"unique": false,
+				"comment": "Used when querying event country code."
+			}
+		],
+		"pk": [ "cea_id" ]
+	},
+	{
+		"name": "ce_event_address",
+		"comment": "Stores the id of the event and the id of an address.",
+		"columns": [
+			{
+				"name": "ceea_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceea_event",
+				"comment": "The id of the event on campaign_events.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceea_address",
+				"comment": "The id of the address on ce_address.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ceea_event_address",
+				"columns": [ "ceea_event", "ceea_address" ],
+				"unique": true,
+				"comment": "Used when querying event address."
+			}
+		],
+		"pk": [ "ceea_id" ]
+	},
+	{
+		"name": "ce_tracking_tools",
+		"comment": "Stores the tracking tools associated with an event.",
+		"columns": [
+			{
+				"name": "cett_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cett_event",
+				"comment": "The ID of the event, references campaign_events.event_id.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cett_tool_id",
+				"comment": "The unique ID of this tracking tool, as defined by the application.",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cett_tool_event_id",
+				"comment": "The unique identifier of the event within the tracking tool.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 512
+				}
+			},
+			{
+				"name": "cett_sync_status",
+				"comment": "Status of the synchronization with the tool. The meaning of each value is defined in the application",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cett_last_sync",
+				"comment": "Timestamp of the last successful synchronization with this tool, or null if it was never synced.",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": false
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "cett_event_tool_teid",
+				"columns": [ "cett_event", "cett_tool_id", "cett_tool_event_id" ],
+				"unique": true
+			}
+		],
+		"pk": [ "cett_id" ]
+	},
+	{
+		"name": "ce_event_questions",
+		"comment": "Stores what participant questions are enabled for an event.",
+		"columns": [
+			{
+				"name": "ceeq_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceeq_event_id",
+				"comment": "The ID of the event, references campaign_events.event_id.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceeq_question_id",
+				"comment": "The unique ID of a question, as defined by the application.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ceeq_event_question",
+				"columns": [ "ceeq_event_id", "ceeq_question_id" ],
+				"unique": true
+			}
+		],
+		"pk": [ "ceeq_id" ]
+	},
+	{
+		"name": "ce_question_answers",
+		"comment": "Stores the participants' answers to the questions asked when registering for an event.",
+		"columns": [
+			{
+				"name": "ceqa_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqa_event_id",
+				"comment": "The ID of the event, references campaign_events.event_id.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqa_user_id",
+				"comment": "Central user ID.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqa_question_id",
+				"comment": "The unique ID of a question, as defined by the application.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqa_answer_option",
+				"comment": "The ID of a possible answer to this question, as defined by the application, if multiple choice. Null otherwise.",
+				"type": "integer",
+				"options": {
+					"notnull": false,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqa_answer_text",
+				"comment": "Free-text answer to this question, if available, null otherwise.",
+				"type": "blob",
+				"options": {
+					"notnull": false,
+					"length": 65530
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ceqa_event_user_question",
+				"columns": [ "ceqa_event_id", "ceqa_user_id", "ceqa_question_id" ],
+				"unique": true
+			}
+		],
+		"pk": [ "ceqa_id" ]
+	},
+	{
+		"name": "ce_question_aggregation",
+		"comment": "Stores the aggregated participants' answers to the questions asked when registering for an event.",
+		"columns": [
+			{
+				"name": "ceqag_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqag_event_id",
+				"comment": "The ID of the event, references campaign_events.event_id.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqag_question_id",
+				"comment": "The unique ID of a question, as defined by the application.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqag_answer_option",
+				"comment": "The ID of a possible answer to this question, as defined by the application, if multiple choice. Null otherwise.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceqag_answers_amount",
+				"comment": "The amount of times this question was answered this way.",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ceqag_event_question_option",
+				"columns": [ "ceqag_event_id", "ceqag_question_id", "ceqag_answer_option" ],
+				"unique": true
+			}
+		],
+		"pk": [ "ceqag_id" ]
+	},
+	{
+		"name": "ce_invitation_lists",
+		"comment": "Stores invitation lists.",
+		"columns": [
+			{
+				"name": "ceil_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceil_name",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 255
+				}
+			},
+			{
+				"name": "ceil_event_id",
+				"type": "bigint",
+				"options": {
+					"notnull": false,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceil_status",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "ceil_user_id",
+				"comment": "ID of the user who created the list",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "ceil_wiki",
+				"comment": "Wiki where the invitation list was created",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			},
+			{
+				"name": "ceil_created_at",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ce_invitation_lists_event_id",
+				"comment": "Get the invitation list by event ID",
+				"columns": [ "ceil_event_id" ],
+				"unique": false
+			},
+			{
+				"name": "ce_invitation_lists_wiki",
+				"comment": "Get invitation list by wiki, it will be used only for analytics",
+				"columns": [ "ceil_wiki" ],
+				"unique": false
+			},
+			{
+				"name": "ce_invitation_lists_user_wiki",
+				"comment": "Get invitation list by user id and wiki",
+				"columns": [ "ceil_user_id", "ceil_wiki" ],
+				"unique": false
+			}
+		],
+		"pk": [ "ceil_id" ]
+	},
+	{
+		"name": "ce_worklist_articles",
+		"comment": "Stores the articles related to invitation list.",
+		"columns": [
+			{
+				"name": "cewa_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cewa_page_id",
+				"type": "integer",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cewa_page_title",
+				"comment": "This will be used to handle deleted pages to show redlinks, not storing page namespace because we're only supporting mainspace pages for now",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 255
+				}
+			},
+			{
+				"name": "cewa_ceil_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ce_worklist_articles_ceil_id",
+				"comment": "Get the list of articles by invitation list ID",
+				"columns": [ "cewa_ceil_id" ],
+				"unique": false
+			}
+		],
+		"pk": [ "cewa_id" ]
+	},
+	{
+		"name": "ce_invitation_list_users",
+		"comment": "Stores the users related to invitation lists.",
+		"columns": [
+			{
+				"name": "ceilu_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceilu_user_id",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "ceilu_ceil_id",
+				"comment": "ID of the associated ce_invitation_lists table",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceilu_score",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ce_invitation_list_users_ceil_id",
+				"comment": "Get the list of users by invitation list ID",
+				"columns": [ "ceilu_ceil_id" ],
+				"unique": false
+			},
+			{
+				"name": "ce_invitation_list_users_ceilu_user_id",
+				"comment": "Get the invitation list IDs a given user is assigned to. For now, it will be used only for analytics, but this may also be used in the application later",
+				"columns": [ "ceilu_user_id" ],
+				"unique": false
+			}
+		],
+		"pk": [ "ceilu_id" ]
+	},
+	{
+		"name": "ce_event_wikis",
+		"comment": "Stores the wikis related to events.",
+		"columns": [
+			{
+				"name": "ceew_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceew_event_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceew_wiki",
+				"type": "binary",
+				"comment": "Wiki ID, or the special value `*all*` to indicate \"all wikis\".",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ce_event_wikis_event_id_wiki",
+				"comment": "Retrieve all wikis associated with a specific event and filter by wiki.",
+				"columns": [ "ceew_event_id", "ceew_wiki" ],
+				"unique": true
+			}
+		],
+		"pk": [ "ceew_id" ]
+	},
+	{
+		"name": "ce_event_topics",
+		"comment": "Stores the topics related to events.",
+		"columns": [
+			{
+				"name": "ceet_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceet_event_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "ceet_topic",
+				"type": "binary",
+				"comment": "Topic ID",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "ce_event_topics_event_id_topic",
+				"comment": "Retrieve all topics associated with a specific event and filter by topics.",
+				"columns": [ "ceet_event_id", "ceet_topic" ],
+				"unique": true
+			}
+		],
+		"pk": [ "ceet_id" ]
+	},
+	{
+		"name": "ce_event_contributions",
+		"comment": "Stores contributions associated to events.",
+		"columns": [
+			{
+				"name": "cec_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"autoincrement": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cec_event_id",
+				"comment": "Foreign key to campaign_events.event_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cec_user_id",
+				"comment": "User ID, will be a central ID if a central provider is available, like for the other tables.",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cec_user_name",
+				"comment": "Username, used for sorting. Nullable to support user suppression and deletion.",
+				"type": "binary",
+				"options": {
+					"notnull": false,
+					"length": 255
+				}
+			},
+			{
+				"name": "cec_wiki",
+				"type": "string",
+				"options": {
+					"notnull": true,
+					"length": 64
+				}
+			},
+			{
+				"name": "cec_page_id",
+				"comment": "The ID of the target page. This is used in lookups for page moves and page/revision deletion.",
+				"type": "integer",
+				"options": {
+					"unsigned": true,
+					"notnull": true
+				}
+			},
+			{
+				"name": "cec_page_prefixedtext",
+				"comment": "The full prefixedtext of the target page. We need to store the whole thing because namespace IDs cannot be resolved cross-wiki, see T226667.",
+				"type": "binary",
+				"options": {
+					"notnull": true,
+					"length": 512
+				}
+			},
+			{
+				"name": "cec_revision_id",
+				"comment": "Foreign key to revision.rev_id",
+				"type": "bigint",
+				"options": {
+					"notnull": true,
+					"unsigned": true
+				}
+			},
+			{
+				"name": "cec_edit_flags",
+				"type": "integer",
+				"comment": "Bit field with additional flags for the edit. 1=page creation",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cec_bytes_delta",
+				"comment": "Byte difference between this and the previous revision. This uses an integer like revision.rev_len, but this is signed, so there is a remote chance that extremely large diffs won't fit.",
+				"type": "integer",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cec_links_delta",
+				"comment": "Difference in the number of internal links between the previous and this revision. Smallint gives us an upper bound of 32767, which is somewhat arbitrary.",
+				"type": "smallint",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cec_timestamp",
+				"type": "mwtimestamp",
+				"options": {
+					"notnull": true
+				}
+			},
+			{
+				"name": "cec_deleted",
+				"comment": "Whether the edit has been deleted (page or revision deletion), see T403200 (pseudo-boolean).",
+				"type": "mwtinyint",
+				"options": {
+					"length": 1,
+					"notnull": true
+				}
+			}
+		],
+		"indexes": [
+			{
+				"name": "cec_wiki_page_id",
+				"comment": "Locate all records for a given page, used for UPDATE queries in case of page move and deletion.",
+				"columns": [ "cec_wiki", "cec_page_id" ],
+				"unique": false
+			},
+			{
+				"name": "cec_wiki_revision",
+				"comment": "Uniqueness constraint, also used for user-facing validation.",
+				"columns": [ "cec_wiki", "cec_revision_id" ],
+				"unique": true
+			},
+			{
+				"name": "cec_event_user",
+				"comment": "Filter edits for a given event, with a JOIN on ce_participants.",
+				"columns": [ "cec_event_id", "cec_user_id" ],
+				"unique": false
+			},
+			{
+				"name": "cec_user_id_name",
+				"comment": "Used to handle user renames and suppressions/deletions.",
+				"columns": [ "cec_user_id", "cec_user_name" ],
+				"unique": false
+			}
+		],
+		"pk": [ "cec_id" ]
+	}
+]

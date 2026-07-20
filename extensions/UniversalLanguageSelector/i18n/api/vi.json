@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bluetpp",
+			"Minh Nguyen"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Lấy bản dịch ULS trong ngôn ngữ được chỉ định.",
+	"apihelp-ulslocalization-param-language": "Chuỗi ngôn ngữ.",
+	"apihelp-ulslocalization-example-1": "Lấy bản dịch tiếng Tamil",
+	"apihelp-ulslocalization-example-2": "Lấy bản dịch tiếng Hindi",
+	"apihelp-ulssetlang-summary": "Cập nhật ngôn ngữ giao diện ưa thích của người dùng.",
+	"apihelp-ulssetlang-param-languagecode": "Mã ngôn ngữ ưa thích.",
+	"apierror-ulssetlang-anon-notallowed": "Người dùng ẩn danh không được phép thay đổi ngôn ngữ giao diện."
+}

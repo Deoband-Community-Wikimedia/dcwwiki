@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Omotecho",
+			"Otokoume",
+			"Sujiniku"
+		]
+	},
+	"apihelp-ulslocalization-summary": "ULSの当該言語訳を取得。",
+	"apihelp-ulslocalization-param-language": "言語コード",
+	"apihelp-ulslocalization-example-1": "タミル語に翻訳",
+	"apihelp-ulslocalization-example-2": "ヒンディ語に翻訳"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nemoralis"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Verilmiş dildə ULS-in lokalizasiyasını əldə edin.",
+	"apihelp-ulslocalization-param-language": "Dil kodu.",
+	"apihelp-ulslocalization-example-1": "Tamil lokalizasiyasını əldə edin",
+	"apihelp-ulslocalization-example-2": "Hindi lokalizasiyasını əldə edin",
+	"apihelp-ulssetlang-summary": "İstifadəçinin üstünlük verdiyi interfeys dilini yeniləyin.",
+	"apihelp-ulssetlang-param-languagecode": "Üstünlük verilən dil kodu.",
+	"apierror-ulssetlang-anon-notallowed": "Anonim istifadəçilərə interfeys dilini dəyişməyə icazə verilmir."
+}

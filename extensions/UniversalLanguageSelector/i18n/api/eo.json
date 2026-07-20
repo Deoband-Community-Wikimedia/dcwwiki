@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirin",
+			"Robin van der Vliet"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Akiri tradukon de Universala Lingvo-Elektilo en la donita lingvo.",
+	"apihelp-ulslocalization-param-language": "Lingva kodo.",
+	"apihelp-ulslocalization-example-1": "Akiri tradukon en tamula lingvo",
+	"apihelp-ulslocalization-example-2": "Akiri tradukon en hindia lingvo"
+}

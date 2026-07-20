@@ -1,0 +1,10 @@
+/composer.lock
+/coverage
+/vendor
+/node_modules
+.eslintcache
+/cypress/videos
+/cypress/.cache
+/cypress/screenshots
+.DS_Store
+/.stylelintcache

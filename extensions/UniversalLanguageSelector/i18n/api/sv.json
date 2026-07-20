@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil",
+			"Tölvuforritari",
+			"WikiPhoenix"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Få lokalanpassningen av ULS på ett visst språk.",
+	"apihelp-ulslocalization-param-language": "Språkkod.",
+	"apihelp-ulslocalization-example-1": "Få lokalanpassning för Tamil",
+	"apihelp-ulslocalization-example-2": "Få lokalanpassning för Hindi",
+	"apihelp-ulssetlang-summary": "Uppdatera det språk som användaren valt för gränssnittet.",
+	"apihelp-ulssetlang-param-languagecode": "Den föredragna språkkoden.",
+	"apierror-ulssetlang-anon-notallowed": "Anonyma användare tillåts inte ändra gränssnittsspråket."
+}

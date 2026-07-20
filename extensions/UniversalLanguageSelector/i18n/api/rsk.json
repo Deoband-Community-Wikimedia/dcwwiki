@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Язиков код.",
+	"apihelp-ulssetlang-param-languagecode": "Код преферованого язика.",
+	"apierror-ulssetlang-anon-notallowed": "Анонимним хасновательом нє допущене пременїц язик интерфейса."
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu",
+			"Mansil alfalb"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Obter a localização de ULS no idioma indicado.",
+	"apihelp-ulslocalization-param-language": "Código do idioma.",
+	"apihelp-ulslocalization-example-1": "Obter a tradução em tamil",
+	"apihelp-ulslocalization-example-2": "Obter a tradução em hindi",
+	"apihelp-ulssetlang-summary": "Atualize o idioma da interface preferido do utilizador.",
+	"apihelp-ulssetlang-param-languagecode": "O código do idioma preferido.",
+	"apierror-ulssetlang-anon-notallowed": "Os utilizadores anónimos não têm permissão para alterar o idioma da interface."
+}

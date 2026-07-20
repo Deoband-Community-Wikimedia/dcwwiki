@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Dapetin penyetempatan ULS di basa nyang dimaksud.",
+	"apihelp-ulslocalization-param-language": "Kode basa.",
+	"apihelp-ulslocalization-example-1": "Dapetin penyetempatan basa Tamil",
+	"apihelp-ulslocalization-example-2": "Dapetin penyetempatan basa Hindi",
+	"apihelp-ulssetlang-summary": "Perbaruin pemaké punya basa telampangan nyang didemenin.",
+	"apihelp-ulssetlang-param-languagecode": "Kode basa nyang didemenin.",
+	"apierror-ulssetlang-anon-notallowed": "Pemaké sondernama kaga' diboléin ngrobah basa telampangan."
+}

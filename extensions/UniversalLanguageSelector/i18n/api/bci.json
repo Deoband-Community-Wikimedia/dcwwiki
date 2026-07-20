@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kjeanclaude"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Kounndè ULS nvlé noun tranwlè i aniein nga bé fa man ni noun.",
+	"apihelp-ulslocalization-param-language": "Aniein i codi.",
+	"apihelp-ulslocalization-example-1": "Kounndè Tamil nvlé noun tranwlè",
+	"apihelp-ulslocalization-example-2": "Kounndè Hindi nvlé noun tranwlè",
+	"apihelp-ulssetlang-summary": "Nian katchi conti léfouè i klounklo sou floua boué aniein.",
+	"apihelp-ulssetlang-param-languagecode": "Klounklo sou aniein i codi.",
+	"apierror-ulssetlang-anon-notallowed": "Bé kpli'n man sou kè sran nga ba wlou man noun moun bé katchi floua boué aniein."
+}

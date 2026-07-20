@@ -1,0 +1,89 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/mediawiki"
+	],
+	"rules": {
+		"no-implicit-globals": "off"
+	},
+	"env": {
+		"commonjs": true
+	},
+	"ignorePatterns": [
+		"coverage/**"
+	],
+	"overrides": [
+		{
+			"files": "resources/**/*.vue",
+			"extends": [
+				"wikimedia/client/common",
+				"wikimedia/vue3/es6"
+			],
+			"rules": {
+				"max-len": "off",
+				"template-curly-spacing": "off",
+				"vue/component-name-in-template-casing": [
+					"error",
+					"kebab-case"
+				],
+				"vue/max-len": [
+					"error",
+					{
+						"code": 120,
+						"template": 120,
+						"comments": 120
+					}
+				]
+			}
+		},
+		{
+			"files": [
+				"resources/**/*.js"
+			],
+			"excludedFiles": "*.test.js",
+			"extends": [
+				"wikimedia/client"
+			],
+			"rules": {
+				"template-curly-spacing": "off"
+			}
+		},
+		{
+			"files": [
+				"**/*.test.js"
+			],
+			"env": {
+				"browser": true
+			},
+			"extends": [
+				"wikimedia/server",
+				"wikimedia/jest"
+			],
+			"rules": {
+				"template-curly-spacing": "off"
+			}
+		},
+		{
+			"files": [
+				"jest.config.js",
+				"jest.setup.js",
+				"jest.setupAfterEnv.js"
+			],
+			"extends": [
+				"wikimedia/server"
+			]
+		},
+		{
+			"files": [
+				"**/*.js",
+				"**/*.vue"
+			],
+			"rules": {
+				"comma-dangle": [
+					"error",
+					"always-multiline"
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"PiefPafPier",
+			"Robin van der Vliet"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Krij de taaloanpassing fan ULS yn de opjûne taal.",
+	"apihelp-ulslocalization-param-language": "Taalkoade.",
+	"apihelp-ulslocalization-example-1": "Krij de taaloanpassing foar it Tamylsk",
+	"apihelp-ulslocalization-example-2": "Krij de taaloanpassing foar it Hindy",
+	"apihelp-ulssetlang-summary": "Meidoggers taalfoarkar foar it oerflak bywurkje.",
+	"apihelp-ulssetlang-param-languagecode": "De taalkoade fan foarkar.",
+	"apierror-ulssetlang-anon-notallowed": "Anonime meidoggers meie de taal fan it oerflak net feroarje."
+}

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Les Meloures",
+			"Robby",
+			"Volvox"
+		]
+	},
+	"lookupuser": "Benotzerinformatiounen nokucken",
+	"lookupuser-desc": "[[Special:LookupUser|Informatiounen ofroen]] iwwer e Benotzer, wéi seng E-Mail-Adress oder säin Identifiant (ID)",
+	"lookupuser-intro": "Gitt e Benotzernumm a fir d'Astellunge vum Benotzer ze kucken. Eng E-Mail-Adress kann och benotzt ginn a weist all Benotzerkonten, déi dës E-Mail-Adress benotzen.",
+	"lookupuser-nonexistent": "Feeler: De Benotzer gëtt et net",
+	"lookupuser-authenticated": "confirméiert de(n) $1",
+	"lookupuser-not-authenticated": "net confirméiert",
+	"lookupuser-id": "Benotzer-Nummer: <code>#$1</code>",
+	"lookupuser-email": "E-Mail: [[Special:EmailUser/$2|$1]]",
+	"lookupuser-no-email": "net uginn",
+	"lookupuser-realname": "Richtegen Numm: $1",
+	"lookupuser-registration": "Datum vun der Umeldung: $1",
+	"lookupuser-no-registration": "net enregistréiert",
+	"lookupuser-touched": "Benotzerkont de fir d'lescht beréiert gouf: $1",
+	"lookupuser-info-authenticated": "E-Mail-Confirmatioun: $1",
+	"lookupuser-useroptions": "Astellunge vum Benotzer:",
+	"lookupuser-foundmoreusers": "Méi wéi ee Benotzer fonnt:",
+	"right-lookupuser": "Benotzerastellungen nokucken",
+	"action-lookupuser": "Benotzerastellungen nokucken"
+}

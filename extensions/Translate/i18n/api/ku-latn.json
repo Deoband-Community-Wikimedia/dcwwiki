@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bikarhêner",
+			"George Animal",
+			"Guherto"
+		]
+	},
+	"apihelp-groupreview-param-language": "Koda ziman.",
+	"apihelp-query+languagestats-param-language": "Koda ziman.",
+	"apihelp-query+messagecollection-param-group": "Koma peyaman. Li <kbd>[[Special:ApiHelp/query+messagegroups|action=query&meta=messagegroups]]</kbd> meyzîne.",
+	"apihelp-query+messagecollection-param-language": "Koda zimanê.",
+	"apihelp-query+messagegroups-example-1": "Komên peyaman nîşan bide"
+}

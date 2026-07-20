@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"BanKris",
+			"Csega",
+			"Tacsipacsi"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Az ULS fordításának lekérése egy adott nyelven.",
+	"apihelp-ulslocalization-param-language": "Nyelvkód.",
+	"apihelp-ulslocalization-example-1": "Tamil fordítás lekérése",
+	"apihelp-ulslocalization-example-2": "Hindi fordítás lekérése"
+}

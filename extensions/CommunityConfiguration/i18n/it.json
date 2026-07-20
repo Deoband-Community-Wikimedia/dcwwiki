@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"communityconfiguration-editor-form-submit-button-text": "Salva modifiche",
+	"communityconfiguration-editor-array-remove-element-label-screen-reader": "Rimuovi elemento",
+	"communityconfiguration-editor-array-fallback-add-element-button-label": "Aggiungi un altro elemento",
+	"communityconfiguration-schema-validation-error": "$2. Chiave: $1",
+	"communityconfiguration-invalid-schema-version": "Versione non valida $1. Lo schema attuale è $2.",
+	"communityconfiguration-edit-summary-dialog-title": "Salva modifiche per $1",
+	"communityconfiguration-edit-summary-dialog-placeholder": "Descrivi le modifiche apportate alla configurazione",
+	"communityconfiguration-edit-summary-dialog-save-button": "Salva modifiche",
+	"communityconfiguration-edit-summary-dialog-cancel-button": "Annulla",
+	"communityconfiguration-edit-summary-dialog-label": "Oggetto della modifica",
+	"communityconfiguration-editor-message-dismiss-button-label": "Chiudi",
+	"communityconfiguration-page-title-control-no-results": "Nessun risultato trovato.",
+	"communityconfiguration-editor-loading-info-text": "L'editor di configurazione è in fase di caricamento",
+	"communityconfiguration-editor-navigation-tab-viewform": "Visualizza modulo",
+	"communityconfiguration-editor-error-validation-string-too-short": "Deve essere lungo almeno $1 caratteri",
+	"communityconfiguration-editor-error-validation-string-too-long": "Deve essere lungo al massimo $1 caratteri"
+}

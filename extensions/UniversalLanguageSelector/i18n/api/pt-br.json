@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dianakc",
+			"EGobi",
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad",
+			"Felipe L. Ewald",
+			"Fúlvio"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Obter a localização do Seletor de Idiomas Universal (ULS) no idioma fornecido.",
+	"apihelp-ulslocalization-param-language": "Código do idioma.",
+	"apihelp-ulslocalization-example-1": "Obter localização em tamil",
+	"apihelp-ulslocalization-example-2": "Obter localização em hindi",
+	"apihelp-ulssetlang-summary": "Atualizar o idioma de interface preferido do usuário.",
+	"apihelp-ulssetlang-param-languagecode": "O código do idioma preferido.",
+	"apierror-ulssetlang-anon-notallowed": "Usuários anônimos não têm permissão para alterar o idioma da interface."
+}

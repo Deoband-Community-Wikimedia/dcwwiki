@@ -1,0 +1,13 @@
+[2026-07-11 15:15:14] [SUCCESS] [DCW6A525DFF06EA7] Aafi | aafi@dcwwiki.org 
+[2026-07-11 15:40:17] [SUCCESS] [DCW6A5263DE390C2] Test | test@tes12w3t.com 
+[2026-07-11 15:46:49] [SUCCESS] [DCW6A526565E80E2] Test | asdfghjkl@gmail.com 
+[2026-07-11 15:51:08] [FAILED] [BLOCKED] Nonsense | asdfghjkl@gmail.com  | Error: Intercepted gibberish input profile.
+[2026-07-11 15:53:46] [FAILED] [BLOCKED] Nonsense | asdfghjkl@gmail.com  | Error: Intercepted gibberish input profile.
+[2026-07-11 18:19:58] [FAILED] [DUPLICATE] Aafi | aafi@dcwwiki.org  | Error: Blocked repeat submission attempt from locked email.
+[2026-07-11 18:21:05] [FAILED] [DUPLICATE] Aafi | aafi@dcwwiki.org  | Error: Blocked repeat submission attempt from locked email.
+[2026-07-12 06:47:38] [SUCCESS] [DCW6A5338875ED83] Mehwish Ali  | mehwishali555666@gmail.com 
+[2026-07-12 13:14:45] [SUCCESS] [DCW6A539341808EF] Samreen Ahmed | samreenahmed4545@gmail.com 
+[2026-07-12 13:18:57] [SUCCESS] [DCW6A53943E7ABB2] Aafi | aafionmobile@dcwwiki.org 
+[2026-07-12 16:09:09] [SUCCESS] [DCW6A53BC21AED6E] Sabaaya | shababmalikk@gmail.com 
+[2026-07-12 17:09:34] [SUCCESS] [DCW6A53CA4B1C9BA] Zaid Sayyed | zaidsayyed07869@gmail.com 
+[2026-07-13 17:28:49] [SUCCESS] [DCW6A55204DCD4B5] Sana Sabir | sanasabir333@gmail.com 

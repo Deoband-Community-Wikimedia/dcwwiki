@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Red Winged Duck",
+			"Renessaince"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Атрымаць лякалізацыю ULS на пададзенай мове.",
+	"apihelp-ulslocalization-param-language": "Код мовы.",
+	"apihelp-ulslocalization-example-1": "Атрымаць тамільскую лякалізацыю",
+	"apihelp-ulslocalization-example-2": "Атрымаць індуісцкую лякалізацыю"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Salpusnis"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Kalbos kodas.",
+	"apihelp-ulslocalization-example-1": "Gauti tamilų lokalizavimą",
+	"apihelp-ulslocalization-example-2": "Gauti Hindi lokalizavimą"
+}

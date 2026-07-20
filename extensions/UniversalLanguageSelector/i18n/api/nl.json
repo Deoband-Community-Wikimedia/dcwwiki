@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elroy",
+			"Goefie",
+			"HanV",
+			"Macofe",
+			"McDutchie",
+			"Robin van der Vliet",
+			"Siebrand",
+			"Sjoerddebruin"
+		]
+	},
+	"apihelp-ulslocalization-summary": "De lokalisatie van ULS in de gegeven taal opvragen.",
+	"apihelp-ulslocalization-param-language": "Taalcode.",
+	"apihelp-ulslocalization-example-1": "De Tamil-lokalisatie opvragen",
+	"apihelp-ulslocalization-example-2": "De Hindi-lokalisatie opvragen",
+	"apihelp-ulssetlang-summary": "Door de gebruiker ingestelde taal bijwerken.",
+	"apihelp-ulssetlang-param-languagecode": "De code van de voorkeurstaal.",
+	"apierror-ulssetlang-anon-notallowed": "Anonieme gebruikers mogen de taal van de interface niet wijzigen."
+}

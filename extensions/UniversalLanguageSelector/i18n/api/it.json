@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"F. Cosoleto",
+			"Macofe"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Codice lingua.",
+	"apihelp-ulslocalization-example-1": "Ottieni localizzazione in Tamil",
+	"apihelp-ulslocalization-example-2": "Ottieni localizzazione in Hindi"
+}

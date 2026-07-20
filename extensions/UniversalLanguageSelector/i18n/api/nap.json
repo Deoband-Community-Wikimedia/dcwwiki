@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"C.R.",
+			"Candalua",
+			"Ruthven"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Codece lengua.",
+	"apihelp-ulslocalization-example-1": "Arrepiglia 'a localizzaziona Tamil",
+	"apihelp-ulslocalization-example-2": "Arrepiglia 'a localizzaziona Hindi"
+}

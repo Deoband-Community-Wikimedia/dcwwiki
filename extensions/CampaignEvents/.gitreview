@@ -1,0 +1,5 @@
+[gerrit]
+host=gerrit.wikimedia.org
+port=29418
+project=mediawiki/extensions/CampaignEvents.git
+track=1

@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"communityconfiguration-editor-chip-control-aria-chip-description": "Притисните Enter да уредите или Delete да уклоните",
+	"communityconfiguration-editor-form-submit-button-text": "Сачувај измене",
+	"communityconfiguration-editor-form-submit-button-loading-text": "Шаљем...",
+	"communityconfiguration-guidelines-guideline1-title": "Сазнајте више",
+	"communityconfiguration-guidelines-guideline2-title": "Дајте нам {{GENDER:$1|Ваше}} мишљење!",
+	"communityconfiguration-invalid-stored-config-error-details-headline": "Детаљи грешке",
+	"communityconfiguration-schema-validation-error": "$2. Клуч: $1",
+	"communityconfiguration-providers-list-title": "Могућности",
+	"communityconfigurationeditor": "$1 — уређивање",
+	"communityconfiguration-edit-summary-reminder": "<b>Напомена</b>: Ова измена може утицати на велики број чланова заједнице, молимо нагласите {{GENDER:$1|зашто}} чините ову измену и наведите линк до дискусије ако је потребно.",
+	"communityconfiguration-edit-summary-dialog-title": "Сачувај измене за $1",
+	"communityconfiguration-edit-summary-dialog-placeholder": "Опишите измене начињене у конфигурацији",
+	"communityconfiguration-edit-summary-dialog-save-button": "Сачувај измене",
+	"communityconfiguration-edit-summary-dialog-cancel-button": "Откажи",
+	"communityconfiguration-edit-summary-dialog-label": "Опис измене",
+	"communityconfiguration-editor-client-success-message": "{{GENDER:$1|Ваше}} измене су сачуване",
+	"communityconfiguration-editor-client-data-submission-error": "Дошло је до грешке при чувању {{GENDER:$1|Ваших}} измена. Молимо покушајте касније.",
+	"communityconfiguration-editor-message-dismiss-button-label": "Затвори",
+	"communityconfiguration-page-title-control-no-results": "Нема резултата.",
+	"communityconfiguration-editor-loading-info-text": "Конфигурациони едитор се учитава",
+	"communityconfiguration-editor-nojs-fallback-text": "Конфигурационом едитору је потребан JavaScript. Молимо омогућите JavaScript.",
+	"communityconfiguration-editor-navigation-tab-viewform": "Образац",
+	"communityconfiguration-editor-client-notice-message": "Ова страница је заштићена. Само администратори могу уређивати ову могућност.",
+	"communityconfiguration-editor-error-validation-string-too-short": "Мора имати бар $1 карактер",
+	"communityconfiguration-editor-error-validation-string-too-long": "Највише $1 карактера"
+}

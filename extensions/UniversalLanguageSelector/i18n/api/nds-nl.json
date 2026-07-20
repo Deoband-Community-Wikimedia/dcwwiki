@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Servien"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Taalkode.",
+	"apihelp-ulslocalization-example-1": "Gebruuk Tamil-lokalisasie",
+	"apihelp-ulslocalization-example-2": "Gebruuk Hindi-lokalisasie"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lam-ang"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Kodigo ti pagsasao.",
+	"apihelp-ulslocalization-example-1": "Alaen ti lokalisasion ti Tamil",
+	"apihelp-ulslocalization-example-2": "Alaen ti lokalisasion ti Hindi"
+}

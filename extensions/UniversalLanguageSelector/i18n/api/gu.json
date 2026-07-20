@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dsvyas",
+			"KartikMistry"
+		]
+	},
+	"apihelp-ulslocalization-summary": "ULS નું ભાષાંતર આપેલી ભાષા માટે મેળવો.",
+	"apihelp-ulslocalization-param-language": "ભાષા સંજ્ઞા.",
+	"apihelp-ulslocalization-example-1": "તમિલ ભાષાંતર મેળવો",
+	"apihelp-ulslocalization-example-2": "હિન્દી ભાષાંતર મેળવો"
+}

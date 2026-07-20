@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fwolff"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "Taalkode.",
+	"apihelp-ulslocalization-example-1": "Kry Tamil lokalisering",
+	"apihelp-ulslocalization-example-2": "Kry Hindi lokalisering"
+}

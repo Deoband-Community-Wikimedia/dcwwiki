@@ -1,0 +1,29 @@
+# Ignore everything by default
+/*
+
+# Except the following directories and files
+!/skins/
+!/extensions/
+!/languages/
+!/reflections5/
+!/LocalSettings.php
+!/README.md
+!/composer.json
+!/composer.local.json
+!/composer.lock
+!/.gitignore
+!/.github/
+
+# But explicitly ignore these specific directories (to be doubly sure)
+/images/
+/tests/
+/cache/
+/vendor/
+/docs/
+/maintenance/
+/mw-config/
+/resources/
+/sql/
+
+# Explicitly ignore sensitive files
+/.env

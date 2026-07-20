@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"apihelp-ulslocalization-param-language": "भाषा संकेत (कोड).",
+	"apihelp-ulslocalization-example-1": "तामिळ स्थानिकिकरण मिळवा",
+	"apihelp-ulslocalization-example-2": "हिंदी स्थानिकिकरण मिळवा"
+}

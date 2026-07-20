@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"apihelp-ulslocalization-summary": "Obtener la llocalización de ULS na llingua dada.",
+	"apihelp-ulslocalization-param-language": "Códigu de llingua.",
+	"apihelp-ulslocalization-example-1": "Obtener la llocalización en tamil",
+	"apihelp-ulslocalization-example-2": "Obtener la llocalización en hindi"
+}
