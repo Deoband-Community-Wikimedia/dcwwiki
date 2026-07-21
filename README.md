@@ -53,3 +53,4 @@ When pulling these changes to the production server:
 2. Ensure you do not overwrite the `images/` directory.
 3. Run `composer install` if there are updates to vendor dependencies.
 
+
