@@ -1,4 +1,4 @@
-# Deoband Community Wikimedia - dcwwiki Repository
+# Deoband Community Wikimedia, MediaWiki instance 
 
 This repository contains the configuration, skins, extensions, and customizations for the **Deoband Community Wikimedia (DCW)** MediaWiki installation. 
 
