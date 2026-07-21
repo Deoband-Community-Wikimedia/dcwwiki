@@ -48,13 +48,13 @@ $color_palette = ['color-blue', 'color-green', 'color-purple', 'color-amber'];
 $color_index = 0; // Global tracker to keep colors distinct across both sidebars
 
 // --- CONFIGURATION ---
-$to_email = "reflectionsat5@dcwwiki.com"; 
-$from_email = "noreply@dcwwiki.com"; 
+$to_email = "reflectionsat5@dcwwiki.org"; 
+$from_email = "noreply@dcwwiki.org"; 
 $from_display_name = "DCW@5 - Deoband Community Wikimedia";
 
 $smtp_host = $_ENV['MW_SMTP_SERVER'] ?? 'smtp.hostinger.com';
 $smtp_port = $_ENV['MW_SMTP_PORT'] ?? 465; 
-$smtp_user = $_ENV['MW_SMTP_USER'] ?? 'noreply@dcwwiki.com'; 
+$smtp_user = $_ENV['MW_SMTP_USER'] ?? 'noreply@dcwwiki.org'; 
 $smtp_pass = $_ENV['MW_SMTP_PASSWORD'] ?? '';  
 
 $message_sent = false;
