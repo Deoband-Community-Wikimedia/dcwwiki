@@ -263,21 +263,6 @@ $wgExtraLanguageNames['qqq'] = 'Message documentation'; # No linguistic content.
 wfLoadExtension( 'UniversalLanguageSelector' );
 $wgUseFileCache = true;
 
-/*
-wfLoadExtension( 'PluggableAuth' );
-wfLoadExtension( 'WSOAuth' );
-$wgPluggableAuth_EnableLocalLogin = true;
-$wgPluggableAuth_Config['dcw-auth'] = [
-    'plugin' => 'WSOAuth',
-    'data' => [
-        'type' => 'mediawiki',
-        'uri' => 'https://meta.wikimedia.org/w/index.php?title=Special:OAuth',
-        'clientId' => 'REMOVED_FOR_SECURITY',
-        'clientSecret' => 'REMOVED_FOR_SECURITY',
-    ]
-];
-*/
-
 /* Editing priveleges go below this line */
 $wgStaffEditsMessagePrefix = 'dcw';
 $wgGroupPermissions['*']['edit'] = false;
