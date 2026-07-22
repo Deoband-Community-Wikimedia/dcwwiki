@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Asenoner"
-		]
-	},
-	"campaignevents-role-organizer": "{{GENDER:$1|organisadëur|organisadëura}}"
-}
