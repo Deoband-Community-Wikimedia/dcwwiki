@@ -23,6 +23,8 @@ jobs:
           server-dir: ./
           # DANGEROUS: If a file isn't explicitly excluded below, the deployer might overwrite or delete it!
           # We explicitly protect these server directories to ensure Production assets aren't ruined by Git syncs.
+          # NOTE: The whole extensions/ tree is excluded here to avoid Hostinger's 1-hour FTP timeout on the
+          # full install. Individual extensions that need deploying are handled by dedicated steps below.
           exclude: |
             **/.git*
             **/.git*/**
@@ -35,3 +37,21 @@ jobs:
             **/languages/**
             **/skins/**
             **/vendor/**
+
+      # The bulk sync above excludes extensions/ (timeout protection), so extension updates never reach
+      # production automatically and have to be uploaded by hand (see issue #8). This dedicated step syncs
+      # ONLY the CampaignEvents folder — small enough to stay well under the timeout. Copy this block and
+      # change the two dir paths to deploy any other single extension.
+      - name: 📂 Deploy CampaignEvents extension
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./extensions/CampaignEvents/
+          server-dir: ./extensions/CampaignEvents/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/tests/**
+            **/node_modules/**
