@@ -1,0 +1,42 @@
+@import 'mediawiki.skin.variables.less';
+
+.mw-datatable.ext-campaignevents-events-table {
+	th {
+		background-color: @background-color-neutral-subtle;
+		padding: 0.4em 0.8em 0.4em 0.2em;
+		text-align: left;
+
+		&.mw-datatable-is-sorted a {
+			background-size: 1em;
+			padding-left: 18px;
+		}
+	}
+
+	&,
+	th,
+	td {
+		// TODO: Use a Codex token for this as soon as available.
+		border-color: #eaecf0;
+		border-width: @border-width-thick;
+	}
+
+	th,
+	td {
+		border-left-width: 0;
+		border-right-width: 0;
+	}
+
+	.ext-campaignevents-events-table-eventpage-link {
+		font-weight: bold;
+		overflow-wrap: anywhere;
+	}
+
+	.ext-campaignevents-events-table-cell-manage {
+		// Make the button center-aligned, but not the menu options.
+		text-align: center;
+
+		> * {
+			text-align: initial;
+		}
+	}
+}

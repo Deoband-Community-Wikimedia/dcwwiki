@@ -1,0 +1,170 @@
+<?php
+
+declare( strict_types=1 );
+
+namespace MediaWiki\Extension\CampaignEvents\Special;
+
+use MediaWiki\Extension\CampaignEvents\Invitation\InvitationListGenerator;
+use MediaWiki\Extension\CampaignEvents\Invitation\WorklistParser;
+use MediaWiki\Extension\CampaignEvents\Permissions\PermissionChecker;
+use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Message\Message;
+use MediaWiki\SpecialPage\FormSpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Status\Status;
+use MediaWiki\WikiMap\WikiMap;
+use RuntimeException;
+use StatusValue;
+
+class SpecialGenerateInvitationList extends FormSpecialPage {
+	use InvitationFeatureAccessTrait;
+
+	public const PAGE_NAME = 'GenerateInvitationList';
+
+	/** @var int|null ID of the newly-generated list. Only set upon successful form submission. */
+	private ?int $listID = null;
+
+	public function __construct(
+		private readonly PermissionChecker $permissionChecker,
+		private readonly InvitationListGenerator $invitationListGenerator,
+		private readonly WorklistParser $worklistParser,
+	) {
+		parent::__construct( self::PAGE_NAME );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function execute( $par ): void {
+		$this->setHeaders();
+		$this->outputHeader();
+		$isEnabledAndPermitted = $this->checkInvitationFeatureAccess(
+			$this->getOutput(),
+			$this->getAuthority()
+		);
+		if ( $isEnabledAndPermitted ) {
+			parent::execute( $par );
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 * @return array<string,array<string,mixed>>
+	 */
+	protected function getFormFields(): array {
+		return [
+			'InvitationListName' => [
+				'type' => 'text',
+				'label-message' => 'campaignevents-generateinvitationlist-name-field-label',
+				'placeholder-message' => 'campaignevents-generateinvitationlist-name-field-placeholder',
+				'filter-callback' => static fn ( ?string $name ): string => trim( (string)$name ),
+				'required' => true,
+				'maxlength' => InvitationListGenerator::INVITATION_LIST_NAME_MAXLENGTH_BYTES,
+			],
+			'EventPage' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'campaignevents-generateinvitationlist-event-page-field-label',
+				'placeholder-message' => 'campaignevents-generateinvitationlist-event-page-field-placeholder',
+				'required' => false,
+				'validation-callback' => function ( string $eventPage ): StatusValue {
+					if ( !$eventPage ) {
+						return StatusValue::newGood();
+					}
+					return $this->invitationListGenerator->validateEventPage(
+						$eventPage,
+						$this->getAuthority()
+					);
+				},
+			],
+			'ArticleList' => [
+				'type' => 'textarea',
+				'label-message' => 'campaignevents-generateinvitationlist-article-list-field-label',
+				'placeholder-message' => 'campaignevents-generateinvitationlist-article-list-field-placeholder',
+				'help-message' => [
+					'campaignevents-generateinvitationlist-article-list-field-help',
+					Message::numParam( WorklistParser::ARTICLES_LIMIT )
+				],
+				'rows' => 10,
+				'required' => true,
+				'validation-callback' => function ( string $worklist ): StatusValue {
+					return $this->worklistParser->parseWorklist( self::makePageMapFromInput( $worklist ) );
+				}
+			]
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function alterForm( HTMLForm $form ): void {
+		$form->setSubmitTextMsg( 'campaignevents-generateinvitationlist-submit-button-text' );
+	}
+
+	/**
+	 * @inheritDoc
+	 * @param array<string,mixed> $data
+	 */
+	public function onSubmit( array $data ) {
+		$eventPage = $data['EventPage'] !== '' ? $data['EventPage'] : null;
+		$worklistStatus = $this->worklistParser->parseWorklist( self::makePageMapFromInput( $data['ArticleList'] ) );
+		if ( !$worklistStatus->isGood() ) {
+			// This shouldn't actually happen in practice thanks to validation-callback
+			return Status::wrap( $worklistStatus );
+		}
+
+		$invitationListStatus = $this->invitationListGenerator->createIfAllowed(
+			$data['InvitationListName'],
+			$eventPage,
+			$worklistStatus->getValue(),
+			$this->getAuthority()
+		);
+		if ( $invitationListStatus->isGood() ) {
+			$this->listID = $invitationListStatus->getValue();
+		}
+		return Status::wrap( $invitationListStatus );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSuccess(): void {
+		if ( $this->listID === null ) {
+			throw new RuntimeException( "List ID is unset" );
+		}
+		$invitationListPage = SpecialPage::getTitleFor( SpecialInvitationList::PAGE_NAME, (string)$this->listID );
+		$this->getOutput()->redirect( $invitationListPage->getLocalURL() );
+	}
+
+	/**
+	 * @return array<string,string[]> Maps wiki ID to a list of page titles.
+	 */
+	private static function makePageMapFromInput( string $rawWorklist ): array {
+		$pageList = array_filter(
+			array_map( 'trim', explode( "\n", $rawWorklist ) ),
+			static fn ( string $line ): bool => $line !== ''
+		);
+		return [ WikiMap::getCurrentWikiId() => $pageList ];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDisplayFormat(): string {
+		return 'ooui';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getGroupName(): string {
+		return 'campaignevents';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function doesWrites(): bool {
+		return true;
+	}
+}

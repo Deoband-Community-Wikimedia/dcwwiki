@@ -1,0 +1,50 @@
+@import 'mediawiki.skin.variables.less';
+
+.ext-campaignevents-registration-dialog {
+	.ext-campaignevents-policy-message-panel {
+		background-color: @background-color-neutral-subtle;
+		color: @color-base;
+		font-size: @font-size-x-small;
+		line-height: @line-height-small;
+	}
+
+	.ext-campaignevents-registration-visibility-toggle-field {
+		.oo-ui-labelElement-label {
+			color: @color-base;
+			font-weight: @font-weight-bold;
+		}
+
+		&.oo-ui-fieldLayout > div.oo-ui-fieldLayout-body > span.oo-ui-fieldLayout-header {
+			flex-grow: 0.1;
+		}
+	}
+
+	.ext-campaignevents-registration-visibility-label {
+		margin: 0 @spacing-100;
+		display: flex;
+		color: @color-subtle;
+		font-weight: @font-weight-normal;
+
+		.oo-ui-iconElement {
+			margin: 0 @spacing-100;
+		}
+	}
+	@width-dropdown-question: 28em;
+
+	.ext-campaignevents-dropdown-question {
+		width: @width-dropdown-question;
+		max-width: 100%;
+	}
+
+	.ext-campaignevents-question-other-option {
+		margin-top: @spacing-50;
+		@margin-start-other-option: @spacing-125;
+		width: calc( @width-dropdown-question - @margin-start-other-option );
+		margin-left: @margin-start-other-option;
+		max-width: calc( 100% - @margin-start-other-option );
+	}
+
+	.ext-campaignevents-registration-retention-label {
+		color: @color-subtle;
+	}
+}

@@ -1,0 +1,132 @@
+<?php
+
+declare( strict_types=1 );
+
+namespace MediaWiki\Extension\CampaignEvents\Hooks\Handlers;
+
+use MediaWiki\Extension\CampaignEvents\Event\ExistingEventRegistration;
+use MediaWiki\Extension\CampaignEvents\Event\Store\IEventLookup;
+use MediaWiki\Extension\CampaignEvents\EventGoal\GoalProgressFormatter;
+use MediaWiki\Extension\CampaignEvents\MWEntity\CampaignsCentralUserLookup;
+use MediaWiki\Extension\CampaignEvents\MWEntity\UserNotGlobalException;
+use MediaWiki\Html\TemplateParser;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Permissions\Authority;
+use MediaWiki\Registration\ExtensionRegistry;
+use Wikibase\Repo\WikibaseRepo;
+use Wikimedia\ObjectCache\HashBagOStuff;
+
+/**
+ * Handler used to set up a JavaScript modal shown after edits, where users can choose to associate
+ * their edit with an event.
+ */
+class PostEditHandler implements BeforePageDisplayHook {
+	public function __construct(
+		private readonly CampaignsCentralUserLookup $centralUserLookup,
+		private readonly IEventLookup $eventLookup,
+		private readonly GoalProgressFormatter $goalProgressFormatter,
+	) {
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onBeforePageDisplay( $out, $skin ): void {
+		if ( $out->getTitle()->inNamespace( NS_EVENT ) ) {
+			// Don't show the dialog in the Event: namespace, T406672
+			return;
+		}
+
+		if ( !self::isPostEditReload( $out ) ) {
+			if ( self::isWikibaseEntityPage( $out ) ) {
+				// Load the module on page view, without including events for performance. Those will be
+				// lazy-loaded on the client side.
+				$out->addModules( 'ext.campaignEvents.postEdit' );
+			}
+			return;
+		}
+
+		$authority = $out->getAuthority();
+		try {
+			$centralUser = $this->centralUserLookup->newFromAuthority( $authority );
+		} catch ( UserNotGlobalException ) {
+			// They can't be participating in any events without a global account.
+			return;
+		}
+
+		$events = $this->eventLookup->getEventsForContributionAssociationByParticipant(
+			$centralUser->getCentralID(),
+			50
+		);
+
+		if ( !$events ) {
+			return;
+		}
+
+		$eventData = self::makeEventList(
+			$events, $authority, $out->getLanguage()->getCode(), $this->goalProgressFormatter
+		);
+
+		$out->addModules( 'ext.campaignEvents.postEdit' );
+		$out->addJsConfigVars( 'wgCampaignEventsEventsForAssociation', $eventData );
+	}
+
+	/**
+	 * Given a list of events, returns an array structure that can be passed to the post-edit dialog frontend.
+	 *
+	 * @param ExistingEventRegistration[] $events
+	 * @param Authority $authority
+	 * @param string $languageCode
+	 * @param GoalProgressFormatter $goalProgressFormatter
+	 * @return list<array{id:int,name:string,goalProgress?:string}>
+	 */
+	public static function makeEventList(
+		array $events,
+		Authority $authority,
+		string $languageCode,
+		GoalProgressFormatter $goalProgressFormatter
+	): array {
+		// XXX: Avoid global state access in ListOwnEventsForEditHandlerTest
+		$templateCache = defined( 'MW_PHPUNIT_TEST' ) ? new HashBagOStuff() : null;
+		$templateParser = new TemplateParser( __DIR__ . '/../../../templates', $templateCache );
+		$eventData = [];
+		foreach ( $events as $event ) {
+			$entry = [
+				'id' => $event->getID(),
+				'name' => $event->getName(),
+			];
+			$goalProgressData = $goalProgressFormatter->getProgressData( $event, $authority, $languageCode );
+			if ( $goalProgressData !== null ) {
+				// TODO: Replace with a Vue version once that is available (T407638)
+				$entry['goalProgress'] = $templateParser->processTemplate( 'GoalProgressBar', $goalProgressData );
+			}
+			$eventData[] = $entry;
+		}
+		return $eventData;
+	}
+
+	/**
+	 * Check whether an edit just occurred and the page just reloaded. This only works for editors that cause a reload
+	 * (e.g., the source editor, but not VE). VE edits are handled separately by registering our module as a VE plugin.
+	 * Not VE page creations though, as those also cause a reload BUT do not load VE plugins. So, those are handled here
+	 * by checking for venotify instead. And similarly for MobileFrontend edits. This code is based on
+	 * GrowthExperiments' LevelingUpHooks::onBeforePageDisplay.
+	 * XXX This whole things is really ugly but there don't seem to be better options.
+	 */
+	private static function isPostEditReload( OutputPage $out ): bool {
+		if ( isset( $out->getJsConfigVars()['wgPostEdit'] ) ) {
+			return true;
+		}
+
+		$request = $out->getRequest();
+		return $request->getCheck( 'venotify' ) || $request->getCheck( 'mfnotify' );
+	}
+
+	private static function isWikibaseEntityPage( OutputPage $out ): bool {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'WikibaseRepository' ) ) {
+			return false;
+		}
+		return WikibaseRepo::getEntityNamespaceLookup()->isEntityNamespace( $out->getTitle()->getNamespace() );
+	}
+}

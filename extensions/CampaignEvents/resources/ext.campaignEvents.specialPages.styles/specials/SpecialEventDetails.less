@@ -1,0 +1,436 @@
+@import 'mediawiki.skin.variables.less';
+@import 'mediawiki.mixins.less';
+
+.ext-campaignevents-eventdetails-back-btn {
+	margin-bottom: 1em;
+}
+
+/* stylelint-disable selector-max-id */
+#ext-campaignevents-eventdetails-tabs {
+	h2,
+	h3,
+	h4 {
+		// Override standard MediaWiki header styling
+		font-family: sans-serif;
+		font-weight: bold;
+		color: @color-base;
+		border-bottom: unset;
+		margin-top: 0;
+		padding-top: 0;
+	}
+}
+/* stylelint-enable selector-max-id */
+
+.ext-campaignevents-eventdetails-participants-panel {
+	max-width: 90em;
+}
+
+.mw-body .ext-campaignevents-eventdetails-panel {
+	width: 62em;
+	max-width: 100%;
+	// Include paddings in the max-width
+	box-sizing: border-box;
+
+	&.oo-ui-panelLayout-padded.oo-ui-panelLayout-framed {
+		margin-top: 0; // Remove margin set by OOUI
+	}
+}
+
+.ext-campaignevents-eventdetails-content {
+	padding: 1em;
+	max-height: 45em;
+	overflow-y: auto;
+}
+
+// Increase specificity to enforce the margin.
+span.ext-campaignevents-eventdetails-participants-private-icon {
+	opacity: @opacity-icon-subtle;
+	margin-left: 1em;
+}
+
+.ext-campaignevents-eventdetails-participants-private-count-footer {
+	display: flex;
+	color: @color-subtle;
+
+	.oo-ui-iconElement-icon {
+		opacity: @opacity-icon-subtle;
+		margin-right: 0.5em;
+	}
+}
+
+.ext-campaignevents-eventdetails-participants-individual-data-deleted-notice {
+	margin-top: 0.75em;
+}
+
+.ext-campaignevents-eventdetails-participants-footer {
+	margin-top: 0.5em;
+}
+
+.ext-campaignevents-eventdetails-content-wrapper {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	// Set a column gap for when the flex elements wrap (i.e., small screens). Note that is not supported
+	// by all grade C browsers. In those, the elements will be closer together, but that's hopefully
+	// just a minor visual glitch that can be tolerated.
+	column-gap: 1em;
+
+	> * {
+		// Set min-width to allow shrinking and wrapping
+		min-width: 0;
+		// Allow items to grow to 100% width then they can (e.g., when wrapping)
+		flex-grow: 1;
+		// But make sure that the columns have a sensible minimum width of about half the total width
+		flex-basis: 28em;
+	}
+}
+
+.ext-campaignevents-eventdetails-info-topbar {
+	display: flex;
+	justify-content: space-between;
+	.flex-wrap();
+	margin-bottom: 1em;
+}
+
+.mw-body .ext-campaignevents-eventdetails-panel .ext-campaignevents-eventdetails-section-header {
+	margin-bottom: 0.5em;
+	color: @color-subtle;
+
+	.oo-ui-iconElement-icon {
+		margin-right: 0.5em;
+	}
+}
+
+.ext-campaignevents-eventdetails-panel .ext-campaignevents-eventdetails-section-content {
+	margin-left: 2.5em;
+	margin-bottom: 1.5em;
+	white-space: pre-wrap;
+	.hyphens();
+
+	h4 {
+		color: @color-subtle;
+	}
+}
+
+.ext-campaignevents-eventdetails-tracking-tool-sync {
+	margin-top: 0.5em;
+
+	p.ext-campaignevents-eventdetails-tracking-tool-sync-details {
+		font-weight: normal;
+		margin: 0;
+	}
+}
+
+ul.ext-campaignevents-eventdetails-organizers-list,
+ul.ext-campaignevents-eventdetails-event-wikis-list,
+ul.ext-campaignevents-eventdetails-event-topics-list {
+	margin-left: 0;
+	list-style-type: none;
+}
+
+.ext-campaignevents-eventdetails-participants-container {
+	.ext-campaignevents-eventdetails-participants-table {
+		width: 100%;
+		border-collapse: collapse;
+		// Set fixed layout and allow wrapping so that the size of the cells doesn't change
+		// even if the content (like usernames) is really long
+		table-layout: fixed;
+		.hyphens();
+
+		tr {
+			border-bottom: @border-subtle;
+
+			th {
+				text-align: left;
+				padding: 1em;
+			}
+
+			td {
+				padding: 1em;
+			}
+		}
+
+		.ext-campaignevents-eventdetails-participants-table-header th {
+			position: sticky;
+			top: 0;
+			z-index: @z-index-sticky;
+			background-color: @background-color-base;
+			.hyphens(none);
+			white-space: normal;
+		}
+
+		th.ext-campaignevents-eventdetails-participants-username-cell {
+			width: 15em;
+		}
+
+		th.ext-campaignevents-eventdetails-participants-time-registered-cell {
+			width: 15em;
+		}
+
+		th.ext-campaignevents-eventdetails-participants-can-receive-email-cell {
+			width: 8em;
+		}
+
+		th.ext-campaignevents-eventdetails-participants-non-pii-question-cells {
+			width: 25em;
+		}
+
+		th.ext-campaignevents-eventdetails-user-row-checkbox,
+		th.ext-campaignevents-eventdetails-participants-selectall-checkbox-cell {
+			// Set the width of the cell to that of the checkbox to prevent it from stretching
+			width: 1.42857143em;
+		}
+
+		.ext-campaignevents-eventdetails-user-row-checkbox .oo-ui-fieldLayout-header {
+			// Invisible labels use absolute positioning, and without a positioned ancestor
+			// they would overflow the table and produce a lot of unwantd white space after
+			// the table itself (T342292)
+			position: relative;
+		}
+	}
+
+	/* Set a fixed height so that it does not change while we rebuild the list
+	 70em as max-height was the best we could find to make the infinite scrolling to work on all resolutions
+	*/
+	height: 80vh;
+	max-height: 70em;
+	overflow: auto;
+}
+
+body.skin-minerva {
+	.ext-campaignevents-eventdetails-participants-table,
+	.ext-campaignevents-eventdetails-stats-question-table {
+		// Minerva sets display:block on tables to try and avoid issues in articles.
+		// This is not an article though; we're making sure that this table looks OK
+		// on mobile, so don't let Minerva interfere.
+		display: table;
+	}
+}
+
+.ext-campaignevents-eventdetails-participants-header {
+	padding: 0.75em 1.5em 0.75em 1.5em;
+	background-color: @background-color-neutral;
+}
+
+.ext-campaignevents-eventdetails-participants-header-title {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.ext-campaignevents-eventdetails-participants-controls {
+	padding: 0.75em 0 0.75em 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.ext-campaignevents-eventdetails-participants-count-button {
+		display: none;
+	}
+}
+
+.ext-campaignevents-eventdetails-participants-header-participants {
+	flex: 1;
+
+	.ext-campaignevents-eventdetails-participants-header-participant-count {
+		font-size: 1.5em;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+}
+
+.client-nojs .ext-campaignevents-eventdetails-participants-header-questions-help > .oo-ui-buttonElement-button {
+	cursor: help;
+}
+
+.ext-campaignevents-eventdetails-participants-header-participants .oo-ui-popupWidget {
+	z-index: @z-index-tooltip;
+}
+
+div.ext-campaignevents-eventdetails-participants-search {
+	min-width: 15em;
+	flex-basis: 0;
+	flex-grow: 1;
+}
+
+.ext-campaignevents-eventdetails-email-recipient-list ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	display: inline;
+
+	li {
+		display: inline-block;
+		padding: 0.2em;
+	}
+}
+
+.ext-campaignevents-eventdetails-icon {
+	opacity: 0.55;
+}
+
+.ext-campaignevents-eventdetails-no-participants-state {
+	// TODO: Ideally here we wouldn't need flex at all. We could just set the icon
+	// to have a width of 40% and aspect ratio of 1, without having to specify
+	// any height. Unfortunately, aspect-ratio is not supported by all grade C+
+	// browsers.
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 34em;
+}
+
+.ext-campaignevents-eventdetails-no-participants-icon.oo-ui-iconElement {
+	width: 40%;
+	flex-grow: 4;
+	opacity: 0.25;
+}
+
+.ext-campaignevents-eventdetails-no-participants-description {
+	flex-grow: 3;
+	font-size: 1.1em;
+	padding: 0 1em;
+	text-align: center;
+}
+
+fieldset.ext-campaignevents-eventdetails-email-form {
+	margin-top: 1em;
+}
+
+.oo-ui-popupWidget.ext-campaignevents-eventdetails-message-all-participants-button-popup {
+	// Set manual z-index to put this above sticky header
+	z-index: @z-index-tooltip;
+}
+
+.oo-ui-buttonGroupWidget.ext-campaignevents-eventdetails-extra-buttons {
+	&,
+	.ext-campaignevents-eventdetails-message-all-participants-button {
+		// Remove the default z-index of 0 from the ButtonGroupWidget and the button to let the rule above work.
+		z-index: unset;
+	}
+}
+
+.ext-campaignevents-eventdetails-stats-question-container {
+	border-bottom: @border-subtle;
+
+	&.ext-campaignevents-eventdetails-stats-question-container > .mw-collapsible-toggle {
+		float: unset;
+		width: 100%;
+		padding: 1em;
+		box-sizing: border-box;
+
+		h3 {
+			display: inline;
+			padding-left: 0.5em;
+			font-size: @font-size-small;
+			line-height: @line-height-small;
+		}
+	}
+
+	> .mw-collapsible-content {
+		margin-left: 1em;
+		margin-bottom: 1em;
+	}
+
+	// Icon styles for collapsed and expanded status, copied from CollapsibleFieldsetLayout
+	.mw-collapsible-toggle .oo-ui-icon-expand {
+		display: none;
+	}
+
+	&.mw-collapsed {
+		.mw-collapsible-toggle .oo-ui-icon-expand {
+			display: inline-block;
+		}
+
+		.mw-collapsible-toggle .oo-ui-icon-collapse {
+			display: none;
+		}
+	}
+}
+
+/* stylelint-disable selector-max-id */
+#StatsPanel h2.ext-campaignevents-eventdetails-stats-section-header {
+	font-size: @font-size-medium;
+	line-height: @line-height-xxx-small;
+}
+/* stylelint-enable selector-max-id */
+
+.ext-campaignevents-eventdetails-stats-section:not( :last-child ) {
+	margin-bottom: 1.7em;
+}
+
+.ext-campaignevents-eventdetails-stats-question-table {
+	width: 70%;
+	border-collapse: collapse;
+	border: @border-subtle;
+
+	thead {
+		background-color: @background-color-neutral;
+	}
+
+	tr {
+		border-bottom: @border-subtle;
+	}
+
+	th,
+	td {
+		padding: 1em;
+		text-align: left;
+
+		&:first-child {
+			// Set a minimum width on the first column: it contains option labels,
+			// some of which are quite long, and we don't want a lot of wrapping.
+			min-width: 12em;
+		}
+	}
+}
+
+.client-nojs .ext-campaignevents-eventdetails-load-organizers-link {
+	display: none;
+}
+
+.ext-campaignevents-eventdetails-participants-responses-aggregated-notice {
+	color: @color-subtle;
+}
+
+// This rule should come last so that it overrides other styles set in this file.
+// Repeat the selector to increase specificity (e.g., for buttons).
+.ext-campaignevents-eventdetails-hide-element.ext-campaignevents-eventdetails-hide-element {
+	display: none;
+}
+
+.ext-campaignevents-eventdetails-footer {
+	padding-left: 20px;
+}
+
+// Footer with separator line
+.ext-campaignevents-eventdetails-tab-footer {
+	border-top: @border-subtle;
+	padding: 1em;
+}
+
+.ext-campaignevents-eventdetails-contributions-button-container {
+	margin-bottom: @spacing-50;
+}
+
+// contribution summary styles
+.ext-campaignevents-eventdetails-contributions-summary {
+	display: flex;
+	gap: @spacing-50;
+	margin: @spacing-100 0;
+	// Do not let cards wrap so they don't take up too much vertical space.
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow-x: auto;
+
+	// Make Codex cards inside the container flex to fill the row
+	> .cdx-card {
+		flex: 1 1 auto;
+	}
+
+	// Remove parentheses added by mediawiki.special.changeslist around byte/link deltas in summary cards
+	.mw-diff-bytes::before,
+	.mw-diff-bytes::after {
+		content: '';
+	}
+}
