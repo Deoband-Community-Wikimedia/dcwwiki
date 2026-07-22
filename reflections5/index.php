@@ -48,14 +48,14 @@ $color_palette = ['color-blue', 'color-green', 'color-purple', 'color-amber'];
 $color_index = 0; // Global tracker to keep colors distinct across both sidebars
 
 // --- CONFIGURATION ---
-$to_email = "reflectionsat5@dcwwiki.org"; 
-$from_email = "noreply@dcwwiki.org"; 
-$from_display_name = "DCW@5 - Deoband Community Wikimedia";
+$to_email = $_ENV['MW_REFLECTIONS_TO_EMAIL'] ?? '';
+$from_email = $_ENV['MW_SMTP_USER'] ?? '';
+$from_display_name = $_ENV['MW_REFLECTIONS_DISPLAY'] ?? '';
 
-$smtp_host = $_ENV['MW_SMTP_SERVER'] ?? 'smtp.hostinger.com';
-$smtp_port = $_ENV['MW_SMTP_PORT'] ?? 465; 
-$smtp_user = $_ENV['MW_SMTP_USER'] ?? 'noreply@dcwwiki.org'; 
-$smtp_pass = $_ENV['MW_SMTP_PASSWORD'] ?? '';  
+$smtp_host = $_ENV['MW_SMTP_SERVER'] ?? '';
+$smtp_port =$_ENV['MW_SMTP_PORT'] ?? 465;
+$smtp_user = $_ENV['MW_SMTP_USER'] ?? '';
+$smtp_pass = $_ENV['MW_SMTP_PASSWORD'] ?? '';
 
 $message_sent = false;
 $error_message = "";
@@ -231,8 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>DCW@5 - Deoband Community Wikimedia</title>
     
     <!-- Local Server-Hosted Favicon Assets -->
-    <link rel="icon" type="image/png" href="DCW_logo.svg" sizes="32x32">
-    <link rel="shortcut icon" href="DCW_logo.svg" type="image/png">
+   <link rel="icon" type="image/svg+xml" href="/dcwwiki/reflections5/DCW%20logo.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -487,3 +486,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
