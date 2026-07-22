@@ -598,10 +598,6 @@ $wgPluggableAuth_Config['Deoband Community Wikimedia'] = [
         'uri' => 'https://meta.wikimedia.org/w/index.php?title=Special:OAuth',
         'clientId' => $_ENV['MW_OAUTH_CLIENT_ID'] ?? '',
         'clientSecret' => $_ENV['MW_OAUTH_CLIENT_SECRET'] ?? '',
-        // Send an explicit callback so the OAuth return lands on the wiki's real
-        // script path (/dcwwiki) instead of the stale root callback registered on
-        // Meta, which otherwise rewrites to the /Index.php article. See issue #7.
-        'redirectUri' => $wgServer . $wgScriptPath . '/index.php?title=Special:PluggableAuthLogin',
     ],
     'buttonLabelMessage' => 'dcw-mw-login-button-label'
 ];
