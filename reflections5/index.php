@@ -231,7 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>DCW@5 - Deoband Community Wikimedia</title>
     
     <!-- Local Server-Hosted Favicon Assets -->
-   <link rel="icon" type="image/svg+xml" href="/dcwwiki/reflections5/DCW%20logo.svg">
+   <link rel="icon" type="image/svg+xml" href="/reflections5/DCW%20logo.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
