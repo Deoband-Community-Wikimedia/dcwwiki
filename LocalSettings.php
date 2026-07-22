@@ -21,6 +21,9 @@ $wgUpgradeKey = $_ENV['MW_UPGRADE_KEY'] ?? '';
 # --- Email Senders ---
 $wgConfirmAccountContact = $_ENV['MW_CONFIRM_ACCOUNT_CONTACT'];
 $wgPasswordSender = $_ENV['MW_PASSWORD_SENDER'];
+# Pin the emergency/system contact to the same sender so no mail falls back to the
+# default wikiadmin@<server> (dcwwiki.org). Keeps every outgoing address on dcwwiki.com.
+$wgEmergencyContact = $wgPasswordSender;
 
 # --- SMTP Configuration ---
 # Route outgoing MediaWiki mail through authenticated SMTP so messages are sent and
