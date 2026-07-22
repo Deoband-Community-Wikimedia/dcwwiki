@@ -23,18 +23,30 @@ $wgConfirmAccountContact = $_ENV['MW_CONFIRM_ACCOUNT_CONTACT'];
 $wgPasswordSender = $_ENV['MW_PASSWORD_SENDER'];
 
 # --- SMTP Configuration ---
-if (getenv('MW_SMTP_HOST')) {
+# Route outgoing MediaWiki mail through authenticated SMTP so messages are sent and
+# DKIM-signed by the domain (e.g. dcwwiki.com) instead of leaving via the raw hosting
+# server. Reads $_ENV (populated by Dotenv::createImmutable), matching the .env keys
+# used by the reflections5 mailer. Previously this block checked getenv('MW_SMTP_HOST'),
+# which never matched, so $wgSMTP was never set and mail fell back to PHP mail().
+if (!empty($_ENV['MW_SMTP_SERVER'])) {
     $wgEnableEmail = true;
     $wgEnableUserEmail = true;
 
+    $smtpUser = $_ENV['MW_SMTP_USER'] ?? '';
+    $smtpIdHost = ( $smtpUser && strpos( $smtpUser, '@' ) !== false )
+        ? substr( strrchr( $smtpUser, '@' ), 1 )
+        : parse_url( $wgServer, PHP_URL_HOST );
+    // Implicit SSL (port 465) by default, matching the reflections5 mailer; tls:// for STARTTLS.
+    $smtpPrefix = ( strtolower( $_ENV['SMTP_SECURE'] ?? 'ssl' ) === 'tls' ) ? 'tls://' : 'ssl://';
+
     $wgSMTP = [
-        'host'      => getenv('MW_SMTP_HOST'),
-        'IDHost'    => getenv('MW_SMTP_IDHOST') ?: parse_url($wgServer, PHP_URL_HOST),
-        'localhost' => getenv('MW_SMTP_LOCALHOST') ?: parse_url($wgServer, PHP_URL_HOST),
-        'port'      => (int)getenv('MW_SMTP_PORT'),
-        'auth'      => filter_var(getenv('MW_SMTP_AUTH'), FILTER_VALIDATE_BOOLEAN),
-        'username'  => getenv('MW_SMTP_USERNAME'),
-        'password'  => getenv('MW_SMTP_PASSWORD')
+        'host'      => $smtpPrefix . $_ENV['MW_SMTP_SERVER'],
+        'IDHost'    => $smtpIdHost,
+        'localhost' => $smtpIdHost,
+        'port'      => (int)( $_ENV['MW_SMTP_PORT'] ?? 465 ),
+        'auth'      => true,
+        'username'  => $smtpUser,
+        'password'  => $_ENV['MW_SMTP_PASSWORD'] ?? '',
     ];
 }
 
