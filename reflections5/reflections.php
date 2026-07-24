@@ -46,6 +46,10 @@ $selected_reflections = [
         [
             "name" => "User:Durre Shehvaar",
              "text" => "I learned a lot by being part of this community. It helped in my personality development. Being here makes me feel valued, and each one of us has something to contribute to society."
+    ],
+     [
+          "name" => "User:AJ12119",
+         "text" => "The beauty of every journey lies in the people you grow with. That's what made this experience truly unforgettable with DCW for me."
           
     ],
 ];
