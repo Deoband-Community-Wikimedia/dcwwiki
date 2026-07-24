@@ -46,7 +46,7 @@ if (!empty($_ENV['MW_SMTP_SERVER'])) {
         'host'      => $smtpPrefix . $_ENV['MW_SMTP_SERVER'],
         'IDHost'    => $smtpIdHost,
         'localhost' => $smtpIdHost,
-        'port'      => (int)( $_ENV['MW_SMTP_PORT'] ?? 465 ),
+        'port'      => (int)( $_ENV['MW_SMTP_PORT'] ?? 587 ),
         'auth'      => true,
         'username'  => $smtpUser,
         'password'  => $_ENV['MW_SMTP_PASSWORD'] ?? '',
