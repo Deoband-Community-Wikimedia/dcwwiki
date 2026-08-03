@@ -52,4 +52,8 @@ $selected_reflections = [
          "text" => "The beauty of every journey lies in the people you grow with. That's what made this experience truly unforgettable with DCW for me."
           
     ],
+    [ 
+        "name" => "Laraib Ahmad",
+        "text" => "My journey with DCW has been truly memorable. It was never just a community—it was a place where everyone found a sense of belonging. Thank you for the memories, the learning, and the wonderful people. I'll always be grateful to have been a part of DCW."
+    ],
 ];
