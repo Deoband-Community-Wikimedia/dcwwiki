@@ -57,7 +57,7 @@ $selected_reflections = [
         "text" => "My journey with DCW has been truly memorable. It was never just a community—it was a place where everyone found a sense of belonging. Thank you for the memories, the learning, and the wonderful people. I'll always be grateful to have been a part of DCW."
     ],
     [
-        "name" => "Adeela Siddiqui"
+        "name" => "Adeela Siddiqui",
         "text" => "I was pleasantly surprised with my experience at <a href='https://dcwwiki.org/Train_a_Wikipedian,_October_2025' target='_blank' style='color: #4A90E2; text-decoration: underline;'>TaW, Aligarh</a>. I found companionship and a community always willing to help. It is rare, for me at least, not to be embarrassed when asking questions, and this was one of those rare instances. DCW has been a space for growth and introspection for me, and I’m grateful."
     ],
 ];
