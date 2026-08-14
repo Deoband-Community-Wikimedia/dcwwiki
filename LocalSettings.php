@@ -230,6 +230,7 @@ wfLoadExtension( 'NoTitle' );
 wfLoadExtension( 'Cargo' );
 wfLoadExtension( 'Cite' );
 wfLoadExtension( 'Echo' );
+wfLoadExtension( 'ExternalImage' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'Thanks' );
 wfLoadExtension( 'TitleKey' );
@@ -655,7 +656,3 @@ $wgMaxImageArea = 100000000; // Increase this to handle larger PNGs
 $wgScribuntoDefaultEngine = 'luastandalone';
 $wgScribuntoEngineConf['luastandalone']['luaPath'] = __DIR__ . '/extensions/Scribunto/includes/Engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua';
 $wgSessionCacheType = CACHE_DB; // Forces stable, database-backed session tracking
-$wgAllowExternalImagesFrom = 'https://diff.wikimedia.org/';
-$wgAllowExternalImagesFrom = [
-    'https://diff.wikimedia.org/'
-];
