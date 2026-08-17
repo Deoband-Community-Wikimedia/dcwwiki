@@ -230,8 +230,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DCW@5 - Deoband Community Wikimedia</title>
     
-    <!-- Local Server-Hosted Favicon Assets -->
-   <link rel="icon" type="image/svg+xml" href="/reflections5/DCW%20logo.svg">
+<!-- SVG Favicon declaration -->
+<link rel="icon" type="image/svg+xml" href="DCW%20logo.svg">
+
+<!-- Fallback for older browsers / root-relative option -->
+<link rel="icon" type="image/svg+xml" href="/reflections5/DCW%20logo.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
