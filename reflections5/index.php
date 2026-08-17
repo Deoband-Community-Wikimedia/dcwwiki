@@ -231,9 +231,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>DCW@5 - Deoband Community Wikimedia</title>
     
 <!-- SVG Favicon declaration -->
-<link rel="icon" type="image/svg+xml" href="DCW%20logo.svg">
-
-<!-- Fallback for older browsers / root-relative option -->
 <link rel="icon" type="image/svg+xml" href="/reflections5/DCW%20logo.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
