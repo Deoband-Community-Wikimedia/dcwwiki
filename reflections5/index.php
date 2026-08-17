@@ -483,7 +483,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="bg-attribution">
     Background: ©Muntaqibah, CC BY-SA 4.0, Wikimedia Commons
 </div>
-
 </body>
 </html>
 
