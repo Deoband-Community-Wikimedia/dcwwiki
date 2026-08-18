@@ -1,7 +1,4 @@
 <?php
-if ( !defined( 'MediaWiki\MainConfigNames::EnableSpecialMute' ) ) {
-    define( 'MediaWiki\MainConfigNames::EnableSpecialMute', 'EnableSpecialMute' );
-}
 # --- Initialize .env Loader ---
 require_once __DIR__ . '/vendor/autoload.php';
 
