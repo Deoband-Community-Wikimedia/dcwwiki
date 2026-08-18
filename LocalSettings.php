@@ -1,4 +1,7 @@
 <?php
+if ( !defined( 'MediaWiki\MainConfigNames::EnableSpecialMute' ) ) {
+    define( 'MediaWiki\MainConfigNames::EnableSpecialMute', 'EnableSpecialMute' );
+}
 # --- Initialize .env Loader ---
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -656,6 +659,3 @@ $wgMaxImageArea = 100000000; // Increase this to handle larger PNGs
 $wgScribuntoDefaultEngine = 'luastandalone';
 $wgScribuntoEngineConf['luastandalone']['luaPath'] = __DIR__ . '/extensions/Scribunto/includes/Engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua';
 $wgSessionCacheType = CACHE_DB; // Forces stable, database-backed session tracking
-if ( !defined( 'MediaWiki\MainConfigNames::EnableSpecialMute' ) ) {
-    define( 'MediaWiki\MainConfigNames::EnableSpecialMute', 'EnableSpecialMute' );
-}
