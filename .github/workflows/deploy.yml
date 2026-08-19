@@ -37,20 +37,6 @@ jobs:
             **/languages/**
             **/skins/**
             **/vendor/**
-
-      # The bulk sync above excludes extensions/ (timeout protection), so extension updates never reach
-      # production automatically and have to be uploaded by hand (see issue #8). This dedicated step syncs
-      # ONLY the CampaignEvents folder — small enough to stay well under the timeout. Copy this block and
-      # change the two dir paths to deploy any other single extension.
-      - name: 📂 Deploy CampaignEvents extension
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./extensions/CampaignEvents/
-          server-dir: ./extensions/CampaignEvents/
-          exclude: |
             **/.git*
             **/.git*/**
             **/tests/**
