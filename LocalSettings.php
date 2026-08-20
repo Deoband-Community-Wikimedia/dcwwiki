@@ -614,10 +614,12 @@ $wgPluggableAuth_Config['Deoband Community Wikimedia'] = [
         'uri' => 'https://meta.wikimedia.org/w/index.php?title=Special:OAuth',
         'clientId' => $_ENV['MW_OAUTH_CLIENT_ID'] ?? '',
         'clientSecret' => $_ENV['MW_OAUTH_CLIENT_SECRET'] ?? '',
+		'redirectUri' => 'https://dcwwiki.org',
     ],
     'buttonLabelMessage' => 'dcw-mw-login-button-label'
 ];
-
+$wgOAuthMigrateUsersByUsername = true; 
+$wgOAuthDisallowRemoteOnlyAccounts = false;
 $wgExtraNamespaces[NS_USER] = "Member";
 $wgExtraNamespaces[NS_USER_TALK] = "Member_talk";
 
