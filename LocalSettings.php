@@ -584,14 +584,13 @@ $wgUrlShortenerEnableSidebar = true;
 # (issue #21). Now read from .env as comma-separated lists, matching the DB/SMTP/OAuth
 # convention documented in README.md, so domains can be changed without touching
 # tracked files. Falls back to the prior hardcoded list if the .env keys aren't set.
+# Per review on PR #22: keep the default list to dcwwiki/wikimedia/wikipedia only —
+# forms.gle, google.com, and linktr.ee stay out, even as defaults.
 $wgUrlShortenerAllowedDomains = array_values( array_filter( array_map( 'trim', explode( ',',
 	$_ENV['MW_URLSHORTENER_ALLOWED_DOMAINS'] ?? implode( ',', [
 		'(.*\.)?wikimedia\.org',
 		'(.*\.)?wikipedia\.org',
 		'(.*\.)?dcwwiki\.org',
-		'(.*\.)?forms\.gle',
-		'(.*\.)?google\.com',
-		'(.*\.)?linktr\.ee',
 	] )
 ) ) ) );
 $wgUrlShortenerApprovedDomains = array_values( array_filter( array_map( 'trim', explode( ',',
