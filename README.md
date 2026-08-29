@@ -8,7 +8,7 @@ Following the upgrade to MW 1.46, this repository has been cleaned up to track o
 - `/skins/` - Custom and installed MediaWiki skins.
 - `/extensions/` - MediaWiki extensions.
 - `/languages/` - Custom language configurations.
-- `/reflections5/` - Custom reflection integrations.
+- `/reflections5/` - Custom reflection integrations for 5th year anniversary.
 - `LocalSettings.php` - The primary MediaWiki configuration file.
 
 *Note: Core MediaWiki files, caches, and images are ignored via `.gitignore` to prevent clutter and keep the repository focused solely on our configurations.*
