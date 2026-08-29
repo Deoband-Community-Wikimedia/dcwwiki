@@ -45,6 +45,11 @@ MW_PASSWORD_SENDER=noreply@example.com
 # OAuth Configuration
 MW_OAUTH_CLIENT_ID=oauth_client_id
 MW_OAUTH_CLIENT_SECRET=oauth_client_secret
+
+# UrlShortener / QrCode domains (comma-separated; regex patterns for ALLOWED,
+# glob patterns for APPROVED). Optional — omit to keep the built-in defaults.
+MW_URLSHORTENER_ALLOWED_DOMAINS=(.*\.)?wikimedia\.org,(.*\.)?wikipedia\.org,(.*\.)?dcwwiki\.org
+MW_URLSHORTENER_APPROVED_DOMAINS=*.dcwwiki.org,*.wikimedia.org,*.wikipedia.org
 ```
 
 ## Deployment

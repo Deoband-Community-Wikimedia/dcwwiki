@@ -577,25 +577,29 @@ $wgShortUrlTemplate = '/dc-$1';
 $wgUrlShortenerTemplate = '/dcw-$1';
 $wgUrlShortenerEnableQrCode = true;
 $wgUrlShortenerEnableSidebar = true;
-$wgUrlShortenerAllowedDomains = true;
-$wgUrlShortenerAllowedDomains = array(
-	'(.*\.)?wikimedia\.org',
-	'(.*\.)?wikipedia\.org',
-	'(.*\.)?dcwwiki\.org', 
-	'(.*\.)?forms\.gle',
-	'(.*\.)?google\.com',
-		'(.*\.)?linktr\.ee',
-/*	'(.*\.)?whatsapp\.com',*/
-/*	'(.*\.)?youtu\.be', */
 
-);
-$wgUrlShortenerApprovedDomains = array(
-    '*.dcwwiki.org',
-	'*.wikimedia.org',
-	'*.wikipedia.org',
-/*	'*.google.com', */
-/*	'*.whatsapp.com', */
- /*   '*.youtu.be' */ );
+# Allowed/approved domains for Special:UrlShortener and Special:QrCode. Previously a
+# hardcoded array here, so every temporary domain add/remove meant editing this
+# version-controlled file directly on the server, risking drift with version control
+# (issue #21). Now read from .env as comma-separated lists, matching the DB/SMTP/OAuth
+# convention documented in README.md, so domains can be changed without touching
+# tracked files. Falls back to the prior hardcoded list if the .env keys aren't set.
+# Per review on PR #22: keep the default list to dcwwiki/wikimedia/wikipedia only —
+# forms.gle, google.com, and linktr.ee stay out, even as defaults.
+$wgUrlShortenerAllowedDomains = array_values( array_filter( array_map( 'trim', explode( ',',
+	$_ENV['MW_URLSHORTENER_ALLOWED_DOMAINS'] ?? implode( ',', [
+		'(.*\.)?wikimedia\.org',
+		'(.*\.)?wikipedia\.org',
+		'(.*\.)?dcwwiki\.org',
+	] )
+) ) ) );
+$wgUrlShortenerApprovedDomains = array_values( array_filter( array_map( 'trim', explode( ',',
+	$_ENV['MW_URLSHORTENER_APPROVED_DOMAINS'] ?? implode( ',', [
+		'*.dcwwiki.org',
+		'*.wikimedia.org',
+		'*.wikipedia.org',
+	] )
+) ) ) );
 $wgAllowUserJs = true;
 
 /* Account Creation Stuff */
