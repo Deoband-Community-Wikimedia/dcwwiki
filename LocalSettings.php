@@ -394,7 +394,6 @@ $wgGroupPermissions['dcw-board']['campaignevents-organize-events'] = true;
 $wgGroupPermissions['dcw-board']['create-resource'] = true;
 $wgGroupPermissions['dcw-board']['edit-resource'] = true;
 
-
 /* Tech Ambassadors priveleges */
 $wgGroupPermissions['tech-ambassador']['editusercss'] = true;
 $wgGroupPermissions['tech-ambassador']['edituserjson'] = true;
@@ -490,8 +489,6 @@ $wgGroupPermissions['dcw-organisers']['edit-main'] = true;
 $wgGroupPermissions['event-organizer']['campaignevents-email-participants'] = false;
 $wgGroupPermissions['event-organizer']['campaignevents-enable-registration'] = false;
 $wgGroupPermissions['event-organizer']['campaignevents-organize-events'] = false;
-
-
 
 $wgSecurePollSingleTransferableVoteEnabled = true;
 $wgSecurePollUseLogging = true;
@@ -626,23 +623,7 @@ $wgPluggableAuth_Config['Deoband Community Wikimedia'] = [
     ],
     'buttonLabelMessage' => 'dcw-mw-login-button-label'
 ];
-/*
 
-wfLoadExtension( 'ConfirmAccount' );
-
-$wgMakeUserPageFromBio = false;
- $wgAutoWelcomeNewUsers = false;
- $wgConfirmAccountRequestFormItems = [
- 	'UserName'        => [ 'enabled' => true ],
- 	'RealName'        => [ 'enabled' => true ],
- 	'Biography'       => [ 'enabled' => true, 'minWords' => 30 ],
- 	'AreasOfInterest' => [ 'enabled' => false ],
- 	'CV'              => [ 'enabled' => false ],
- 	'Notes'           => [ 'enabled' => true ],
- 	'Links'           => [ 'enabled' => true ],
- 	'TermsOfService'  => [ 'enabled' => true ],
- ];
- */
  $wgRestrictDisplayTitle = false;
  $wgHideInterlanguageLinks = true;
  $wgInterwikiMagic = true;
