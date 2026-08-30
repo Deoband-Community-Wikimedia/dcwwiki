@@ -1,3 +1,8 @@
 # Global Catch-All Rule
 # The sysadmin team owns everything in the repository by default.
 *       @Deoband-Community-Wikimedia/dcw-sysadmins
+
+# Server Security & Workflows
+# Protects GitHub automation and the security policy.
+/.github/workflows/     @Deoband-Community-Wikimedia/dcw-sysadmins
+/SECURITY.md            @Deoband-Community-Wikimedia/dcw-sysadmins
