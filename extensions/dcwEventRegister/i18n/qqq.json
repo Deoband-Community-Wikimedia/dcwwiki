@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Deoband Community Wikimedia"
+		]
+	},
+	"dcweventregister-desc": "{{desc|name=dcwEventRegister|url=https://github.com/Deoband-Community-Wikimedia/dcwwiki}}",
+	"dcweventregister-title": "Title of the Special:EventRegister page",
+	"dcweventregister-form-name": "Label for the name field on the registration form",
+	"dcweventregister-form-email": "Label for the email field on the registration form",
+	"dcweventregister-form-submit": "Label for the submit button on the registration form",
+	"dcweventregister-success": "Message shown after a successful registration",
+	"dcweventregister-error-invalid-email": "Error shown when the submitted email address is not valid",
+	"dcweventregister-error-duplicate": "Error shown when the user has already registered for this event",
+	"dcweventregister-email-confirmation-subject": "Subject line of the confirmation email. $1 is the event name",
+	"dcweventregister-email-confirmation-body": "Body of the confirmation email. $1 is the user's name, $2 is the event name, $3 is the event date/time",
+	"dcweventregister-email-reminder-subject": "Subject line of the reminder email. $1 is the event name",
+	"dcweventregister-email-reminder-body": "Body of the reminder email. $1 is the user's name, $2 is the event name, $3 is the event date/time"
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Deoband Community Wikimedia"
+		]
+	},
+	"dcweventregister-desc": "Provides event registration with confirmation and reminder emails",
+	"dcweventregister-title": "Event Registration",
+	"dcweventregister-form-name": "Your name",
+	"dcweventregister-form-email": "Your email address",
+	"dcweventregister-form-submit": "Register",
+	"dcweventregister-success": "You have been registered for this event. A confirmation email has been sent to you.",
+	"dcweventregister-error-invalid-email": "Please enter a valid email address.",
+	"dcweventregister-error-duplicate": "You have already registered for this event.",
+	"dcweventregister-email-confirmation-subject": "Registration confirmed: $1",
+	"dcweventregister-email-confirmation-body": "Hello $1,\n\nYou are confirmed for \"$2\" on $3.\n\nWe look forward to seeing you there.",
+	"dcweventregister-email-reminder-subject": "Reminder: $1 starts soon",
+	"dcweventregister-email-reminder-body": "Hello $1,\n\nThis is a reminder that \"$2\" starts at $3, which is about 30 minutes from now."
+}
