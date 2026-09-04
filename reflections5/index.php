@@ -116,6 +116,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
+            if (!function_exists('is_name_valid')) {
+                function is_name_valid($name) {
+                    $text = trim($name);
+                    
+                    // Block if purely numeric
+                    if (preg_match('/^\d+$/', $text)) return false;
+                    
+                    // Block if majority is numeric (>40% digits)
+                    $digit_count = preg_match_all('/\d/', $text);
+                    if (strlen($text) > 0 && ($digit_count / strlen($text)) > 0.4) return false;
+                    
+                    // Block if too many repeated characters (5+ consecutive same char)
+                    if (preg_match('/(.)\1{4,}/', $text)) return false;
+                    
+                    // Block if too few vowels (less than 20% of text)
+                    $vowel_count = preg_match_all('/[aeiouAEIOU]/', $text);
+                    if (strlen($text) > 0 && ($vowel_count / strlen($text)) < 0.2) return false;
+                    
+                    return true;
+                }
+            }
+
+            if (!function_exists('is_email_username_valid')) {
+                function is_email_username_valid($email_username) {
+                    $text = trim($email_username);
+                    
+                    // Block if purely numeric
+                    if (preg_match('/^\d+$/', $text)) return false;
+                    
+                    // Block if majority is numeric (>50% digits for email local part is more lenient)
+                    $digit_count = preg_match_all('/\d/', $text);
+                    if (strlen($text) > 0 && ($digit_count / strlen($text)) > 0.5) return false;
+                    
+                    // Block if contains only special chars and numbers
+                    if (!preg_match('/[a-zA-Z]/', $text)) return false;
+                    
+                    return true;
+                }
+            }
+
             $email_parts = explode('@', $_POST['email'] ?? '');
             $email_username = $email_parts[0] ?? '';
 
@@ -140,6 +180,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (is_numeric_only($reflection) || is_numeric_only($name)) {
                 $error_message = "Submission flagged as unreadable clutter.";
                 write_audit_log("FAILED", "BLOCKED", $name, $email, "Numeric-only input.");
+            } elseif (!is_name_valid($name)) {
+                $error_message = "Name appears invalid. Please provide a legitimate name.";
+                write_audit_log("FAILED", "BLOCKED", $name, $email, "Invalid name format (numeric-heavy, low-vowel, or excessive repetition).");
+            } elseif (!is_email_username_valid($email_username)) {
+                $error_message = "Email format appears invalid. Please provide a standard email address.";
+                write_audit_log("FAILED", "BLOCKED", $name, $email, "Invalid email username format.");
             } elseif (is_gibberish($reflection) || is_gibberish($name) || is_gibberish($email_username)) {
                 $error_message = "Submission flagged as unreadable clutter.";
                 write_audit_log("FAILED", "BLOCKED", $name, $email, "Gibberish input.");
@@ -251,7 +297,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Wikipedia_House_at_DCW_Train_a_Wikipedian_April_2026.jpg') no-[...]
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Wikipedia_House_at_DCW_Train_a_Wikipedian_April_2026.jpg') no-repeat center center;
             background-size: cover;
             min-height: 100vh;
             display: flex;
