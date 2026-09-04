@@ -109,6 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
+            if (!function_exists('is_numeric_only')) {
+                function is_numeric_only($text) {
+                    $text = trim($text);
+                    return !empty($text) && preg_match('/^\d+$/', $text);
+                }
+            }
+
             $email_parts = explode('@', $_POST['email'] ?? '');
             $email_username = $email_parts[0] ?? '';
 
@@ -130,7 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
-            if (is_gibberish($reflection) || is_gibberish($name) || is_gibberish($email_username)) {
+            if (is_numeric_only($reflection) || is_numeric_only($name)) {
+                $error_message = "Submission flagged as unreadable clutter.";
+                write_audit_log("FAILED", "BLOCKED", $name, $email, "Numeric-only input.");
+            } elseif (is_gibberish($reflection) || is_gibberish($name) || is_gibberish($email_username)) {
                 $error_message = "Submission flagged as unreadable clutter.";
                 write_audit_log("FAILED", "BLOCKED", $name, $email, "Gibberish input.");
             } elseif (has_already_submitted($email)) {
@@ -241,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Wikipedia_House_at_DCW_Train_a_Wikipedian_April_2026.jpg') no-repeat center center fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Wikipedia_House_at_DCW_Train_a_Wikipedian_April_2026.jpg') no-[...]
             background-size: cover;
             min-height: 100vh;
             display: flex;
@@ -486,4 +496,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 </body>
 </html>
-
