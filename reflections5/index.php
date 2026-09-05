@@ -156,6 +156,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
+            if (!function_exists('is_reflection_spam')) {
+                function is_reflection_spam($reflection, $email_username, $name) {
+                    $reflection_lower = strtolower(preg_replace('/[^a-z0-9]/', '', $reflection));
+                    $email_lower = strtolower(preg_replace('/[^a-z0-9]/', '', $email_username));
+                    $name_lower = strtolower(preg_replace('/[^a-z0-9]/', '', $name));
+                    
+                    // Block if reflection is too short (less than 10 characters)
+                    if (strlen(trim($reflection)) < 10) return true;
+                    
+                    // Block if reflection matches or contains the email username
+                    if (!empty($email_lower) && stripos($reflection_lower, $email_lower) !== false) return true;
+                    
+                    // Block if reflection matches or contains the submitter's name (without spaces)
+                    if (!empty($name_lower) && strlen($name_lower) > 3 && stripos($reflection_lower, $name_lower) !== false) return true;
+                    
+                    return false;
+                }
+            }
+
             $email_parts = explode('@', $_POST['email'] ?? '');
             $email_username = $email_parts[0] ?? '';
 
@@ -189,6 +208,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } elseif (is_gibberish($reflection) || is_gibberish($name) || is_gibberish($email_username)) {
                 $error_message = "Submission flagged as unreadable clutter.";
                 write_audit_log("FAILED", "BLOCKED", $name, $email, "Gibberish input.");
+            } elseif (is_reflection_spam($reflection, $email_username, $name)) {
+                $error_message = "Submission appears to be spam or lacks sufficient content. Please provide a meaningful reflection.";
+                write_audit_log("FAILED", "BLOCKED", $name, $email, "Spam detection: reflection too short or matches personal identifiers.");
             } elseif (has_already_submitted($email)) {
                 $error_message = "You have already submitted a reflection. If you want to revise it, please contact our moderators at moderator@dcwwiki.org";
                 write_audit_log("FAILED", "DUPLICATE", $name, $email, "Blocked repeat submission attempt.");
@@ -297,7 +319,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Wikipedia_House_at_DCW_Train_a_Wikipedian_April_2026.jpg') no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/b/b9/Wikipedia_House_at_DCW_Train_a_Wikipedian_April_2026.jpg');
             background-size: cover;
             min-height: 100vh;
             display: flex;
