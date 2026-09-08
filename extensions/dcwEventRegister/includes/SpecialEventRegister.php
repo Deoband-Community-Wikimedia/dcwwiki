@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\DcwEventRegister;
 
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class SpecialEventRegister extends SpecialPage {
 
@@ -20,7 +20,8 @@ class SpecialEventRegister extends SpecialPage {
 
 		// TODO: build registration form (event id, name, email)
 		// TODO: on submit -> validate input, check duplicate via RegistrationStore,
-		//       insert row, send confirmation email, schedule SendReminderJob
+		//       insert row, send confirmation email
+		//       (reminder scheduling handled separately, see #27)
 		$out->addWikiMsg( 'dcweventregister-title' );
 	}
 

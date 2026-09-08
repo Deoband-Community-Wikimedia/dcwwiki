@@ -17,9 +17,12 @@ sends an immediate confirmation email, and schedules a reminder email
    ];
    ```
 
-3. Run `php maintenance/update.php` to create the `dcw_event_registrations` table.
-4. Make sure the job runner is active (`runJobs.php` or a background job runner)
-   so reminder jobs actually get processed.
+3. The `dcw_event_registrations` table schema and its creation (via `update.php`
+   or a SQL patch) are tracked separately as part of the "Database & schema"
+   task — see #27.
+4. Reminder delivery is handled by a separate maintenance/cron script rather
+   than a delayed JobQueue job, since our JobQueueDB setup does not support
+   delayed jobs. See #27 for details.
 
 ## Overriding email text
 
@@ -31,5 +34,6 @@ Edit the `dcweventregister-email-confirmation-subject`,
 
 ## Status
 
-This is an MVP scaffold. See project issue tracker for outstanding
-sub-tasks (DB logic, email sending, job scheduling, security review).
+This is an MVP scaffold covering the Special:EventRegister page and
+extension structure. Database schema, reminder delivery, and email
+sending are tracked separately — see project issue #27.

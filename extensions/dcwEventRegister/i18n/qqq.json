@@ -15,5 +15,5 @@
 	"dcweventregister-email-confirmation-subject": "Subject line of the confirmation email. $1 is the event name",
 	"dcweventregister-email-confirmation-body": "Body of the confirmation email. $1 is the user's name, $2 is the event name, $3 is the event date/time",
 	"dcweventregister-email-reminder-subject": "Subject line of the reminder email. $1 is the event name",
-	"dcweventregister-email-reminder-body": "Body of the reminder email. $1 is the user's name, $2 is the event name, $3 is the event date/time"
+	"dcweventregister-email-reminder-body": "Body of the reminder email. $1 is the user's name, $2 is the event name, $3 is the event date/time, $4 is the reminder offset in minutes (from $wgDcwEventRegisterSettings)"
 }
