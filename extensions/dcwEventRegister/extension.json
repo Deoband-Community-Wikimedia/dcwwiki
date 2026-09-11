@@ -1,0 +1,34 @@
+{
+	"name": "dcwEventRegister",
+	"version": "0.1.0",
+	"author": [
+		"Deoband Community Wikimedia"
+	],
+	"url": "https://github.com/Deoband-Community-Wikimedia/dcwwiki",
+	"descriptionmsg": "dcweventregister-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.46.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\DcwEventRegister\\": "includes/"
+	},
+	"SpecialPages": {
+		"EventRegister": "MediaWiki\\Extension\\DcwEventRegister\\SpecialEventRegister"
+	},
+	"MessagesDirs": {
+		"dcwEventRegister": [
+			"i18n"
+		]
+	},
+	"config": {
+		"DcwEventRegisterSettings": {
+			"value": {
+				"senderAddress": "noreply@dcwwiki.org",
+				"reminderOffsetMinutes": 30
+			}
+		}
+	},
+	"manifest_version": 2
+}
