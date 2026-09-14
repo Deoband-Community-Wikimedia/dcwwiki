@@ -6,13 +6,20 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 # --- Database Configuration (Reading from $_ENV) ---
-$wgDBtype = $_ENV['MW_DB_TYPE'] ?? 'mysql';
-$wgDBserver = $_ENV['MW_DB_SERVER'] ?? 'localhost';
-$wgDBname = $_ENV['MW_DB_NAME'] ?? null;
-$wgDBuser = $_ENV['MW_DB_USER'] ?? null;
-$wgDBpassword = $_ENV['MW_DB_PASSWORD'] ?? null;
-$wgDBprefix = $_ENV['MW_DB_PREFIX'] ?? '';
-$wgDBssl = filter_var($_ENV['MW_DB_SSL'] ?? false, FILTER_VALIDATE_BOOLEAN);
+$wgDBservers = [
+    [
+        'type'     => $_ENV['MW_DB_TYPE'] ?? 'mysql',
+        'host'     => $_ENV['MW_DB_SERVER'] ?? 'localhost',
+        'dbname'   => $_ENV['MW_DB_NAME'] ?? null,
+        'user'     => $_ENV['MW_DB_USER'] ?? null,
+        'password' => $_ENV['MW_DB_PASSWORD'] ?? null,
+        'ssl'      => filter_var($_ENV['MW_DB_SSL'] ?? false, FILTER_VALIDATE_BOOLEAN),
+        'tablePrefix' => $_ENV['MW_DB_PREFIX'] ?? '',
+        'flags'    => DBO_DEFAULT | DBO_PERSISTENT, 
+        'load'     => 1,
+    ]
+];
+
 
 # --- Cryptographic Keys ---
 $wgSecretKey  = $_ENV['MW_SECRET_KEY'] ?? '';
