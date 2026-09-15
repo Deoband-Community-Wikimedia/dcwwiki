@@ -13,7 +13,7 @@ $wgDBuser = $_ENV['MW_DB_USER'] ?? null;
 $wgDBpassword = $_ENV['MW_DB_PASSWORD'] ?? null;
 $wgDBprefix = $_ENV['MW_DB_PREFIX'] ?? '';
 $wgDBssl = filter_var($_ENV['MW_DB_SSL'] ?? false, FILTER_VALIDATE_BOOLEAN);
-$wgDBflags = DBO_DEFAULT | DBO_PERSISTENT; 
+$wgDBflags = DBO_DEFAULT;
 
 # --- Cryptographic Keys ---
 $wgSecretKey  = $_ENV['MW_SECRET_KEY'] ?? '';
@@ -649,4 +649,7 @@ $wgImageMagickConvertCommand = "/usr/bin/convert";
 $wgMaxImageArea = 100000000; // Increase this to handle larger PNGs
 $wgScribuntoDefaultEngine = 'luastandalone';
 $wgScribuntoEngineConf['luastandalone']['luaPath'] = __DIR__ . '/extensions/Scribunto/includes/Engines/LuaStandalone/binaries/lua5_1_5_linux_64_generic/lua';
-$wgSessionCacheType = CACHE_DB; // Forces stable, database-backed session tracking
+$wgJobRunRate = 0;
+$wgSessionCacheType = CACHE_ANYTHING;
+$wgMainCacheType = CACHE_NONE;
+
