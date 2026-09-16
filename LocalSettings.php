@@ -13,7 +13,6 @@ $wgDBuser = $_ENV['MW_DB_USER'] ?? null;
 $wgDBpassword = $_ENV['MW_DB_PASSWORD'] ?? null;
 $wgDBprefix = $_ENV['MW_DB_PREFIX'] ?? '';
 $wgDBssl = filter_var($_ENV['MW_DB_SSL'] ?? false, FILTER_VALIDATE_BOOLEAN);
-$wgDBflags = DBO_DEFAULT;
 
 # --- Cryptographic Keys ---
 $wgSecretKey  = $_ENV['MW_SECRET_KEY'] ?? '';
@@ -89,13 +88,17 @@ $wgMetaNamespace = "DCW";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
+
+# Core Script & Article Paths
+$wgServer = "https://dcwwiki.org";
 $wgScriptPath = "";
+$wgScript = "/index.php";
+$wgArticlePath = "/$1";
+$wgResourceBasePath = "";
+$wgUsePathInfo = true;
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "https://dcwwiki.org";
 
-## The URL path to static resources (images, scripts, etc.)
-$wgResourceBasePath = $wgScriptPath;
 
 ## The URL paths to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
@@ -522,7 +525,6 @@ $wgExtensionFunctions[] = function() use ( &$wgGroupPermissions ) {
 unset( $wgRevokePermissions['bureaucrat'] );
 
 /* Extra config goes here */
-$wgArticlePath = '/$1';
 unset( $wgFooterIcons['poweredby'] );
 $wgCargoDBRowFormat = 'COMPRESSED';
 $wgCargoAllowedSQLFunctions[] = 'IFNULL';
@@ -644,7 +646,6 @@ $wgEnableScriptedUploads = true;
 $wgSVGConverter = 'ImageMagick';
 $wgCacheEpoch = '20260916200500'; // Today's date in YYYYMMDDHHMMSS format
 $wgUseImageMagick = false;
-$wgUsePathInfo = false;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 $wgMaxImageArea = 100000000; // Increase this to handle larger PNGs
 $wgScribuntoDefaultEngine = 'luastandalone';
@@ -652,4 +653,5 @@ $wgScribuntoEngineConf['luastandalone']['luaPath'] = __DIR__ . '/extensions/Scri
 $wgJobRunRate = 0;
 $wgSessionCacheType = CACHE_ANYTHING;
 $wgMainCacheType = CACHE_NONE;
+
 
