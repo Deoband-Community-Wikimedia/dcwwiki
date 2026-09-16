@@ -89,7 +89,7 @@ $wgMetaNamespace = "DCW";
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath = "/dcwwiki";
+$wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
 $wgServer = "https://dcwwiki.org";
@@ -642,7 +642,7 @@ $wgUploadPath = "{$wgScriptPath}/images";
 $wgTmpDirectory = "{$wgUploadDirectory}/temp";
 $wgEnableScriptedUploads = true;
 $wgSVGConverter = 'ImageMagick';
-$wgCacheEpoch = '20260323000000'; // Today's date in YYYYMMDDHHMMSS format
+$wgCacheEpoch = '20260916200500'; // Today's date in YYYYMMDDHHMMSS format
 $wgUseImageMagick = false;
 $wgUsePathInfo = false;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
