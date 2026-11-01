@@ -25,6 +25,16 @@ $wgPasswordSender = $_ENV['MW_PASSWORD_SENDER'];
 # default wikiadmin@<server> (dcwwiki.org). Keeps every outgoing address on dcwwiki.com.
 $wgEmergencyContact = $wgPasswordSender;
 
+# dcwEventRegister (#27): sender and reminder timing for its confirmation/reminder emails.
+# Settings only. The extension itself is NOT loaded here: its files must be uploaded to the
+# server first (the deploy script skips extensions/), and only then is wfLoadExtension() added.
+# The sender follows $wgPasswordSender so these emails also stay on the DKIM-signed domain.
+# Assigning the whole array replaces the defaults in extension.json, so keep both keys.
+$wgDcwEventRegisterSettings = [
+    'senderAddress'         => $wgPasswordSender,
+    'reminderOffsetMinutes' => 30,
+];
+
 # --- SMTP Configuration ---
 # Route outgoing MediaWiki mail through authenticated SMTP so messages are sent and
 # DKIM-signed by the domain (e.g. dcwwiki.com) instead of leaving via the raw hosting
